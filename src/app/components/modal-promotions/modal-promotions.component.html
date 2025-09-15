@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <div class="w-100 text-center position-relative">
+        <h3 class="modal-title">Nuestros Eventos</h3>
+        <button type="button" class="btn-close position-absolute end-0" aria-label="Close" (click)="cerrar()"></button>
+    </div>
+    <br>
+</div>
+
+<div class="modal-body">
+    <div *ngIf="actividades && actividades.length > 0; else noActividades">
+        <div id="carouselActividades" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button *ngFor="let act of actividades; let i = index" type="button"
+                    data-bs-target="#carouselActividades" [attr.data-bs-slide-to]="i" [class.active]="i === 0"
+                    [attr.aria-label]="'Slide ' + (i + 1)"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div *ngFor="let act of actividades; let i = index" class="carousel-item" [class.active]="i === 0">
+                    <img [src]="act.imagen" class="d-block w-100" [alt]="act.titulo"
+                        onerror="this.src='assets/images/default-image.jpg'">
+                    <div class="carousel-caption">
+                        <div class="activity-badge" *ngIf="i === 0">Nuevo</div>
+                        <!-- <h5>{{act.titulo}}</h5>
+              <p>{{act.descripcion}}</p> -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- <small>{{act.fecha | date:'mediumDate'}}</small>
+                <button class="btn btn-sm btn-outline-light">Ver detalles</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselActividades"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselActividades"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <ng-template #noActividades>
+        <div class="text-center py-4">
+            <i class="fas fa-calendar-times fa-3x mb-3 text-muted"></i>
+            <p>No hay actividades recientes para mostrar</p>
+        </div>
+    </ng-template>
+</div>
+
+<div class="modal-footer justify-content-center">
+
+</div>

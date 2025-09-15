@@ -1,0 +1,29 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+        style="background-image: url('./assets/img/fabio-mangione.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <div class="section section-horario py-10 text-center">
+            <div class="container">
+              <h2 class="text-3xl font-bold mb-8">Horarios de la Iglesia</h2>
+
+              <br>
+          
+              <div class="grid grid-cols-3 gap-6 justify-items-center">
+                <div *ngFor="let dia of dias" class="card max-w-[280px] w-full mx-auto p-5 shadow-md bg-white rounded-2xl h-full min-h-[180px] flex flex-col justify-start transition-all duration-300 hover:scale-105">
+                  <h3 *ngIf="dia.nombre" class="text-xl font-semibold mb-3 text-indigo-800">{{ dia.nombre }}</h3>
+                  <ng-container *ngIf="dia.actividades.length > 0">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-left">
+                      <li *ngFor="let actividad of dia.actividades">{{ actividad }}</li>
+                    </ul>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+
+    </div>
+</div>

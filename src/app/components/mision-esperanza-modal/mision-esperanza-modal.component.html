@@ -1,0 +1,141 @@
+<div class="modern-modal-container">
+  <!-- Encabezado del modal -->
+  <div class="modal-header modern-header">
+    <h4 class="modal-title modern-title">Misión <span>Esperanza</span></h4>
+    <button type="button" class="btn-close modern-close-btn" aria-label="Close" (click)="closeModal()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  
+  <!-- Cuerpo del modal -->
+  <div class="modal-body modern-body">
+    <!-- Contenedor del video -->
+    <div class="mission-video-container modern-video-wrapper">
+      <div class="video-overlay"></div>
+      <video controls class="mission-video modern-video">
+        <source src="./assets/videos/mision-esperanza.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5
+      </video>
+      <div class="video-badge">
+        <i class="fas fa-play"></i> Video destacado
+      </div>
+    </div>
+    
+    <!-- Descripción -->
+    <div class="mission-description modern-description">
+      <div class="quote-icon">“</div>
+      <p class="modern-text">
+        Llevamos el mensaje de fe, amor y servicio a comunidades en Bogotá, Ortega (Tolima) y Venezuela, 
+        compartiendo el evangelio y apoyando a quienes más lo necesitan.
+      </p>
+      <div class="location-dots">
+        <span class="dot bogota"></span>
+        <span class="dot ortega"></span>
+        <span class="dot venezuela"></span>
+      </div>
+    </div>
+    
+    <!-- Contenido de ubicaciones -->
+    <div class="location-content">
+      <!-- Bogotá -->
+      <div class="location-section bogota-section">
+        <div class="location-heading">
+          <i class="fas fa-church"></i>
+          <h4>Bogotá</h4>
+        </div>
+        <div class="location-image">
+          <img src="./assets/img/misiones/bogota.jpg" alt="Misión Bogotá">
+        </div>
+        <div class="location-details">
+          <p>Trabajamos en los barrios más vulnerables de la capital, llevando ayuda espiritual y material.</p>
+          <div class="location-stats">
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-users"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">personas impactadas</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-bible"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">decisiones por Cristo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Ortega (Tolima) -->
+      <div class="location-section ortega-section">
+        <div class="location-heading">
+          <i class="fas fa-mountain"></i>
+          <h4>Ortega (Tolima)</h4>
+        </div>
+        <div class="location-image">
+          <img src="./assets/img/misiones/ortega.jpg" alt="Misión Ortega">
+        </div>
+        <div class="location-details">
+          <p>En el corazón del Tolima, apoyamos comunidades campesinas con programas de alimentación.</p>
+          <div class="location-stats">
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-home"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">personas impactadas</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-utensils"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">300</div>
+                <div class="stat-label">almuerzos mensuales</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Venezuela -->
+      <div class="location-section venezuela-section">
+        <div class="location-heading">
+          <i class="fas fa-hands-helping"></i>
+          <h4>Venezuela</h4>
+        </div>
+        <div class="location-image">
+          <img src="./assets/img/misiones/venezuela.jpg" alt="Misión Venezuela">
+        </div>
+        <div class="location-details">
+          <p>Cruzamos fronteras para llevar ayuda humanitaria y esperanza en Cristo.</p>
+          <div class="location-stats">
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-box-open"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">1.5T</div>
+                <div class="stat-label">de ayuda</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-icon"><i class="fas fa-pray"></i></div>
+              <div class="stat-info">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">grupos de oración</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pie del modal -->
+  <div class="modal-footer modern-footer">
+    <button type="button" class="btn btn-primary modern-help-btn" (click)="quieroAyudar()">
+      <i class="fas fa-hand-holding-heart"></i> Quiero ayudar
+    </button>
+    <button type="button" class="btn btn-outline-primary modern-close-btn-footer" (click)="closeModal()">
+      <i class="fas fa-times"></i> Cerrar
+    </button>
+  </div>
+</div>

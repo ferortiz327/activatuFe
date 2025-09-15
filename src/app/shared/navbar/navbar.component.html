@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" routerLink="/">
+                <img src="../../../assets/icon/logoIglesia.png" alt="Logo" style="height: 120px;">
+            </a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="WhatsApp" data-placement="bottom" (click)="redirectToWhatsApp()" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <p class="d-lg-none">WhatsApp</p>
+                    </a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" rel="tooltip" title="Facebook" data-placement="bottom" href="https://www.facebook.com/Elsembrador.Igle/" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                        <p class="d-lg-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Instagram" data-placement="bottom" href="https://www.instagram.com/elsembrador.iglesia/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <p class="d-lg-none">Instagram</p>
+                    </a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" rel="tooltip" title="Youtube" data-placement="bottom" href="https://www.youtube.com/@elsembradorIglesia" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        <p class="d-lg-none">Youtube</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/enQueCreemos']" class="nav-link"><i class="fas fa-bible me-3"></i>En Que Creemos</a>
+                </li>
+                <li class="nav-item">
+                    <a (click)="scrollToFormulario()" target="_blank" class="btn btn-danger btn-round">Soy Nuevo</a>
+       
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/calendario']"  class="nav-link"><i class="nc-icon nc-layout-11"></i>Horarios</a>
+                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/donaciones']" class="nav-link"><i class="fas fa-hand-holding-usd"></i>Donaciones</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,21 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+  /* styles.scss o el archivo de estilos del componente */
+.modal-actividades {
+  .modal-content {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    
+    .carousel {
+      max-height: 70vh;
+      overflow: hidden;
+      
+      img {
+        object-fit: cover;
+        height: 400px;
+      }
+    }
+  }
+}

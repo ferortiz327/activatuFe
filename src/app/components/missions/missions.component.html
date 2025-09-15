@@ -1,0 +1,137 @@
+<div class="mission-container">
+    <!-- Sección Hero con Video -->
+    <section class="mission-hero">
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline class="hero-video">
+          <source src="./assets/img/videos/introMisiones.mp4" type="video/mp4">
+          <!-- Fallback para navegadores que no soportan video -->
+          <img src="./assets/img/mission-fallback.jpg" alt="Misiones" class="fallback-image">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-title">Misiones de Fe</h1>
+          <p class="hero-subtitle">"Id y haced discípulos a todas las naciones" - Mateo 28:19</p>
+          <br>
+          <button class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Contenido Principal -->
+    <main class="mission-content">
+      <!-- Sección de Introducción -->
+      <section class="intro-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 mx-auto">
+              <h2 class="section-title">Cumpliendo la Gran Comisión</h2>
+              <p class="lead">"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito..." - Juan 3:16</p>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Sección de Misiones Destacadas -->
+      <section class="featured-missions">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Nuestras Misiones</h2>
+            <p class="section-description">"La mies es mucha, pero los obreros pocos" - Lucas 10:2</p>
+          </div>
+  
+          <div class="mission-cards">
+            <!-- Tarjeta de Misión 1 -->
+            <div class="mission-card">
+              <div class="card-image" style="background-image: url('./assets/img/misiones/misionLocal.jpeg');">
+                <div class="card-badge">En Progreso</div>
+              </div>
+              <div class="card-content">
+                <h3>Evangelismo Local</h3>
+                <p>Llevando el Evangelio a los barrios y comunidades de nuestra ciudad.</p>
+                <a href="#" class="read-more">Saber más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+  
+            <!-- Tarjeta de Misión 2 -->
+            <div class="mission-card">
+              <div class="card-image" style="background-image: url('/assets/img/misiones/ortega.jpeg');">
+                <div class="card-badge">En Progreso</div>
+              </div>
+              <div class="card-content">
+                <h3>Ayuda a los Necesitados</h3>
+                <p>"La religión pura y sin mácula es visitar a los huérfanos y a las viudas" - Santiago 1:27</p>
+                <a href="#" class="read-more">Saber más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+  
+            <!-- Tarjeta de Misión 3 -->
+            <div class="mission-card">
+              <div class="card-image" style="background-image: url('/assets/img/misiones/keny.jpeg');">
+                <div class="card-badge">En Progreso</div>
+              </div>
+              <div class="card-content">
+                <h3>Misiones de Esperanza</h3>
+                <p>Llevamos el mensaje de fe, amor y servicio a comunidades en Bogotá, Ortega (Tolima) y Venezuela, 
+                  compartiendo el evangelio y apoyando a quienes más lo necesitan.</p>
+                <a (click)="openMisionEsperanza()" class="read-more">Saber más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Sección de Testimonios -->
+      <section class="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Testimonios de Fe</h2>
+            <p class="section-description">"Ellos han vencido por medio de la sangre del Cordero y por la palabra del testimonio" - Apocalipsis 12:11</p>
+          </div>
+  
+          <div class="testimonial-slider">
+            <div class="testimonial-item">
+              <div class="testimonial-content">
+                <p>"Gracias a la misión evangelística conocí a Cristo. Hoy mi familia y yo servimos al Señor en esta iglesia."</p>
+                <div class="author-info">
+                  <img src="./assets/img/testimonial1.jpg" alt="Hermano José" class="author-img">
+                  <div class="author-details">
+                    <h4>Hermano José</h4>
+                    <p>Convertido en 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="testimonial-item">
+              <div class="testimonial-content">
+                <p>"El apoyo espiritual y material de la iglesia cambió nuestra vida. Ahora conocemos el amor de Dios."</p>
+                <div class="author-info">
+                  <img src="./assets/img/testimonial2.jpg" alt="Familia Martínez" class="author-img">
+                  <div class="author-details">
+                    <h4>Familia Martínez</h4>
+                    <p>Beneficiarios de la misión</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Llamado a la acción -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>¿Sientes el llamado misionero?</h2>
+            <p>"Heme aquí, envíame a mí" - Isaías 6:8</p>
+            <div class="cta-buttons">
+              <a href="#" class="btn btn-primary">Unirme a las Misiones</a>
+              <a href="#" class="btn btn-outline">Apoyar en Oración</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>

@@ -1,0 +1,108 @@
+.footer-white {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .footer-columns {
+    display: flex;
+    flex-wrap: nowrap; /* evita que bajen de línea */
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .columna {
+    flex: 1; /* cada columna toma el mismo espacio */
+    min-width: 200px;
+  }
+  
+  
+  .footer-col {
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .footer-col h5 {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  .footer-col p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-col a {
+    text-decoration: none;
+    color: #555;
+    transition: color 0.2s;
+  }
+  
+  .footer-col a:hover {
+    color: #007bff;
+  }
+  
+  .footer-social a {
+    font-size: 18px;
+    margin-right: 15px;
+    color: #555;
+    transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+    color: #007bff;
+  }
+  
+  .contact-list i {
+    margin-right: 8px;
+    color: #007bff;
+  }
+  
+  .btn-city {
+    margin-top: 15px;
+    background-color: #fff;
+    border: 1px solid #FB404B;
+    color: #FB404B;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-city:hover {
+    background-color:#FB404B;
+    color: #fff;
+  }
+  
+  @media (max-width: 1024px) {
+    .footer-columns {
+      flex-wrap: wrap; /* permite salto de línea */
+    }
+  
+    .columna {
+      flex: 1 1 45%; /* se acomodan en dos columnas */
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .columna {
+      flex: 1 1 100%; /* se apilan verticalmente */
+    }
+  }
+  
