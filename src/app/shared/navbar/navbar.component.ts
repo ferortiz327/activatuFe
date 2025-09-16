@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -11,17 +11,28 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
+
+    logoBlanco = '../../../assets/icon/logoBlanco.png';
+    logoOscuro = '../../../assets/icon/logooscuro.png';
+    logo = this.logoBlanco;
+
+    @HostListener('window:scroll', [])
+    onWindowScroll() {
+        const scrollTop = window.scrollY;
+        this.logo = scrollTop > 50 ? this.logoOscuro : this.logoBlanco;
+    }
+
     scrollToFormulario() {
         if (this.router.url === '/' || this.router.url === '/home') {
             const formulario = document.getElementById('formulario');
             if (formulario) {
-              formulario.scrollIntoView({ behavior: 'smooth' });
+                formulario.scrollIntoView({ behavior: 'smooth' });
             }
-          } else {
+        } else {
             // Navega a home y pasa una bandera de que debe hacer scroll
             this.router.navigate(['/home'], { state: { scrollToFormulario: true } });
-          }
         }
+    }
 
     constructor(public location: Location, private element: ElementRef, private router: Router) {
         this.sidebarVisible = false;
@@ -86,7 +97,7 @@ export class NavbarComponent implements OnInit {
     }
 
     redirectToWhatsApp() {
-        const phoneNumber = '573153468700';
+        const phoneNumber = '573103241930';
 
         const message = 'Hola, me gustaría obtener más información.'; // Mensaje predefinido opcional
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

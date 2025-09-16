@@ -53,4 +53,28 @@ export class LandingComponent implements OnInit {
       }, 100);
     }
   }
+
+  slidesHome = [
+    {
+      img: '../../../../assets/img/sembrador/home.jpg',
+      title: 'Bienvenido a Nuestra Iglesia',
+      text: 'Un lugar para crecer en fe y esperanza',
+      button: 'Conócenos más',
+      link: '#formulario'
+    },
+    {
+      img: '../../../../assets/img/sembrador/home2.jpg',
+      title: 'Dios tiene un propósito contigo',
+      text: 'Queremos caminar juntos en tu fe',
+      button: 'Únete',
+      link: '#formulario'
+    },
+    {
+      img: '../../../../assets/img/sembrador/home3.jpg',
+      title: 'Somos una familia en Cristo',
+      text: 'Te esperamos con los brazos abiertos',
+      button: 'Participa',
+      link: '#formulario'
+    }
+  ];
 }

@@ -1,0 +1,133 @@
+/* Fondo limpio en pantallas pequeñas */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #ffffff !important;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 10px 0; /* Espaciado uniforme entre opciones */
+  }
+
+  .btn-new, .btn-radio {
+    display: inline-block;
+    width: 80%; /* Botones más amplios y centrados */
+    margin: 5px auto;
+  }
+}
+
+/* Botón "Soy Nuevo" más centrado y visible */
+.btn-new {
+  background: #1e3a8a;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+  animation: pulse-wave 2s infinite;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-new:hover {
+  background: #162d6b;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+}
+
+
+/* 1) Keyframes: definido 1 sola vez, sin duplicados */
+@keyframes pulseWave {
+  0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(30,58,138,0.45); }
+  50%  { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(30,58,138,0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30,58,138,0); }
+}
+
+/* pequeño pulso para el icono */
+@keyframes pulseIcon {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.12); opacity: .8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 2) Estilos base (alto nivel para evitar overrides) */
+.btn-radio,
+.btn-new {
+  background-color: #1e3a8a !important;   /* fuerza el color */
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 8px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(30,58,138,0.25);
+  transition: transform .25s ease, box-shadow .25s ease, background-color .2s ease;
+  text-decoration: none !important;
+  animation: pulseWave 2.2s infinite;    /* aplica la animación */
+}
+
+/* Icono dentro del botón */
+.btn-radio i,
+.btn-new i {
+  color: #fff !important;
+  animation: pulseIcon 2s infinite;
+}
+
+/* Hover: oscurece y escala */
+.btn-radio:hover,
+.btn-new:hover {
+  background-color: #162d6b !important;
+  transform: scale(1.04);
+  box-shadow: 0 10px 28px rgba(22,45,107,0.32);
+}
+
+/* 3) Asegurar visibilidad dentro del collapse (menu móvil) */
+.navbar-collapse .btn-radio,
+.navbar-collapse .btn-new {
+  background-color: #1e3a8a !important;
+  color: #fff !important;
+  animation: pulseWave 2.2s infinite;
+  box-shadow: 0 6px 18px rgba(30,58,138,0.20);
+}
+
+/* Ajustes de ancho en móviles (no reescribe animación) */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #fff !important; /* fondo blanco en el collapse */
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  /* Mantener animación: sólo ajustamos ancho y centrado */
+  .btn-new,
+  .btn-radio {
+    width: 92%;
+    margin: 8px auto;
+    display: block;
+  }
+
+  /* Si hay conflictos de color heredados, forzamos el color del icono */
+  .navbar-collapse .btn-radio i,
+  .navbar-collapse .btn-new i {
+    color: #fff !important;
+  }
+}
+
+/* 4) Si alguna regla sigue ganando, esta selector más específico debe asegurar prioridad */
+.navbar .navbar-collapse .btn-new,
+.navbar .navbar-collapse .btn-radio {
+  background-color: #1e3a8a !important;
+  animation: pulseWave 2.2s infinite !important;
+}
+
+/* 5) opcional: reducir animación en dispositivos con "prefers-reduced-motion" */
+@media (prefers-reduced-motion: reduce) {
+  .btn-new, .btn-radio, .btn-new i, .btn-radio i {
+    animation: none !important;
+  }
+}

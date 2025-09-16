@@ -1,204 +1,238 @@
-<div class="page-header" data-parallax="true"
-    style="background-image: url('../../../../assets/img/sembrador/biblia.jpg');">
-    <div class="filter"></div>
-    <div class="container">
-        <div class="motto text-center">
-            <h3>"Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí"
-                Juan 14:6
-            </h3>
-            <br />
-            <!-- <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a> -->
-            <!-- <button type="button" class="btn btn-outline-neutral btn-round">Download</button> -->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+
+        <div *ngFor="let slide of slidesHome; let i = index" class="carousel-item" [ngClass]="{ 'active': i === 0 }"
+            [style.background-image]="'url(' + slide.img + ')'">
+
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                <h1 class="display-3 fw-bold">{{ slide.title }}</h1>
+                <p class="lead">{{ slide.text }}</p>
+                <a [href]="slide.link" class="btn btn-lg btn-primary">{{ slide.button }}</a>
+            </div>
         </div>
+
     </div>
+    <!-- Controles personalizados -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <!-- ocultamos el icono por defecto; usamos nuestro SVG -->
+        <span class="custom-arrow" aria-hidden="true">
+            <!-- SVG flecha izquierda (Heroicons style) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="custom-arrow" aria-hidden="true">
+            <!-- SVG flecha derecha -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 5l7 7-7 7"></path>
+            </svg>
+        </span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+
 </div>
+
 <div class="main">
-    <div class="section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mr-auto ml-auto">
-                    <h2 class="title">MISIÓN</h2>
-                    <h5 class="description">Predicar el evangelio por medio de la palabra de Dios con tal efectividad
-                        que transforme, restaure, sane y libere personas que necesitan de Dios, consolidándolas,
-                        discipulándolas y sirviéndoles para que cumplan su propósito en Cristo Jesús y así puedan
-                        transformar cada una de sus comunidades.</h5>
-                    <br>
-                    <a href="#paper-kit" class="btn btn-danger btn-round">El Sembrador</a>
-                </div>
-            </div>
-            <br /><br />
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <img src="../../../../assets/img/sembrador/jovenes.jpg" alt="Logo"
-                                style="height: 180px; border-radius: 20px;">
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Jovenes el Sembrador</h4>
-                            <p class="description">¿Cómo puede el joven llevar una vida íntegra? Viviendo conforme a tu
-                                palabra.
-                            </p>
-                            <p class="description">Salmo 119:9
-                            </p>
-                            <a href="#pkp" class="btn btn-link btn-danger">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <img src="../../../../assets/img/sembrador/ninos.jpg" alt="Logo"
-                                style="height: 180px; border-radius: 20px;">
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Sembrador Kids</h4>
-                            <p>Instruye al niño en el camino correcto, y aun en su vejez no lo abandonará.</p>
-                            <p>Proverbios 22:6</p>
-                            <a href="#pkp" class="btn btn-link btn-danger">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <img src="../../../../assets/img/sembrador/misiones.jpg" alt="Logo"
-                                style="height: 180px; border-radius: 20px;">
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Obra Misionera</h4>
-                            <p>Proclamad entre las naciones su gloria, En todos los pueblos sus maravillas.</p>
-                            <p>Salmos 96:3</p>
-                            <a href="#pkp" class="btn btn-link btn-danger">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <img src="../../../../assets/img/sembrador/mujeres.jpg" alt="Logo"
-                                style="height: 180px; border-radius: 20px;">
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Vasijas</h4>
-                            <p>Mujer ejemplar, ¿dónde se hallará? ¡Es más valiosa que las piedras preciosas!.</p>
-                            <p>Proverbios 31:10</p>
-                            <a href="#pkp" class="btn btn-link btn-danger">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 
-    <div class="section section-dark text-center">
-        <div class="container">
-            <h2 class="title">¡Te estamos esperando!</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a><img src="./assets/img/sembrador/pastor.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a>
-                                <div class="author">
-                                    <h4 class="card-title">William Rodríguez</h4>
-                                    <h6 class="card-category">Pastor</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                                Que la gracia y paz de nuestro Señor Jesucristo sean con ustedes.
-                                En esta casa de fe, creemos en el poder transformador del Evangelio.
-                                Aquí encontrarás un refugio para tu alma, alimento espiritual para
-                                tu caminar y una familia que te recibe con los brazos abiertos.
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-whatsapp"></i></a>
-                        </div>
+    <div class="main bg-light py-5">
+        <div class="section text-center">
+            <div class="container">
+
+                <!-- MISIÓN y VISIÓN en una sola línea -->
+                <div class="row mb-5 align-items-center">
+                    <!-- Misión -->
+                    <div class="col-md-6">
+                        <h2 class="fw-bold mb-4" style="font-size: 2rem; color:#2c3e50;">
+                            Nuestra Misión
+                        </h2>
+                        <p class="lead text-muted" style="line-height: 1.8; font-size: 1.1rem;">
+                            Somos una iglesia que predica el evangelio de nuestro Señor Jesucristo de arrepentimiento,
+                            salvación y vida eterna.
+                            Estamos comprometidos con la unidad y restauración familiar.
+                            Formamos y equipamos discípulos bajo los fundamentos bibliocéntricos.
+                        </p>
+                    </div>
+
+                    <!-- Visión -->
+                    <div class="col-md-6">
+                        <h2 class="fw-bold mb-4" style="font-size: 2rem; color:#2c3e50;">
+                            Nuestra Visión
+                        </h2>
+                        <p class="lead text-muted" style="line-height: 1.8; font-size: 1.1rem;">
+                            Crecer integralmente.
+                            Formar obreros aprobados para servir a Dios en replicar la misión en otras ciudades de
+                            Colombia y fuera del país.
+                            Ser una iglesia influyente en la sociedad.
+                        </p>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a><img src="./assets/img/sembrador/pastora.jpg" alt="..."></a>
+                <!-- Botón único -->
+                <div class="text-center mb-5">
+                    <a href="#paper-kit" class="btn btn-lg rounded-pill shadow text-white"
+                        style="background-color: #1e3a8a; border: none; padding: 12px 40px; font-size: 1.1rem;">
+                        Conócenos Más
+                    </a>
+                </div>
+
+                <!-- CARDS -->
+                <div class="row g-4">
+                    <!-- Jóvenes -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <img src="../../../../assets/img/sembrador/jovenes.jpg" class="card-img-top"
+                                style="height: 220px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Jóvenes</h5>
+                                <p class="text-muted small">
+                                    “¿Cómo puede el joven llevar una vida íntegra? Viviendo conforme a tu palabra.” <br>
+                                    <em>Salmo 119:9</em>
+                                </p>
+                                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
+                                    style="background-color: #1e3a8a; border: none;">
+                                    Ver más
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-block">
-                            <a>
-                                <div class="author">
-                                    <h4 class="card-title">Ludvia Moreno</h4>
-                                    <h6 class="card-category">Pastora</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                                Bienvenidos a la iglesia El Sembrador, un espacio donde encontrara una
-                                familia, donde crecerá a través de la sana enseñanza
-                                centrada en la palabra de Dios, y una adoración donde
-                                su enfoque es Cristo trayendo el cielo a la tierra.
-                            </p>
+                    </div>
+
+                    <!-- Kids -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <img src="../../../../assets/img/sembrador/kids.jpg" class="card-img-top"
+                                style="height: 220px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Activa Tu Fe Kids</h5>
+                                <p class="text-muted small">
+                                    “Instruye al niño en el camino correcto, y aun en su vejez no lo abandonará.” <br>
+                                    <em>Proverbios 22:6</em>
+                                </p>
+                                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
+                                    style="background-color: #1e3a8a; border: none;">
+                                    Ver más
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-footer text-center">
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                    <!-- Misiones -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <img src="../../../../assets/img/sembrador/obramisionera.jpg" class="card-img-top"
+                                style="height: 220px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Obra Misionera</h5>
+                                <p class="text-muted small">
+                                    “Proclamad entre las naciones su gloria, en todos los pueblos sus maravillas.” <br>
+                                    <em>Salmos 96:3</em>
+                                </p>
+                                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
+                                    style="background-color: #1e3a8a; border: none;">
+                                    Ver más
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mujeres -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <img src="../../../../assets/img/sembrador/mujeres.jpg" class="card-img-top"
+                                style="height: 220px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Ministerio de Damas</h5>
+                                <p class="text-muted small">
+                                    “Mujer ejemplar, ¿dónde se hallará? ¡Es más valiosa que las piedras preciosas!” <br>
+                                    <em>Proverbios 31:10</em>
+                                </p>
+                                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
+                                    style="background-color: #1e3a8a; border: none;">
+                                    Ver más
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a><img src="./assets/img/sembrador/samuel.jpg" alt="..."></a>
-                        </div>
-                        <div class="card-block">
-                            <a>
-                                <div class="author">
-                                    <h4 class="card-title">Samuel Jimenez</h4>
-                                    <h6 class="card-category">Pastor</h6>
-                                </div>
-                            </a>
-                            <p class="card-description text-center">
-                                En la Iglesia Cristiana El Sembrador creemos que Dios tiene un
-                                propósito para tu vida y queremos caminar contigo en fe, amor
-                                y esperanza. Somos una familia comprometida en sembrar la Palabra
-                                de Dios y ver vidas transformadas para su Gloria.
-                                Aquí hay un lugar para ti. ¡Te esperamos!
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"> <i
-                                    class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
 
-    <div class="section" id="carousel">
+
+    <div class="hero-pastores position-relative text-white">
+        <!-- FOTO -->
+        <img src="../../../../assets/img/sembrador/pastores.jpg" alt="Pastores Oscar y Lorena" class="w-100 hero-img">
+
+        <!-- OVERLAY -->
+        <div class="overlay"></div>
+
+        <!-- TEXTO -->
+        <div class="hero-text text-center">
+            <h2 class="fw-bold mb-2">Pastores</h2>
+            <h3 class="fw-semibold mb-3">Oscar Pérez & Lorena Vargas</h3>
+            <p class="lead mx-auto" style="max-width: 800px; line-height: 1.8;">
+                “Nuestro deseo es que cada persona viva un encuentro real con Jesús,
+                experimente Su amor transformador y descubra el propósito eterno que Dios
+                tiene para su vida. Bienvenido a <strong>El Sembrador</strong>, tu familia espiritual.”
+            </p>
+            <a href="#contacto" class="btn btn-lg rounded-pill text-white shadow mt-3"
+                style="background-color:#1e3a8a; border:none;">
+                Conócenos más
+            </a>
+        </div>
+    </div>
+
+
+
+    <div class="section py-5" id="actividades" style="background-color:#f9fafb;">
+        <div class="container text-center mb-5">
+            <h2 class="fw-bold" style="color:#1e3a8a; font-size:2.5rem;">
+                Nuestras Actividades
+            </h2>
+            <p class="text-muted" style="font-size:1.1rem;">
+                Una comunidad viva que se reúne en diferentes espacios para crecer en la fe, servir y compartir.
+            </p>
+        </div>
+
         <div class="container">
-            <div class="tim-title">
-                <h3>Nuestras Actividades</h3>
-            </div>
-            <div class="row">
-                <div class="col-md-10 mr-auto ml-auto">
-                    <div class="card page-carousel">
-                        <ngb-carousel>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 overflow-hidden">
+                        <ngb-carousel [interval]="6000" [pauseOnHover]="true" [wrap]="true">
                             <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
-                                <img [src]="slide.img" alt="Slide {{ i + 1 }}">
-                                <div class="carousel-caption">
-                                    <p>{{ slide.caption }}</p>
+                                <div class="position-relative">
+                                    <!-- Imagen -->
+                                    <img [src]="slide.img" alt="Actividad {{ i + 1 }}" class="w-100"
+                                        style="height:480px; object-fit:cover;">
+
+                                    <!-- Overlay -->
+                                    <div class="position-absolute top-0 start-0 w-100 h-100"
+                                        style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));">
+                                    </div>
+
+                                    <!-- Texto -->
+                                    <div
+                                        class="carousel-caption d-flex flex-column align-items-center justify-content-center h-100">
+                                        <h3 class="fw-bold mb-3" style="font-size:2rem; color:white;">
+                                            {{ slide.title }}
+                                        </h3>
+                                        <p class="lead" style="max-width:600px; color:#f1f1f1;">
+                                            {{ slide.caption }}
+                                        </p>
+                                        <!-- <a href="#contacto" class="btn btn-lg rounded-pill text-white mt-3"
+                                            style="background-color:#1e3a8a; border:none; padding:10px 30px;">
+                                            Más Información
+                                        </a> -->
+                                    </div>
                                 </div>
                             </ng-template>
                         </ngb-carousel>
@@ -210,98 +244,136 @@
 
 
 
-    <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
-        <div class="section section-image section-login" style="background-image: url('assets/img/login-image.jpg');">
-            <div class="container">
-                <div class="youtube-container" *ngIf="videoUrl; else cargando">
-                    <iframe width="560" height="315" [src]="videoUrl" frameborder="0" allow="autoplay; encrypted-media"
-                        allowfullscreen>
-                    </iframe>
+    <div class="section" id="live-stream">
+        <div class="container text-center">
+            <h3 class="fw-bold mb-4" style="color:#2c3e50;">Transmisión en Vivo</h3>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-lg border-0 rounded-4 overflow-hidden live-card">
+                        <!-- Imagen destacada -->
+                        <div class="live-image-container">
+                            <img src="../../../../assets/img/sembrador/iglesiaPub.jpg" class="w-100 live-image"
+                                alt="Transmisión en Vivo" />
+                        </div>
+
+                        <!-- Botón En Vivo -->
+                        <div class="card-footer bg-white text-center">
+                            <a href="https://www.facebook.com/activatufefusagasuga/live" target="_blank"
+                                class="btn btn-live px-4 py-2 fw-bold">
+                                🔴 En Vivo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <ng-template #cargando>
-                    <p>Cargando el video más reciente...</p>
-                </ng-template>
             </div>
         </div>
     </div>
 
-    <div id="formulario" class="section landing-section">
+
+
+    <section id="formulario" class="py-5 bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 mr-auto ml-auto">
-                    <h2 class="text-center">¡Dios tiene un propósito contigo!</h2>
-                    <form class="contact-form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Nombre</label>
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Name" (focus)="focus=true"
-                                        (blur)="focus=false">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Telefono</label>
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="nc-icon nc-tablet-2"></i></span>
-                                    </div>
-                                    <input type="number" class="form-control" placeholder="Telefono"
-                                        (focus)="focus=true" (blur)="focus=false">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Queremos Orar por ti, cuentanos!!</label>
-                                <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="nc-icon nc-email-85"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true"
-                                        (blur)="focus1=false">
-                                </div>
-                            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
 
-                            <div class="col-md-6">
-                                <label>¿Deseas que te llamemos para orar por ti?</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="" checked="">
-                                        Si
-                                        <span class="form-check-sign"></span>
+                    <!-- Card -->
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-5">
+
+                            <!-- Encabezado -->
+                            <h2 class="text-center fw-bold mb-4" style="color: #000;">
+                                ¡Dios tiene un propósito contigo!
+                            </h2>
+                            <p class="text-center text-muted mb-4">
+                                Déjanos tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto
+                                contigo.
+                            </p>
+
+                            <!-- Formulario -->
+                            <form>
+
+                                <!-- Nombre y Teléfono -->
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                            <input type="text" class="form-control" placeholder="Tu nombre completo">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Teléfono</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                            <input type="tel" class="form-control" placeholder="+57 300 000 0000">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label class="form-label">Correo electrónico</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" placeholder="correo@email.com">
+                                    </div>
+                                </div>
+
+                                <!-- ¿Deseas que te llamemos? -->
+                                <div class="mb-3">
+                                    <label class="form-label">¿Deseas que te llamemos para orar por ti?</label>
+                                    <div class="opciones-inline">
+                                        <label class="opcion">
+                                            <input type="radio" name="llamada" value="si"> Sí
+                                        </label>
+                                        <label class="opcion">
+                                            <input type="radio" name="llamada" value="no"> No
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Motivo de oración -->
+                                <div class="mb-3">
+                                    <label class="form-label">Escribe un Motivo de Oración</label>
+                                    <textarea class="form-control" rows="4"
+                                        placeholder="Motivo de oración..."></textarea>
+                                </div>
+
+                                <!-- Política -->
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="politica">
+                                    <label class="form-label">
+                                        Acepto la política de privacidad
                                     </label>
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="" checked="">
-                                        No
-                                        <span class="form-check-sign"></span>
-                                    </label>
+                                    <div class="opciones-inline">
+                                        <label class="opcion">
+                                            <input type="radio" name="llamada" value="si"> Sí
+                                        </label>
+                                        <label class="opcion">
+                                            <input type="radio" name="llamada" value="no"> No
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <label>Escribe un Motivo de Oración</label>
-                        <textarea class="form-control" rows="4"
-                            placeholder="Motivo de Oración"></textarea>
+                                <!-- Botón -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-lg rounded-pill text-white"
+                                        style="background-color: #1e3a8a;">
+                                        <i class="bi bi-send"></i> Enviar
+                                    </button>
+                                </div>
 
-                        <div class="col-md-6">
-                            <label>Acepto la política de privacidad</label>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="" checked="">
-                                    <span class="form-check-sign"></span>
-                                </label>
-                            </div>
+                            </form>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 mr-auto ml-auto">
-                                <button class="btn btn-danger btn-lg btn-fill">Enviar</button>
-                            </div>
-                        </div>
+                    </div>
 
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
 </div>

@@ -2,55 +2,67 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" routerLink="/">
-                <img src="../../../assets/icon/logoIglesia.png" alt="Logo" style="height: 120px;">
+                <img [src]="logo" alt="Logo" style="height: 60px; transition: 0.3s ease;">
             </a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse"
+                data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
             </button>
         </div>
-        
-        <div class="navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ms-auto align-items-lg-center text-center">
+                <!-- Redes sociales -->
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="WhatsApp" data-placement="bottom" (click)="redirectToWhatsApp()" target="_blank">
+                    <a class="nav-link" href="https://wa.me/573001234567" target="_blank">
                         <i class="fab fa-whatsapp"></i>
-                        <p class="d-lg-none">WhatsApp</p>
+                        <span class="d-lg-none">WhatsApp</span>
                     </a>
                 </li>
-                <li class="nav-item" >
-                    <a class="nav-link" rel="tooltip" title="Facebook" data-placement="bottom" href="https://www.facebook.com/Elsembrador.Igle/" target="_blank">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.facebook.com/activatufefusagasuga/" target="_blank">
                         <i class="fab fa-facebook-f"></i>
-                        <p class="d-lg-none">Facebook</p>
+                        <span class="d-lg-none">Facebook</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Instagram" data-placement="bottom" href="https://www.instagram.com/elsembrador.iglesia/" target="_blank">
+                    <a class="nav-link" href="https://www.instagram.com/activatufefusagasuga" target="_blank">
                         <i class="fab fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
+                        <span class="d-lg-none">Instagram</span>
                     </a>
                 </li>
-                <li class="nav-item" >
-                    <a class="nav-link" rel="tooltip" title="Youtube" data-placement="bottom" href="https://www.youtube.com/@elsembradorIglesia" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                        <p class="d-lg-none">Youtube</p>
+
+                <!-- Enlaces -->
+                <li class="nav-item">
+                    <a [routerLink]="['/enQueCreemos']" class="nav-link">
+                        <i class="fas fa-bible me-2"></i>En Qué Creemos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/enQueCreemos']" class="nav-link"><i class="fas fa-bible me-3"></i>En Que Creemos</a>
+                    <a [routerLink]="['/calendario']" class="nav-link">
+                        <i class="nc-icon nc-layout-11 me-2"></i>Horarios
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a (click)="scrollToFormulario()" target="_blank" class="btn btn-danger btn-round">Soy Nuevo</a>
-       
+                    <a [routerLink]="['/donaciones']" class="nav-link">
+                        <i class="fas fa-hand-holding-usd me-2"></i>Donaciones
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/calendario']"  class="nav-link"><i class="nc-icon nc-layout-11"></i>Horarios</a>
-                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
-                    <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+
+                <!-- Botones destacados -->
+                <li class="nav-item mt-3 mt-lg-0">
+                    <a (click)="scrollToFormulario()" class="btn btn-new w-100 w-lg-auto">Soy Nuevo</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/donaciones']" class="nav-link"><i class="fas fa-hand-holding-usd"></i>Donaciones</a>
+                <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
+                    <a class="btn btn-radio d-flex justify-content-center align-items-center gap-2 w-100 w-lg-auto"
+                        href="https://www.facebook.com/ActivaTuFeRadio" target="_blank">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>Radio En Vivo</span>
+                    </a>
                 </li>
             </ul>
         </div>

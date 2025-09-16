@@ -1,15 +1,238 @@
 .youtube-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* Aspect ratio 16:9 */
-    height: 0;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  /* Aspect ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.hero-pastores {
+  position: relative;
+  overflow: hidden;
+  height: 80vh;
+  /* Ajusta la altura del hero */
+}
+
+.hero-img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+  /* animación lenta */
+}
+
+.hero-pastores:hover .hero-img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 58, 138, 0.6);
+  /* #1e3a8a con opacidad */
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  padding: 0 20px;
+}
+
+
+.live-card {
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.live-image-container {
+  height: 350px;
+  overflow: hidden;
+}
+
+.live-image {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 5s ease;
+}
+
+.live-card:hover .live-image {
+  transform: scale(1.05); /* efecto sutil al pasar el mouse */
+}
+
+.btn-live {
+  background-color: #dc2626; /* rojo moderno */
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1.1rem;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s ease;
+}
+
+.btn-live:hover {
+  transform: scale(1.08);
+  background-color: #b91c1c;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+
+
+
+
+
+
+.live-card {
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.fb-container {
+  background: #f8f9fa;
+  border-radius: 0 0 20px 20px;
+}
+
+.btn-primary {
+  background-color: #1e3a8a;
+  border: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1e3a8a;
+  transform: scale(1.05);
+}
+
+
+
+
+.opciones-inline {
+  display: flex;
+  gap: 2rem; /* espacio entre Sí y No */
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* radio pegado al texto */
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.opcion input[type="radio"] {
+  margin: 0; /* quita márgenes por defecto */
+}
+
+
+#heroCarousel {
+  height: 100vh;
+}
+
+#heroCarousel .carousel-item {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#heroCarousel .carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+#heroCarousel .carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Flechas personalizadas */
+/* 1) Ocultar iconos por defecto (base64) */
+#heroCarousel .carousel-control-prev-icon,
+#heroCarousel .carousel-control-next-icon {
+  display: none !important;
+  background-image: none !important;
+}
+
+/* 2) Botón contenedor: transparente, sin círculo */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  width: 80px;              /* tamaño del área clicable */
+  height: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent !important;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;              /* encima de overlays */
+  padding: 0;
+}
+
+/* separaciones laterales (ajusta si necesitas) */
+#heroCarousel .carousel-control-prev { left: 12px; }
+#heroCarousel .carousel-control-next { right: 12px; }
+
+/* 3) SVG styling (color, tamaño, sombra, transición) */
+#heroCarousel .custom-arrow svg {
+  width: 44px;
+  height: 44px;
+  color: #ffffff;           /* color por defecto: blanco */
+  stroke: currentColor;
+  transition: transform .18s ease, color .18s ease;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
+}
+
+/* 4) Hover: escala y cambio de color (puedes usar #1e3a8a si quieres) */
+#heroCarousel .carousel-control-prev:hover .custom-arrow svg,
+#heroCarousel .carousel-control-next:hover .custom-arrow svg {
+  transform: scale(1.08);
+  color: #1e3a8a;           /* color al pasar el mouse */
+}
+
+/* 5) Opcional: aumentar hit area en pantallas pequeñas */
+@media (max-width: 768px) {
+  #heroCarousel .carousel-control-prev,
+  #heroCarousel .carousel-control-next {
+    width: 64px;
+    height: 64px;
   }
-  
-  .youtube-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  #heroCarousel .custom-arrow svg {
+    width: 36px;
+    height: 36px;
   }
+}

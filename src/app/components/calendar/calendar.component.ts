@@ -7,41 +7,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent {
 
-  dias: { nombre: string, actividades: string[] }[] = [
-    { nombre: 'Lunes', actividades: [
-        'Oración – 9:00 a.m. A 11:00 a.m.',
-        'Sembrar para Cosechar – 6:00 p.m.',
-        'Servidores– 7:00 p.m.',
-    ] },
-    { nombre: 'Martes', actividades: [
-      'Oración – 9:00 a.m. A 11:00 a.m.',
-    ] },
+  horarios = [
+
     {
-      nombre: 'Miércoles', actividades: [
-        'Oración – 9:00 a.m. A 11:00 a.m.',
-        'Servicio – 7:00 p.m.',
+      dia: 'Martes',
+      actividades: [
+        { hora: '9:00 AM - 11:00 AM', nombre: 'Servicio de Ayuno y Oración' }
       ]
     },
     {
-      nombre: 'Jueves', actividades: [
-        'Ayuno – 8:30 a.m. A 11:00 a.m.',
-        'Instituto Bíblico – 6:00 p.m. A 8:00 p.m.',
+      dia: 'Miércoles',
+      actividades: [
+        { hora: '9:00 AM - 11:00 AM', nombre: 'Servicio de Ayuno y Oración' },
+        { hora: '7:00 PM', nombre: 'Estudio Biblico y Capacitación Ministerial' }
       ]
     },
     {
-      nombre: 'Viernes', actividades: [
-        'Oración – 9:00 a.m. A 11:00 a.m.',
+      dia: 'Jueves',
+      actividades: [
+        { hora: '9:00 AM - 11:00 AM', nombre: 'Servicio de Ayuno y Guerra Espiritual' },
+        { hora: '7:00 PM', nombre: 'Guerra Espiritual' },
       ]
     },
-    { nombre: 'Sábado', actividades: [
-      'Oración – 6:00 a.m. A 7:00 a.m.',
-      'Reunión de jóvenes – 4:30 p.m.',
-      'Reunión de Damas – 5:00 p.m.',
-    ] },
     {
-      nombre: 'Domingo', actividades: [
-        'Culto de adoración – 9:00 a.m.',
+      dia: 'Viernes',
+      actividades: [
+        { hora: '9:00 AM - 11:00 AM', nombre: 'Servicio de Ayuno y Oración Por las familias' },
+        { hora: '7:00 PM', nombre: 'Servicio de Por las Familias' },
+        { hora: 'Mensual', nombre: 'Reunion de Barones' },
+        { hora: 'Cada 2 Meses', nombre: 'Reunion de Mujeres' },
+      ]
+    },
+    {
+      dia: 'Sabado',
+      actividades: [
+        { hora: '4:00 PM', nombre: 'Serivicio Juvenil' },
+      ]
+    },
+    {
+      dia: 'Domingo',
+      actividades: [
+        { hora: '8:00 AM', nombre: 'Servicio Dominical' },
+        { hora: '10:00 AM', nombre: 'Servicio Dominical' },
+        { hora: '12:00 AM', nombre: 'Servicio Dominical' },
       ]
     }
   ];
+
 }
