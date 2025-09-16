@@ -1,108 +1,102 @@
-.footer-white {
-    background-color: #ffffff;
-    padding: 60px 20px;
-    color: #333;
-    font-family: 'Segoe UI', sans-serif;
-    border-top: 1px solid #e0e0e0;
-  }
-  
+.footer-active-fe {
+  background: linear-gradient(180deg, #ffffff, #f5f7fa);
+  padding: 50px 20px;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  /* border-top eliminado */
+}
+
+.footer-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.footer-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e3a8a;
+  font-style: italic;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-col {
+  flex: 1 1 220px;
+}
+
+.footer-col h5 {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.footer-col a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col a:hover {
+  color: #1e3a8a;
+}
+
+.contact-list i {
+  margin-right: 8px;
+  color: #1e3a8a;
+}
+
+.btn-city {
+  margin-top: 15px;
+  background-color: #fff;
+  border: 1px solid #1e3a8a;
+  color: #1e3a8a;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-city:hover {
+  background-color: #1e3a8a;
+  color: #fff;
+}
+
+.footer-social {
+  text-align: center;
+  margin-top: 30px;
+}
+.footer-social a {
+  font-size: 20px;
+  margin: 0 10px;
+  color: #555;
+  transition: color 0.3s, transform 0.3s;
+}
+.footer-social a:hover {
+  color: #1e3a8a;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+.footer-bottom a {
+  color: #1e3a8a;
+  text-decoration: none;
+}
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
   .footer-columns {
-    display: flex;
-    flex-wrap: nowrap; /* evita que bajen de línea */
-    justify-content: space-between;
-    gap: 30px;
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .columna {
-    flex: 1; /* cada columna toma el mismo espacio */
-    min-width: 200px;
-  }
-  
-  
-  .footer-col {
-    flex: 1;
-    min-width: 220px;
-  }
-  
-  .footer-col h5 {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: #000;
-  }
-  
-  .footer-col p {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .footer-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-col ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-col a {
-    text-decoration: none;
-    color: #555;
-    transition: color 0.2s;
-  }
-  
-  .footer-col a:hover {
-    color: #007bff;
-  }
-  
-  .footer-social a {
-    font-size: 18px;
-    margin-right: 15px;
-    color: #555;
-    transition: color 0.3s;
-  }
-  
-  .footer-social a:hover {
-    color: #007bff;
-  }
-  
-  .contact-list i {
-    margin-right: 8px;
-    color: #007bff;
-  }
-  
-  .btn-city {
-    margin-top: 15px;
-    background-color: #fff;
-    border: 1px solid #FB404B;
-    color: #FB404B;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-city:hover {
-    background-color:#FB404B;
-    color: #fff;
-  }
-  
-  @media (max-width: 1024px) {
-    .footer-columns {
-      flex-wrap: wrap; /* permite salto de línea */
-    }
-  
-    .columna {
-      flex: 1 1 45%; /* se acomodan en dos columnas */
-      margin-bottom: 20px;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .columna {
-      flex: 1 1 100%; /* se apilan verticalmente */
-    }
-  }
-  
+}
