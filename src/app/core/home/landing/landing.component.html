@@ -244,136 +244,234 @@
 
 
 
-    <div class="section" id="live-stream">
-        <div class="container text-center">
-            <h3 class="fw-bold mb-4" style="color:#2c3e50;">Transmisión en Vivo</h3>
-
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow-lg border-0 rounded-4 overflow-hidden live-card">
-                        <!-- Imagen destacada -->
-                        <div class="live-image-container">
-                            <img src="../../../../assets/img/sembrador/iglesiaPub.jpg" class="w-100 live-image"
-                                alt="Transmisión en Vivo" />
-                        </div>
-
-                        <!-- Botón En Vivo -->
-                        <div class="card-footer bg-white text-center">
-                            <a href="https://www.facebook.com/activatufefusagasuga/live" target="_blank"
-                                class="btn btn-live px-4 py-2 fw-bold">
-                                🔴 En Vivo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <section id="formulario" class="py-5 bg-light">
+    <!-- redes-sociales.component.html -->
+    <div class="social-section">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
+            <div class="section-header">
+                <h2 class="section-title">Conéctate con Nuestra Comunidad</h2>
+                <p class="section-subtitle">Síguenos en nuestras redes sociales y sé parte de nuestra familia espiritual
+                </p>
+            </div>
 
-                    <!-- Card -->
-                    <div class="card shadow-lg border-0 rounded-4">
-                        <div class="card-body p-5">
-
-                            <!-- Encabezado -->
-                            <h2 class="text-center fw-bold mb-4" style="color: #000;">
-                                ¡Dios tiene un propósito contigo!
-                            </h2>
-                            <p class="text-center text-muted mb-4">
-                                Déjanos tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto
-                                contigo.
-                            </p>
-
-                            <!-- Formulario -->
-                            <form>
-
-                                <!-- Nombre y Teléfono -->
-                                <div class="row g-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Nombre</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                            <input type="text" class="form-control" placeholder="Tu nombre completo">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Teléfono</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                                            <input type="tel" class="form-control" placeholder="+57 300 000 0000">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Email -->
-                                <div class="mb-3">
-                                    <label class="form-label">Correo electrónico</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                        <input type="email" class="form-control" placeholder="correo@email.com">
-                                    </div>
-                                </div>
-
-                                <!-- ¿Deseas que te llamemos? -->
-                                <div class="mb-3">
-                                    <label class="form-label">¿Deseas que te llamemos para orar por ti?</label>
-                                    <div class="opciones-inline">
-                                        <label class="opcion">
-                                            <input type="radio" name="llamada" value="si"> Sí
-                                        </label>
-                                        <label class="opcion">
-                                            <input type="radio" name="llamada" value="no"> No
-                                        </label>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Motivo de oración -->
-                                <div class="mb-3">
-                                    <label class="form-label">Escribe un Motivo de Oración</label>
-                                    <textarea class="form-control" rows="4"
-                                        placeholder="Motivo de oración..."></textarea>
-                                </div>
-
-                                <!-- Política -->
-                                <div class="form-check mb-4">
-                                    <input class="form-check-input" type="checkbox" id="politica">
-                                    <label class="form-label">
-                                        Acepto la política de privacidad
-                                    </label>
-                                    <div class="opciones-inline">
-                                        <label class="opcion">
-                                            <input type="radio" name="llamada" value="si"> Sí
-                                        </label>
-                                        <label class="opcion">
-                                            <input type="radio" name="llamada" value="no"> No
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <!-- Botón -->
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-lg rounded-pill text-white"
-                                        style="background-color: #1e3a8a;">
-                                        <i class="bi bi-send"></i> Enviar
-                                    </button>
-                                </div>
-
-                            </form>
+            <div class="social-grid">
+                <!-- Tarjeta de Facebook -->
+                <div class="social-card facebook-card">
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="bi bi-facebook"></i>
                         </div>
+                        <h3 class="social-title">Facebook</h3>
                     </div>
+                    <div class="social-content">
+                        <p class="social-description">Transmisiones en vivo, eventos y noticias de nuestra comunidad</p>
+                        <div class="social-stats">
+                            <div class="stat">
+                                <span class="stat-number">2.5K</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">45</span>
+                                <span class="stat-label">En Vivo</span>
+                            </div>
+                        </div>
+                        <a href="https://www.facebook.com/activatufefusagasuga" target="_blank"
+                            class="social-btn facebook-btn">
+                            <i class="bi bi-facebook me-2"></i>
+                            Seguir Página
+                        </a>
+                    </div>
+                </div>
 
+                <!-- Tarjeta de YouTube -->
+                <div class="social-card youtube-card">
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="bi bi-youtube"></i>
+                        </div>
+                        <h3 class="social-title">YouTube</h3>
+                    </div>
+                    <div class="social-content">
+                        <p class="social-description">Sermones completos, testimonios y contenido para tu crecimiento
+                            espiritual</p>
+                        <div class="social-stats">
+                            <div class="stat">
+                                <span class="stat-number">1.2K</span>
+                                <span class="stat-label">Suscriptores</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">120</span>
+                                <span class="stat-label">Videos</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="social-btn youtube-btn">
+                            <i class="bi bi-youtube me-2"></i>
+                            Suscribirse
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Instagram -->
+                <div class="social-card instagram-card">
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="bi bi-instagram"></i>
+                        </div>
+                        <h3 class="social-title">Instagram</h3>
+                    </div>
+                    <div class="social-content">
+                        <p class="social-description">Momentos especiales y vida diaria de nuestra comunidad cristiana
+                        </p>
+                        <div class="social-stats">
+                            <div class="stat">
+                                <span class="stat-number">850</span>
+                                <span class="stat-label">Seguidores</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">Publicaciones</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="social-btn instagram-btn">
+                            <i class="bi bi-instagram me-2"></i>
+                            Seguir
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de WhatsApp -->
+                <div class="social-card whatsapp-card">
+                    <div class="social-header">
+                        <div class="social-icon">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <h3 class="social-title">WhatsApp</h3>
+                    </div>
+                    <div class="social-content">
+                        <p class="social-description">Grupos de oración y noticias inmediatas de la iglesia</p>
+                        <div class="social-stats">
+                            <div class="stat">
+                                <span class="stat-number">320</span>
+                                <span class="stat-label">Miembros</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Grupos</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="social-btn whatsapp-btn">
+                            <i class="bi bi-whatsapp me-2"></i>
+                            Unirse
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
 
-</div>
+
+        <section id="formulario" class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <!-- Card -->
+                        <div class="card shadow-lg border-0 rounded-4">
+                            <div class="card-body p-5">
+
+                                <!-- Encabezado -->
+                                <h2 class="text-center fw-bold mb-4" style="color: #000;">
+                                    ¡Dios tiene un propósito contigo!
+                                </h2>
+                                <p class="text-center text-muted mb-4">
+                                    Déjanos tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto
+                                    contigo.
+                                </p>
+
+                                <!-- Formulario -->
+                                <form>
+
+                                    <!-- Nombre y Teléfono -->
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Nombre</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Tu nombre completo">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Teléfono</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                                <input type="tel" class="form-control" placeholder="+57 300 000 0000">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Correo electrónico</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                            <input type="email" class="form-control" placeholder="correo@email.com">
+                                        </div>
+                                    </div>
+
+                                    <!-- ¿Deseas que te llamemos? -->
+                                    <div class="mb-3">
+                                        <label class="form-label">¿Deseas que te llamemos para orar por ti?</label>
+                                        <div class="opciones-inline">
+                                            <label class="opcion">
+                                                <input type="radio" name="llamada" value="si"> Sí
+                                            </label>
+                                            <label class="opcion">
+                                                <input type="radio" name="llamada" value="no"> No
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Motivo de oración -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Escribe un Motivo de Oración</label>
+                                        <textarea class="form-control" rows="4"
+                                            placeholder="Motivo de oración..."></textarea>
+                                    </div>
+
+                                    <!-- Política -->
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" id="politica">
+                                        <label class="form-label">
+                                            Acepto la política de privacidad
+                                        </label>
+                                        <div class="opciones-inline">
+                                            <label class="opcion">
+                                                <input type="radio" name="llamada" value="si"> Sí
+                                            </label>
+                                            <label class="opcion">
+                                                <input type="radio" name="llamada" value="no"> No
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Botón -->
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-lg rounded-pill text-white"
+                                            style="background-color: #1e3a8a;">
+                                            <i class="bi bi-send"></i> Enviar
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>

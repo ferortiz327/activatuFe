@@ -1,0 +1,276 @@
+<!-- station.component.html - VERSIÓN CORREGIDA -->
+<div class="wrapper">
+  <!-- Hero Section con Imagen -->
+  <div class="radio-hero">
+    <div class="hero-background">
+      <div class="image-overlay"></div>
+      <!-- Aquí va tu imagen de fondo -->
+      <div class="background-image" style="background-image: url('./assets/img/sembrador/radio-hero.jpg');"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="material-icons">radio</span>
+        <span>En Línea</span>
+      </div>
+      
+      <h1 class="hero-title">
+        Activa tu fe Radio  <span class="highlight-text">Emisora virtual</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Donde la fe se encuentra con la inspiración. 
+        <br>Programas que transforman vidas.
+      </p>
+      
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <span class="material-icons">graphic_eq</span>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number">106.9</div>
+            <div class="stat-label">FM</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <span class="material-icons">groups</span>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number">2.5K+</div>
+            <div class="stat-label">Oyentes</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <span class="material-icons">library_music</span>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Programas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini Player Sticky -->
+  <div class="mini-player" [class.hidden]="!currentTrack">
+    <div class="mini-player-content">
+      <div class="now-playing">
+        <div class="track-info-mini">
+          <div class="track-image-mini">
+            <img [src]="currentTrack?.image || 'assets/img/emisora/default-track.jpg'" alt="Now Playing">
+          </div>
+          <div class="track-details-mini">
+            <div class="track-title-mini">{{ currentTrack?.title || 'Radio Esperanza' }}</div>
+            <div class="track-artist-mini">{{ currentTrack?.host || 'En vivo' }}</div>
+          </div>
+        </div>
+        
+        <div class="player-controls-mini">
+          <button class="control-btn-mini" (click)="previousTrack()">
+            <span class="material-icons">skip_previous</span>
+          </button>
+          <button class="play-btn-mini" (click)="togglePlay()">
+            <span class="material-icons" *ngIf="!isPlaying">play_arrow</span>
+            <span class="material-icons" *ngIf="isPlaying">pause</span>
+          </button>
+          <button class="control-btn-mini" (click)="nextTrack()">
+            <span class="material-icons">skip_next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="modern-container">
+    
+    <!-- Programas en Tendencia -->
+    <section class="trending-section">
+      <div class="section-header-modern">
+        <div class="header-content">
+          <h2 class="section-title-modern">Programas en Tendencia</h2>
+          <p class="section-subtitle-modern">Lo que nuestra comunidad está escuchando ahora</p>
+        </div>
+        <div class="header-actions">
+          <button class="view-all-btn">
+            <span>Ver todos</span>
+            <span class="material-icons">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="trending-grid">
+        <div class="trending-card" *ngFor="let program of featuredPrograms; let i = index">
+          <div class="trending-badge" *ngIf="i === 0">
+            <span class="material-icons">whatshot</span>
+            #1 en tendencia
+          </div>
+          
+          <div class="trending-image">
+            <img [src]="program.image" [alt]="program.title">
+            <div class="trending-overlay">
+              <button class="play-trending-btn" (click)="playProgram(program)">
+                <span class="material-icons">play_arrow</span>
+              </button>
+              <div class="trending-stats">
+                <div class="trending-stat">
+                  <span class="material-icons">play_arrow</span>
+                  {{ program.plays | number }}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="trending-content">
+            <div class="program-meta-trending">
+              <span class="category-badge">{{ program.category }}</span>
+              <span class="duration-badge">{{ program.duration }}</span>
+            </div>
+            <h3 class="trending-title">{{ program.title }}</h3>
+            <p class="trending-description">{{ program.description }}</p>
+            
+            <div class="host-info">
+              <div class="host-avatar">
+                <span class="material-icons">person</span>
+              </div>
+              <div class="host-details">
+                <div class="host-name">{{ program.host }}</div>
+                <div class="host-role">Conductor</div>
+              </div>
+            </div>
+            
+            <div class="trending-actions">
+              <button class="btn-play-now" (click)="playProgram(program)">
+                <span class="material-icons">play_circle</span>
+                Reproducir ahora
+              </button>
+              <button class="btn-icon" (click)="addToFavorites(program)">
+                <span class="material-icons">favorite_border</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categorías Interactivas -->
+    <section class="categories-modern">
+      <div class="section-header-modern">
+        <h2 class="section-title-modern">Explora por Categorías</h2>
+        <p class="section-subtitle-modern">Encuentra contenido que inspire tu fe</p>
+      </div>
+      
+      <div class="categories-grid">
+        <div class="category-card" 
+             *ngFor="let category of categories"
+             [class.active]="activeCategory === category.id"
+             (click)="filterByCategory(category.id)">
+          <div class="category-icon">
+            <span class="material-icons">{{ category.icon }}</span>
+          </div>
+          <div class="category-content">
+            <h3 class="category-name">{{ category.name }}</h3>
+            <p class="category-count">{{ getCategoryCount(category.id) }} programas</p>
+          </div>
+          <div class="category-arrow">
+            <span class="material-icons">arrow_forward</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid de Programas Moderno -->
+    <section class="programs-grid-modern">
+      <div class="section-header-modern with-filters">
+        <div class="header-content">
+          <h2 class="section-title-modern">Todos los Programas</h2>
+          <p class="section-subtitle-modern">{{ filteredPrograms.length }} programas disponibles</p>
+        </div>
+        
+        <div class="filter-controls">
+          <div class="search-box">
+            <span class="material-icons">search</span>
+            <input type="text" placeholder="Buscar programas..." (input)="onSearch($event)">
+          </div>
+          
+          <div class="sort-dropdown">
+            <select class="modern-select" (change)="sortPrograms($event)">
+              <option value="newest">Más recientes</option>
+              <option value="popular">Más populares</option>
+              <option value="duration">Duración</option>
+            </select>
+            <span class="material-icons">expand_more</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="programs-grid" *ngIf="filteredPrograms.length > 0">
+        <div class="program-card-modern" 
+             *ngFor="let program of filteredPrograms"
+             [class.playing]="currentTrack?.id === program.id">
+          
+          <div class="program-header">
+            <div class="program-image-modern">
+              <img [src]="program.image" [alt]="program.title">
+              <div class="program-overlay-modern">
+                <button class="play-btn-modern" (click)="playProgram(program)">
+                  <span class="material-icons" *ngIf="currentTrack?.id !== program.id || !isPlaying">play_arrow</span>
+                  <span class="material-icons" *ngIf="currentTrack?.id === program.id && isPlaying">pause</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="program-badges">
+              <span class="category-badge-modern">{{ program.category }}</span>
+              <span class="duration-badge-modern">{{ program.duration }}</span>
+            </div>
+          </div>
+          
+          <div class="program-body">
+            <h3 class="program-title-modern">{{ program.title }}</h3>
+            <p class="program-description-modern">{{ program.description }}</p>
+            
+            <div class="program-meta-modern">
+              <div class="meta-item">
+                <span class="material-icons">person</span>
+                {{ program.host }}
+              </div>
+              <div class="meta-item">
+                <span class="material-icons">calendar_today</span>
+                {{ program.date }}
+              </div>
+              <div class="meta-item">
+                <span class="material-icons">play_arrow</span>
+                {{ program.plays | number }}
+              </div>
+            </div>
+          </div>
+          
+          <div class="program-actions-modern">
+            <button class="action-btn-modern" (click)="addToFavorites(program)">
+              <span class="material-icons">favorite_border</span>
+            </button>
+            <button class="action-btn-modern" (click)="downloadProgram(program)">
+              <span class="material-icons">download</span>
+            </button>
+            <button class="action-btn-modern" (click)="shareProgram(program)">
+              <span class="material-icons">share</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" *ngIf="filteredPrograms.length === 0">
+        <span class="material-icons">search_off</span>
+        <h3>No se encontraron programas</h3>
+        <p>Intenta con otros términos de búsqueda o cambia de categoría</p>
+      </div>
+    </section>
+  </div>
+</div>

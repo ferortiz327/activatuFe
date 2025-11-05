@@ -1,297 +1,383 @@
-<div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true"
-        style="background-image: url('./assets/img/sembrador/donaciones.jpg');">
-        <div class="filter"></div>
+<div class="donations-hero">
+    <div class="hero-background">
+        <div class="gradient-overlay"></div>
+        <img src="./assets/img/sembrador/donaciones.jpg" alt="Donaciones" class="hero-image">
     </div>
-    <div class="section profile-content">
-        <div class="section section-horario py-10 text-center">
-            <div class="container">
-                <h2 class="text-3xl font-bold mb-8">Diezmos, Ofrendas y Donaciones</h2>
+    <div class="hero-content">
+        <h1 class="hero-title">Diezmos, Ofrendas y Donaciones</h1>
+        <p class="hero-subtitle">
+            "Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto,
+            dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre
+            vosotros bendición hasta que sobreabunde."
+            <br><em>— Malaquías 3:10</em>
+        </p>
+    </div>
+</div>
 
-                <br>
-                <p class="text-lg leading-relaxed mb-8" style="max-width: 700px; margin: 0 auto;">
-                    "Traed todos los diezmos al alfolí y haya alimento en mi casa; y probadme ahora en esto,
-                    dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre
-                    vosotros bendición hasta que sobreabunde."
-                    <br><em>— Malaquías 3:10</em>
-                </p>
+<div class="donations-container">
+    <div class="donations-grid">
+
+        <!-- Formulario de Información Personal -->
+        <div class="form-section">
+            <div class="form-card">
+                <div class="form-header">
+                    <div class="header-icon">
+                        <span class="material-icons">volunteer_activism</span>
+                    </div>
+                    <h2>Formulario de Donación</h2>
+                    <p>Completa tus datos para procesar tu donación</p>
+                </div>
+
+                <form class="modern-form">
+                    <!-- Valor y Tipo de Donación -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">payments</span>
+                                Valor de donación
+                            </label>
+                            <div class="input-with-icon">
+                                <span class="input-prefix">$</span>
+                                <input type="number" class="form-input" placeholder="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">category</span>
+                                Tipo de Donación
+                            </label>
+                            <select class="form-select" [(ngModel)]="tipoDonacion" name="tipoDonacion">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option *ngFor="let opcion of opcionesDonacion" [value]="opcion.valor">
+                                    {{ opcion.etiqueta }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Información Personal -->
+                    <div class="section-divider">
+                        <span class="divider-text">Información Personal</span>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Parte corregida del HTML -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">badge</span>
+                                Tipo de documento
+                            </label>
+                            <select class="form-select" [(ngModel)]="tipoDocumento" name="tipoDocumento">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option *ngFor="let opcion of tiposDocumento" [value]="opcion.valor">
+                                    {{ opcion.etiqueta }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">fingerprint</span>
+                                Número de documento
+                            </label>
+                            <input type="number" class="form-input" placeholder="Número de documento">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">person</span>
+                                Nombre
+                            </label>
+                            <input type="text" class="form-input" placeholder="Tu nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">person_outline</span>
+                                Apellido
+                            </label>
+                            <input type="text" class="form-input" placeholder="Tu apellido">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">email</span>
+                                Correo electrónico
+                            </label>
+                            <input type="email" class="form-input" placeholder="correo@ejemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons">phone</span>
+                                Teléfono
+                            </label>
+                            <input type="tel" class="form-input" placeholder="+57 300 000 0000">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="material-icons">favorite</span>
+                            Motivo de oración (opcional)
+                        </label>
+                        <textarea class="form-textarea" rows="3"
+                            placeholder="Comparte tu petición de oración..."></textarea>
+                        <div class="char-count">0/500</div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" hidden>
+                            <span class="checkbox-custom">
+                                <span class="material-icons">check</span>
+                            </span>
+                            <span class="checkbox-label">
+                                Acepto la
+                                <a href="#" class="privacy-link">política de privacidad</a>
+                                y el tratamiento de mis datos
+                            </span>
+                        </label>
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <div id="formulario" class="section landing-section">
-                <div class="container">
-                    <div class="row">
-                        <!-- Card 1: Formulario -->
-                        <div class="col-md-6">
-                            <div class="card p-4 shadow-lg rounded">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center mb-4">Formulario de Donación</h4>
-                                    <form class="contact-form">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Valor donación</label>
-                                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
-                                                    <input type="number" class="form-control" placeholder="00000"
-                                                        (focus)="focus=true" (blur)="focus=false">
-                                                </div>
+        <!-- Métodos de Pago -->
+        <div class="payment-section">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <div class="payment-icon">
+                        <span class="material-icons">credit_card</span>
+                    </div>
+                    <h2>Métodos de Pago</h2>
+                    <p>Selecciona tu método de pago preferido</p>
+                </div>
+
+                <!-- Tabs de métodos de pago -->
+                <div class="payment-tabs">
+                    <ul ngbNav #nav="ngbNav" class="tab-nav" [(activeId)]="activeTab">
+                        <li ngbNavItem="credit" class="tab-item">
+                            <a ngbNavLink class="tab-link">
+                                <span class="material-icons">credit_score</span>
+                                Tarjeta
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="tab-content">
+                                    <!-- Tarjeta simulada -->
+                                    <div class="credit-card-preview">
+                                        <div class="card-chip">
+                                            <div class="chip"></div>
+                                        </div>
+                                        <div class="card-number">•••• •••• •••• ••••</div>
+                                        <div class="card-footer">
+                                            <div class="card-holder">NOMBRE TITULAR</div>
+                                            <div class="card-expiry">MM/AA</div>
+                                        </div>
+                                    </div>
+
+                                    <form class="payment-form">
+                                        <div class="form-group">
+                                            <label class="form-label">Número de tarjeta</label>
+                                            <input type="text" class="form-input" placeholder="1234 5678 9012 3456"
+                                                maxlength="19">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Nombre del titular</label>
+                                            <input type="text" class="form-input"
+                                                placeholder="Como aparece en la tarjeta">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label class="form-label">Fecha de expiración</label>
+                                                <input type="text" class="form-input" placeholder="MM/AA">
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <label>Tipo de Donación</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus': focus === true}">
-                                                    <select class="form-control" [(ngModel)]="tipoDonacion"
-                                                        (focus)="focus=true" (blur)="focus=false">
-                                                        <option value="" disabled selected>Selecciona una opción</option>
-                                                        <option *ngFor="let opcion of opcionesDonacion"
-                                                            [value]="opcion.valor">
-                                                            {{ opcion.etiqueta }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 text-center mt-4">
-                                                <h5>Información Personal</h5>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Tipo de documento</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus': focus === true}">
-                                                    <select class="form-control" [(ngModel)]="tipoDocumento"
-                                                        (focus)="focus=true" (blur)="focus=false">
-                                                        <option value="" disabled selected>Selecciona una opción</option>
-                                                        <option *ngFor="let opcion of tipoDocumento"
-                                                            [value]="opcion.valor">
-                                                            {{ opcion.etiqueta }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Número de documento</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus':focus1===true}">
-                                                    <input type="number" class="form-control"
-                                                        placeholder="Número de documento" (focus)="focus1=true"
-                                                        (blur)="focus1=false">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Nombre</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus':focus1===true}">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="nc-icon nc-single-02"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" placeholder="Nombre"
-                                                        (focus)="focus1=true" (blur)="focus1=false">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Apellido</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus':focus1===true}">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="nc-icon nc-single-02"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" placeholder="Apellido"
-                                                        (focus)="focus1=true" (blur)="focus1=false">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Correo</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus':focus1===true}">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="nc-icon nc-email-85"></i></span>
-                                                    </div>
-                                                    <input type="email" class="form-control" placeholder="Correo"
-                                                        (focus)="focus1=true" (blur)="focus1=false">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label>Teléfono</label>
-                                                <div class="input-group"
-                                                    [ngClass]="{'input-group-focus':focus1===true}">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="nc-icon nc-mobile"></i></span>
-                                                    </div>
-                                                    <input type="number" class="form-control" placeholder="Teléfono"
-                                                        (focus)="focus1=true" (blur)="focus1=false">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <label>Motivo de oración</label>
-                                                <textarea class="form-control" rows="4"
-                                                    placeholder="Petición"></textarea>
-                                            </div>
-
-                                            <div class="col-md-12 mt-3">
-                                                <label>Acepto la política de privacidad</label>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            checked>
-                                                        <span class="form-check-sign"></span> Acepto
-                                                    </label>
-                                                </div>
+                                            <div class="form-group">
+                                                <label class="form-label">CVC</label>
+                                                <input type="text" class="form-input" placeholder="123" maxlength="3">
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Cuotas</label>
+                                            <select class="form-select">
+                                                <option value="" disabled selected>Selecciona cuotas</option>
+                                                <option>1 cuota</option>
+                                                <option>2 cuotas</option>
+                                                <option>3 cuotas</option>
+                                                <option>6 cuotas</option>
+                                                <option>12 cuotas</option>
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="submit-btn payment-btn">
+                                            <span class="material-icons">lock</span>
+                                            Donar Ahora
+                                        </button>
                                     </form>
                                 </div>
-                            </div>
-                        </div>
+                            </ng-template>
+                        </li>
 
-                        <!-- Card 2: Métodos de donación -->
-                        <div class="col-md-6">
-                            <div class="card p-4 shadow-lg rounded">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center mb-4">Métodos de donación</h4>
+                        <li ngbNavItem="pse" class="tab-item">
+                            <a ngbNavLink class="tab-link">
+                                <span class="material-icons">account_balance</span>
+                                PSE
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="tab-content">
+                                    <form class="payment-form">
+                                        <div class="form-group">
+                                            <label class="form-label">Selecciona tu banco</label>
+                                            <select class="form-select">
+                                                <option value="" disabled selected>Elige tu banco</option>
+                                                <option>Bancolombia</option>
+                                                <option>Davivienda</option>
+                                                <option>Banco de Bogotá</option>
+                                                <option>Banco Popular</option>
+                                                <option>BBVA</option>
+                                                <option>Scotiabank</option>
+                                            </select>
+                                        </div>
 
-                                    <!-- Tabs con ng-bootstrap -->
-                                    <ul ngbNav #nav="ngbNav" class="nav-tabs justify-content-center mb-4" [(activeId)]="activeTab">
-                                        <li ngbNavItem="credit">
-                                            <a ngbNavLink>Crédito</a>
-                                            <ng-template ngbNavContent>
-                                                <!-- Tarjeta de crédito simulada -->
-                                                <div class="credit-card bg-dark text-white rounded p-3 mb-4 text-center">
-                                                    <div class="chip mb-2">
-                                                        <img src="https://img.icons8.com/ios-filled/50/ffd700/sim-card-chip.png"
-                                                            alt="chip" style="width: 40px;">
-                                                    </div>
-                                                    <div class="mb-2">.... .... .... ....</div>
-                                                    <div class="d-flex justify-content-between px-3">
-                                                        <small>Nombre tarjeta</small>
-                                                        <small>Válido hasta /</small>
-                                                    </div>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Tipo de cuenta</label>
+                                            <div class="radio-group">
+                                                <label class="radio-option">
+                                                    <input type="radio" name="accountType" value="savings" hidden>
+                                                    <span class="radio-custom"></span>
+                                                    <span class="radio-label">Ahorros</span>
+                                                </label>
+                                                <label class="radio-option">
+                                                    <input type="radio" name="accountType" value="checking" hidden>
+                                                    <span class="radio-custom"></span>
+                                                    <span class="radio-label">Corriente</span>
+                                                </label>
+                                            </div>
+                                        </div>
 
-                                                <!-- Formulario Crédito -->
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="cardNumber">Número de la tarjeta</label>
-                                                        <input type="text" class="form-control" id="cardNumber"
-                                                            placeholder="Número de la tarjeta">
-                                                    </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Correo electrónico</label>
+                                            <input type="email" class="form-input" placeholder="correo@ejemplo.com">
+                                        </div>
 
-                                                    <div class="form-group">
-                                                        <label for="cardHolder">Nombre del Titular de la Tarjeta</label>
-                                                        <input type="text" class="form-control" id="cardHolder"
-                                                            placeholder="Nombre del Titular de la Tarjeta">
-                                                    </div>
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="expDate">Fecha de expiración</label>
-                                                            <input type="text" class="form-control" id="expDate"
-                                                                placeholder="MM/AA">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="cvc">CVC</label>
-                                                            <input type="text" class="form-control" id="cvc" placeholder="CVC">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="installments">Cuotas</label>
-                                                        <select class="form-control" id="installments">
-                                                            <option selected disabled>Número de cuotas</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>6</option>
-                                                            <option>12</option>
-                                                        </select>
-                                                    </div>
-                                                    <br>
-
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-dark btn-block">Donar Ahora</button>
-                                                    </div>
-                                                </form>
-                                            </ng-template>
-                                        </li>
-                                        
-                                        <li ngbNavItem="pse">
-                                            <a ngbNavLink>PSE</a>
-                                            <ng-template ngbNavContent>
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="pseBank">Seleccione su banco</label>
-                                                        <select class="form-control" id="pseBank">
-                                                            <option selected disabled>Seleccione un banco</option>
-                                                            <option>Bancolombia</option>
-                                                            <option>Davivienda</option>
-                                                            <option>Banco de Bogotá</option>
-                                                            <option>Banco Popular</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="pseName">Nombre del titular</label>
-                                                        <input type="text" class="form-control" id="pseName"
-                                                            placeholder="Nombre del titular">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="pseEmail">Correo electrónico</label>
-                                                        <input type="email" class="form-control" id="pseEmail"
-                                                            placeholder="Correo electrónico">
-                                                    </div>
-                                                    <br>
-
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-dark btn-block">Pagar con PSE</button>
-                                                    </div>
-                                                </form>
-                                            </ng-template>
-                                        </li>
-                                        
-                                        <li ngbNavItem="points">
-                                            <a ngbNavLink>Puntos</a>
-                                            <ng-template ngbNavContent>
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="paymentPoint">Seleccione el punto de pago</label>
-                                                        <select class="form-control" id="paymentPoint">
-                                                            <option selected disabled>Seleccione un punto</option>
-                                                            <option>Baloto</option>
-                                                            <option>Efecty</option>
-                                                            <option>SuperGiros</option>
-                                                            <option>Gana</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="referenceNumber">Número de referencia</label>
-                                                        <input type="text" class="form-control" id="referenceNumber"
-                                                            placeholder="Número de referencia de pago">
-                                                    </div>
-                                                    <br>
-
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-dark btn-block">Generar Recibo</button>
-                                                    </div>
-                                                </form>
-                                            </ng-template>
-                                        </li>
-                                    </ul>
-
-                                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                                        <button type="submit" class="submit-btn payment-btn">
+                                            <span class="material-icons">account_balance</span>
+                                            Pagar con PSE
+                                        </button>
+                                    </form>
                                 </div>
-                            </div>
+                            </ng-template>
+                        </li>
+
+                        <li ngbNavItem="points" class="tab-item">
+                            <a ngbNavLink class="tab-link">
+                                <span class="material-icons">local_atm</span>
+                                Puntos
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="tab-content">
+                                    <form class="payment-form">
+                                        <div class="form-group">
+                                            <label class="form-label">Punto de pago</label>
+                                            <select class="form-select">
+                                                <option value="" disabled selected>Selecciona punto de pago</option>
+                                                <option>Baloto</option>
+                                                <option>Efecty</option>
+                                                <option>SuperGiros</option>
+                                                <option>Gana</option>
+                                                <option>Redeban</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Número de referencia</label>
+                                            <input type="text" class="form-input" placeholder="Número de referencia">
+                                        </div>
+
+                                        <div class="info-box">
+                                            <div class="info-icon">
+                                                <span class="material-icons">info</span>
+                                            </div>
+                                            <div class="info-content">
+                                                <h4>Instrucciones</h4>
+                                                <p>Acércate al punto de pago seleccionado y proporciona el número de
+                                                    referencia generado.</p>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="submit-btn payment-btn">
+                                            <span class="material-icons">receipt</span>
+                                            Generar Recibo
+                                        </button>
+                                    </form>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="tab-outlet"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar de Información -->
+        <div class="info-sidebar">
+            <div class="info-card">
+                <h3>Tu Donación Transforma</h3>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="material-icons">church</span>
+                        <div>
+                            <h4>Mantenimiento</h4>
+                            <p>Ayuda al sostenimiento de nuestra iglesia</p>
                         </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="material-icons">groups</span>
+                        <div>
+                            <h4>Comunidad</h4>
+                            <p>Apoya programas sociales y comunitarios</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="material-icons">school</span>
+                        <div>
+                            <h4>Educación</h4>
+                            <p>Contribuye a la educación cristiana</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="material-icons">volunteer_activism</span>
+                        <div>
+                            <h4>Misiones</h4>
+                            <p>Financia obras misioneras y evangelización</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-card">
+                <h3>Pago Seguro</h3>
+                <div class="security-features">
+                    <div class="security-item">
+                        <span class="material-icons">https</span>
+                        <span>Conexión segura SSL</span>
+                    </div>
+                    <div class="security-item">
+                        <span class="material-icons">enhanced_encryption</span>
+                        <span>Datos encriptados</span>
+                    </div>
+                    <div class="security-item">
+                        <span class="material-icons">verified_user</span>
+                        <span>Procesadores certificados</span>
                     </div>
                 </div>
             </div>

@@ -25,13 +25,6 @@ export class DonationsComponent  {
 
 
 
-  opcionesDonacion = [
-    { valor: 'diezmo', etiqueta: 'Diezmo' },
-    { valor: 'ofrenda', etiqueta: 'Ofrenda' },
-    { valor: 'donacion', etiqueta: 'Donación Especial' }
-    
-  ];
-
   tipoDocumento = [
     { valor: '1', etiqueta: 'Cédula' },
     { valor: '2', etiqueta: 'Tarjeta de Identidad' },
@@ -49,5 +42,23 @@ export class DonationsComponent  {
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
+
+
+  // Definir el array de opciones para documentos
+  tiposDocumento = [
+    { valor: 'cc', etiqueta: 'Cédula de Ciudadanía' },
+    { valor: 'ce', etiqueta: 'Cédula de Extranjería' },
+    { valor: 'pasaporte', etiqueta: 'Pasaporte' },
+    { valor: 'nit', etiqueta: 'NIT' }
+  ];
+
+  // Opciones de donación
+  opcionesDonacion = [
+    { valor: 'diezmo', etiqueta: 'Diezmo' },
+    { valor: 'ofrenda', etiqueta: 'Ofrenda' },
+    { valor: 'donacion', etiqueta: 'Donación Especial' },
+    { valor: 'misiones', etiqueta: 'Misiones' },
+    { valor: 'edificio', etiqueta: 'Fondo de Edificio' }
+  ]
   
 }

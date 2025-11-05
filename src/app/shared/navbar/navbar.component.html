@@ -55,11 +55,11 @@
 
                 <!-- Botones destacados -->
                 <li class="nav-item mt-3 mt-lg-0">
-                    <a (click)="scrollToFormulario()" class="btn btn-new w-100 w-lg-auto">Soy Nuevo</a>
+                    <a routerLink="/registro" class="btn btn-new w-100 w-lg-auto">Soy Nuevo</a>
                 </li>
                 <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
                     <a class="btn btn-radio d-flex justify-content-center align-items-center gap-2 w-100 w-lg-auto"
-                        href="https://www.facebook.com/ActivaTuFeRadio" target="_blank">
+                        routerLink="/emisora" routerLinkActive="active" target="_blank">
                         <i class="fas fa-broadcast-tower"></i>
                         <span>Radio En Vivo</span>
                     </a>
