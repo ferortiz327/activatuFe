@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
 import { RouterModule } from '@angular/router';
 
@@ -19,6 +19,9 @@ import { MaterialModule } from 'app/shared/material/material.module';
 import { ModalPromotionsComponent } from './modal-promotions/modal-promotions.component';
 import { MissionsComponent } from './missions/missions.component';
 import { MisionEsperanzaModalComponent } from './mision-esperanza-modal/mision-esperanza-modal.component';
+import { StationComponent } from './station/station.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 
 @NgModule({
@@ -28,7 +31,8 @@ import { MisionEsperanzaModalComponent } from './mision-esperanza-modal/mision-e
         NgbModule,
         NouisliderModule,
         RouterModule,
-        MaterialModule
+        MaterialModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         ComponentsComponent,
@@ -43,9 +47,13 @@ import { MisionEsperanzaModalComponent } from './mision-esperanza-modal/mision-e
         BeliefComponent,
         ModalPromotionsComponent,
         MissionsComponent,
-        MisionEsperanzaModalComponent
+        MisionEsperanzaModalComponent,
+        StationComponent,
+        RegistrationComponent
     ],
     entryComponents: [NgbdModalContent],
-    exports:[ ComponentsComponent]
+    exports: [ComponentsComponent,
+        StationComponent
+    ]
 })
 export class ComponentsModule { }
