@@ -1,4 +1,33 @@
 // station.component.scss - VERSIÓN CORREGIDA Y MEJORADA
+/* RESET PARA EVITAR OVERLAYS NO DESEADOS */
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  background: white;
+  min-height: 100vh;
+
+  /* Asegurar que no haya overlays oscuros */
+  &::before {
+    display: none !important;
+  }
+}
+
+/* FORZAR ELIMINACIÓN DE BACKDROPS */
+::ng-deep .cdk-overlay-backdrop,
+::ng-deep .mat-backdrop,
+::ng-deep .backdrop {
+  display: none !important;
+  opacity: 0 !important;
+  background: transparent !important;
+}
 
 // Hero Section con Imagen
 .radio-hero {
@@ -8,6 +37,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 1;
 
   .hero-background {
     position: absolute;
@@ -541,7 +571,7 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  
+
   // Efecto de borde animado
   &::before {
     content: '';
@@ -553,53 +583,53 @@
     background: linear-gradient(90deg, transparent, rgba(30, 58, 138, 0.05), transparent);
     transition: left 0.6s ease;
   }
-  
+
   &:hover {
     border-color: #e2e8f0;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    
+
     &::before {
       left: 100%;
     }
-    
+
     .category-icon {
       transform: scale(1.1) rotate(5deg);
     }
-    
+
     .category-arrow {
       transform: translateX(3px);
     }
   }
-  
+
   &.active {
     border-color: #1e3a8a;
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(30, 58, 138, 0.15);
-    
+
     .category-icon {
       background: linear-gradient(135deg, #1e3a8a, #3b82f6);
       color: white;
       transform: scale(1.05);
     }
-    
+
     .category-name {
       color: #1e3a8a;
       font-weight: 700;
     }
-    
+
     .category-count {
       color: #1e3a8a;
       font-weight: 600;
     }
-    
+
     .category-arrow .material-icons {
       color: #1e3a8a;
       transform: translateX(5px);
     }
   }
-  
+
   .category-icon {
     width: 60px;
     height: 60px;
@@ -611,19 +641,19 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
-    
+
     .material-icons {
       font-size: 1.8rem;
       color: #475569;
       transition: all 0.3s ease;
     }
   }
-  
+
   .category-content {
     flex: 1;
     position: relative;
     z-index: 2;
-    
+
     .category-name {
       font-size: 1.1rem;
       font-weight: 600;
@@ -631,17 +661,17 @@
       margin-bottom: 0.25rem;
       transition: all 0.3s ease;
     }
-    
+
     .category-count {
       font-size: 0.9rem;
       color: #6b7280;
       transition: all 0.3s ease;
     }
   }
-  
+
   .category-arrow {
     transition: all 0.3s ease;
-    
+
     .material-icons {
       color: #9ca3af;
       font-size: 1.2rem;
@@ -652,9 +682,12 @@
 
 // Efecto de pulso para la categoría activa
 @keyframes subtle-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 6px 20px rgba(30, 58, 138, 0.15);
   }
+
   50% {
     box-shadow: 0 6px 25px rgba(30, 58, 138, 0.2);
   }
@@ -955,4 +988,74 @@
   .programs-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+
+/* SOLUCIÓN COMPLETA PARA EL PROBLEMA DE OSCURIDAD */
+
+/* 1. Reset completo de overlays */
+body.has-station-open {
+  overflow: auto !important;
+
+  .cdk-overlay-container,
+  .modal-backdrop,
+  .backdrop-blur {
+    display: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* 2. Asegurar que el componente sea visible */
+:host {
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: fadeInComponent 0.3s ease !important;
+}
+
+@keyframes fadeInComponent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. Forzar transparencia en elementos que puedan estar oscureciendo */
+::ng-deep {
+  .mat-dialog-container,
+  .modal-content,
+  .overlay {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .cdk-global-overlay-wrapper {
+    pointer-events: none;
+
+    & > * {
+      pointer-events: auto;
+    }
+  }
+}
+
+/* 4. Estilos específicos para asegurar visibilidad */
+.station-container {
+  background: white;
+  position: relative;
+
+  /* Eliminar cualquier efecto de blur o darken */
+  &:before,
+  &:after {
+    content: none !important;
+  }
+}
+
+/* 5. Si usas Angular Material, añade esto */
+::ng-deep .station-container .mat-drawer-backdrop {
+  background-color: transparent !important;
+  opacity: 0 !important;
 }

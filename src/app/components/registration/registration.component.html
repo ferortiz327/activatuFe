@@ -12,204 +12,146 @@
 <div class="registration-container">
   <div class="registration-content">
     <div class="main-sections">
-      
-      <!-- Contenedor del formulario y QR -->
-      <div class="form-qr-container">
-        
-        <!-- Formulario -->
-        <div class="form-section" [class.hidden]="showQR">
-          <div class="form-card">
-            <div class="form-header">
-              <div class="header-icon">
-                <span class="material-icons">diversity</span>
-              </div>
-              <h2>Formulario de Registro</h2>
-              <p>Comparte tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto contigo.</p>
+      <!-- Solo formulario, sin contenedor QR -->
+      <div class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="header-icon">
+              <span class="material-icons">diversity</span>
             </div>
+            <h2>Formulario de Registro</h2>
+            <p>Comparte tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto contigo.</p>
+          </div>
 
-            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="modern-form">
-              
-              <!-- Nombre y Teléfono -->
-              <div class="form-row">
-                <div class="form-group" [class.error]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
-                  <label class="form-label">
-                    <span class="material-icons">person</span>
-                    Nombre Completo
-                  </label>
-                  <input 
-                    type="text" 
-                    formControlName="name"
-                    class="form-input"
-                    placeholder="Tu nombre completo"
-                    [class.invalid]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
-                  <div class="error-message" *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
-                    Por favor ingresa tu nombre completo
-                  </div>
-                </div>
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="modern-form">
 
-                <div class="form-group" [class.error]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
-                  <label class="form-label">
-                    <span class="material-icons">phone</span>
-                    Teléfono
-                  </label>
-                  <input 
-                    type="tel" 
-                    formControlName="phone"
-                    class="form-input"
-                    placeholder="+57 300 000 0000"
-                    [class.invalid]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
-                  <div class="error-message" *ngIf="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
-                    Ingresa un número de teléfono válido
-                  </div>
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="form-group" [class.error]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+            <!-- Nombre y Teléfono -->
+            <div class="form-row">
+              <div class="form-group" [class.error]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
                 <label class="form-label">
-                  <span class="material-icons">email</span>
-                  Correo Electrónico
+                  <span class="material-icons">person</span>
+                  Nombre Completo
                 </label>
-                <input 
-                  type="email" 
-                  formControlName="email"
+                <input
+                  type="text"
+                  formControlName="name"
                   class="form-input"
-                  placeholder="correo@email.com"
-                  [class.invalid]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
-                <div class="error-message" *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
-                  Ingresa un correo electrónico válido
+                  placeholder="Tu nombre completo"
+                  [class.invalid]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+                <div class="error-message" *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+                  Por favor ingresa tu nombre completo
                 </div>
               </div>
 
-              <!-- Preferencia de Llamada -->
-              <div class="form-group">
+              <div class="form-group" [class.error]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
                 <label class="form-label">
-                  <span class="material-icons">call</span>
-                  ¿Deseas que te llamemos para orar por ti?
+                  <span class="material-icons">phone</span>
+                  Teléfono
                 </label>
-                <div class="radio-group">
-                  <label class="radio-option" [class.selected]="registrationForm.get('callPreference')?.value === 'si'">
-                    <input type="radio" formControlName="callPreference" value="si" hidden>
-                    <span class="radio-custom"></span>
-                    <span class="radio-label">Sí, me encantaría</span>
-                  </label>
-                  <label class="radio-option" [class.selected]="registrationForm.get('callPreference')?.value === 'no'">
-                    <input type="radio" formControlName="callPreference" value="no" hidden>
-                    <span class="radio-custom"></span>
-                    <span class="radio-label">Prefiero que me contacten por email</span>
-                  </label>
+                <input
+                  type="tel"
+                  formControlName="phone"
+                  class="form-input"
+                  placeholder="+57 300 000 0000"
+                  [class.invalid]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                <div class="error-message" *ngIf="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                  Ingresa un número de teléfono válido
                 </div>
               </div>
+            </div>
 
-              <!-- Motivo de Oración -->
-              <div class="form-group" [class.error]="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">favorite</span>
-                  Motivo de Oración
-                </label>
-                <textarea 
-                  formControlName="prayerRequest"
-                  class="form-textarea"
-                  placeholder="Comparte tu motivo de oración o necesidad espiritual..."
-                  rows="4"
-                  [class.invalid]="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid"></textarea>
-                <div class="char-count">
-                  {{ registrationForm.get('prayerRequest')?.value?.length || 0 }}/500
-                </div>
-                <div class="error-message" *ngIf="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid">
-                  Por favor comparte tu motivo de oración (mínimo 10 caracteres)
-                </div>
+            <!-- Email -->
+            <div class="form-group" [class.error]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">email</span>
+                Correo Electrónico
+              </label>
+              <input
+                type="email"
+                formControlName="email"
+                class="form-input"
+                placeholder="correo@email.com"
+                [class.invalid]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+              <div class="error-message" *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                Ingresa un correo electrónico válido
               </div>
+            </div>
 
-              <!-- Política de Privacidad -->
-              <div class="form-group checkbox-group" [class.error]="registrationForm.get('privacyPolicy')?.touched && registrationForm.get('privacyPolicy')?.invalid">
-                <label class="checkbox-option">
-                  <input type="checkbox" formControlName="privacyPolicy" hidden>
-                  <span class="checkbox-custom">
-                    <span class="material-icons">check</span>
-                  </span>
-                  <span class="checkbox-label">
-                    Acepto la 
-                    <a href="#" class="privacy-link">política de privacidad</a> 
-                    y el tratamiento de mis datos
-                  </span>
+            <!-- Preferencia de Llamada -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">call</span>
+                ¿Deseas que te llamemos para orar por ti?
+              </label>
+              <div class="radio-group">
+                <label class="radio-option" [class.selected]="registrationForm.get('callPreference')?.value === 'si'">
+                  <input type="radio" formControlName="callPreference" value="si" hidden>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">Sí, me encantaría</span>
                 </label>
-                <div class="error-message" *ngIf="registrationForm.get('privacyPolicy')?.touched && registrationForm.get('privacyPolicy')?.invalid">
-                  Debes aceptar la política de privacidad
-                </div>
+                <label class="radio-option" [class.selected]="registrationForm.get('callPreference')?.value === 'no'">
+                  <input type="radio" formControlName="callPreference" value="no" hidden>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">Prefiero que me contacten por email</span>
+                </label>
               </div>
+            </div>
 
-              <!-- Botón de Envío -->
-              <button 
-                type="submit" 
-                class="submit-btn"
-                [disabled]="isSubmitting"
-                [class.loading]="isSubmitting">
-                <span class="btn-content">
-                  <span class="material-icons" *ngIf="!isSubmitting">send</span>
-                  <span class="material-icons spinning" *ngIf="isSubmitting">refresh</span>
-                  {{ isSubmitting ? 'Enviando...' : 'Completar Registro' }}
+            <!-- Motivo de Oración -->
+            <div class="form-group" [class.error]="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">favorite</span>
+                Motivo de Oración
+              </label>
+              <textarea
+                formControlName="prayerRequest"
+                class="form-textarea"
+                placeholder="Comparte tu motivo de oración o necesidad espiritual..."
+                rows="4"
+                [class.invalid]="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid"></textarea>
+              <div class="char-count">
+                {{ registrationForm.get('prayerRequest')?.value?.length || 0 }}/500
+              </div>
+              <div class="error-message" *ngIf="registrationForm.get('prayerRequest')?.touched && registrationForm.get('prayerRequest')?.invalid">
+                Por favor comparte tu motivo de oración (mínimo 10 caracteres)
+              </div>
+            </div>
+
+            <!-- Política de Privacidad -->
+            <div class="form-group checkbox-group" [class.error]="registrationForm.get('privacyPolicy')?.touched && registrationForm.get('privacyPolicy')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="privacyPolicy" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
                 </span>
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <!-- Código QR -->
-        <div class="qr-section" [class.active]="showQR">
-          <div class="qr-card">
-            <div class="qr-header">
-              <div class="success-icon">
-                <span class="material-icons">check_circle</span>
-              </div>
-              <h2>¡Registro Exitoso!</h2>
-              <p>Tu información ha sido recibida. Escanea el código QR para acceder a recursos adicionales.</p>
-            </div>
-
-            <div class="qr-container">
-              <div class="qr-code">
-                <!-- Aquí iría tu componente QR real -->
-                <div class="qr-placeholder">
-                  <span class="material-icons">qr_code_2</span>
-                  <p>Código QR Generado</p>
-                  <small>Contiene: {{ qrData }}</small>
-                </div>
-              </div>
-              
-              <div class="qr-instructions">
-                <h4>¿Cómo usar este código?</h4>
-                <ul>
-                  <li>
-                    <span class="material-icons">camera_alt</span>
-                    Abre la cámara de tu teléfono
-                  </li>
-                  <li>
-                    <span class="material-icons">qr_code_scanner</span>
-                    Escanea el código QR
-                  </li>
-                  <li>
-                    <span class="material-icons">link</span>
-                    Accede a recursos exclusivos
-                  </li>
-                </ul>
+                <span class="checkbox-label">
+                  Acepto la
+                  <a href="#" class="privacy-link">política de privacidad</a>
+                  y el tratamiento de mis datos
+                </span>
+              </label>
+              <div class="error-message" *ngIf="registrationForm.get('privacyPolicy')?.touched && registrationForm.get('privacyPolicy')?.invalid">
+                Debes aceptar la política de privacidad
               </div>
             </div>
 
-            <div class="qr-actions">
-              <button class="btn-secondary" (click)="generateNewQR()">
-                <span class="material-icons">add</span>
-                Nuevo Registro
-              </button>
-              <button class="btn-primary">
-                <span class="material-icons">download</span>
-                Descargar QR
-              </button>
-            </div>
-          </div>
+            <!-- Botón de Envío -->
+            <button
+              type="submit"
+              class="submit-btn"
+              [disabled]="isSubmitting"
+              [class.loading]="isSubmitting">
+              <span class="btn-content">
+                <span class="material-icons" *ngIf="!isSubmitting">send</span>
+                <span class="material-icons spinning" *ngIf="isSubmitting">refresh</span>
+                {{ isSubmitting ? 'Enviando...' : 'Completar Registro' }}
+              </span>
+            </button>
+          </form>
         </div>
       </div>
 
-      <!-- Info Sidebar -->
+      <!-- Info Sidebar (se mantiene) -->
       <div class="info-sidebar">
         <div class="info-card">
           <h3>¿Por qué Registrarse?</h3>

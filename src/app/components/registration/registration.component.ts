@@ -8,15 +8,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent {
 registrationForm: FormGroup;
-  showQR = true;
-  isSubmitting = true ;
+  isSubmitting = false;
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9+\-\s()]+$/)]],
       email: ['', [Validators.required, Validators.email]],
-      callPreference: ['', Validators.required],
+      callPreference: ['si', Validators.required], // Valor por defecto 'si'
       prayerRequest: ['', [Validators.required, Validators.minLength(10)]],
       privacyPolicy: [false, Validators.requiredTrue]
     });
@@ -25,14 +24,22 @@ registrationForm: FormGroup;
   onSubmit(): void {
     if (this.registrationForm.valid) {
       this.isSubmitting = true;
-      
+
       // Simular envío del formulario
       setTimeout(() => {
         console.log('Formulario enviado:', this.registrationForm.value);
         this.isSubmitting = false;
-        this.showQR = true;
-        
+
         // Aquí iría la lógica real de envío al backend
+        // Después de enviar, puedes mostrar un mensaje de éxito o resetear el formulario
+
+        // Opción 1: Mostrar mensaje de éxito y resetear
+        alert('¡Registro exitoso! Te contactaremos pronto.');
+        this.registrationForm.reset();
+
+        // Opción 2: Mantener los datos y mostrar mensaje
+        // this.showSuccessMessage = true;
+
       }, 2000);
     } else {
       this.markFormGroupTouched();
@@ -43,15 +50,5 @@ registrationForm: FormGroup;
     Object.keys(this.registrationForm.controls).forEach(key => {
       this.registrationForm.get(key)?.markAsTouched();
     });
-  }
-
-  generateNewQR(): void {
-    this.showQR = false;
-    this.registrationForm.reset();
-  }
-
-  get qrData(): string {
-    const formData = this.registrationForm.value;
-    return `REGISTRO IGLESIA|Nombre:${formData.name}|Tel:${formData.phone}|Email:${formData.email}|Oración:${formData.prayerRequest.substring(0, 50)}`;
   }
 }

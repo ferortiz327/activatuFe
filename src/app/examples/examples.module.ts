@@ -6,13 +6,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from '../core/home/landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
+import { ComponentsModule } from "app/components/components.module";
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        NgbModule,
-    ],
+    CommonModule,
+    FormsModule,
+    NgbModule,
+    ComponentsModule
+],
     declarations: [
         LandingComponent,
         SignupComponent,

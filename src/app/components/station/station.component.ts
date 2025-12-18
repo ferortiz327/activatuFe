@@ -1,6 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
-
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 
 interface Program {
   id: number;
@@ -16,7 +23,6 @@ interface Program {
   audioUrl: string;
 }
 
-
 interface Playlist {
   id: number;
   name: string;
@@ -29,38 +35,26 @@ interface Playlist {
 @Component({
   selector: 'app-station',
   templateUrl: './station.component.html',
-  styleUrls: ['./station.component.scss']
+  styleUrls: ['./station.component.scss'],
 })
-export class StationComponent implements OnInit {
 
+ export class StationComponent implements OnInit, AfterViewInit, OnDestroy {
+  // ==================== PROPIEDADES DEL COMPONENTE ====================
 
-  activeTrendingIndex = 0;
-  @ViewChild('trendingTrack') trendingTrack!: ElementRef;
-
-  searchTerm = '';
-  // Estado del reproductor
-  isPlaying = false;
-  playerMinimized = false;
-  currentTrack: Program | null = null;
-  progress = 0;
-  currentTime = '0:00';
-  duration = '0:00';
-  volume = 80;
-
-  // Datos de ejemplo
+  // Propiedad featuredPrograms - AQUÍ ESTÁ LA QUE FALTABA
   featuredPrograms: Program[] = [
     {
       id: 1,
       title: 'Alabanza Matutina',
       description: 'Comienza tu día con las mejores alabanzas...',
       host: 'Pastor Juan Martínez',
-      artist: 'Pastor Juan Martínez', // ← Agrega esta línea
+      artist: 'Pastor Juan Martínez',
       category: 'alabanza',
       duration: '2:00:00',
       date: '2024-01-15',
       plays: 1245,
       image: 'https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740',
-      audioUrl: 'assets/audio/alabanza-matutina.mp3'
+      audioUrl: 'assets/audio/alabanza-matutina.mp3',
     },
     {
       id: 2,
@@ -73,7 +67,7 @@ export class StationComponent implements OnInit {
       date: '2024-01-14',
       plays: 892,
       image: 'https://images.unsplash.com/photo-1497621122273-f5cfb6065c56?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1548',
-      audioUrl: 'assets/audio/estudio-biblico.mp3'
+      audioUrl: 'assets/audio/estudio-biblico.mp3',
     },
     {
       id: 3,
@@ -86,11 +80,54 @@ export class StationComponent implements OnInit {
       date: '2024-01-13',
       plays: 567,
       image: 'https://images.unsplash.com/photo-1489568685157-ec3bcd451894?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=770',
-      audioUrl: 'assets/audio/testimonios.mp3'
+      audioUrl: 'assets/audio/testimonios.mp3',
+    },
+    {
+      id: 4,
+      title: 'Oración Vespertina',
+      description: 'Momento de oración comunitaria al final del día',
+      host: 'Pastor Juan Martínez',
+      artist: 'Pastor Juan Martínez',
+      category: 'oracion',
+      duration: '30:00',
+      date: '2024-01-12',
+      plays: 432,
+      image: 'https://plus.unsplash.com/premium_photo-1668198444521-46fe6417ff1e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774',
+      audioUrl: 'assets/audio/oracion-vespertina.mp3',
+    },
+    {
+      id: 5,
+      title: 'Juventud en Acción',
+      description: 'Programa especial para los jóvenes de la comunidad',
+      host: 'Hno. David López',
+      artist: 'Pastor Juan Martínez',
+      category: 'enseñanza',
+      duration: '1:15:00',
+      date: '2024-01-11',
+      plays: 321,
+      image: 'http://images.unsplash.com/photo-1593896385987-16bcbf9451e5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1994',
+      audioUrl: 'assets/audio/juventud.mp3',
     }
   ];
 
-  // En station.component.ts - actualiza las categorías
+  // Otras propiedades del componente
+  activeTrendingIndex = 0;
+  @ViewChild('trendingTrack') trendingTrack!: ElementRef;
+
+  searchTerm = '';
+  isPlaying = false;
+  playerMinimized = false;
+  currentTrack: Program | null = null;
+  progress = 0;
+  currentTime = '0:00';
+  duration = '0:00';
+  volume = 80;
+
+  // Control del modal
+  isModalActive = false;
+  private modalCheckInterval: any;
+
+  // Categorías
   categories = [
     { id: 'all', name: 'Todos', icon: 'apps' },
     { id: 'alabanza', name: 'Alabanza', icon: 'music_note' },
@@ -102,6 +139,7 @@ export class StationComponent implements OnInit {
   activeCategory = 'all';
   filteredPrograms: Program[] = [];
 
+  // Playlists
   playlists: Playlist[] = [
     {
       id: 1,
@@ -137,56 +175,166 @@ export class StationComponent implements OnInit {
     }
   ];
 
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
+  // ==================== CICLO DE VIDA ====================
+
   ngOnInit() {
+    console.log('🎵 Station Component Initializing...');
+
+    // Inicializar datos
     this.filteredPrograms = [...this.featuredPrograms];
-    // Simular más programas
-    this.generateSamplePrograms();
+
+    // Configurar convivencia con el modal
+    this.setupModalCoexistence();
+
+    // Asegurar visibilidad del componente
+    this.ensureComponentVisibility();
   }
 
-  generateSamplePrograms() {
-    const samplePrograms: Program[] = [
-      {
-        id: 4,
-        title: 'Oración Vespertina',
-        description: 'Momento de oración comunitaria al final del día',
-        host: 'Pastor Juan Martínez',
-        artist: 'Pastor Juan Martínez',
-        category: 'oracion',
-        duration: '30:00',
-        date: '2024-01-12',
-        plays: 432,
-        image: 'https://plus.unsplash.com/premium_photo-1668198444521-46fe6417ff1e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774',
-        audioUrl: 'assets/audio/oracion-vespertina.mp3'
-      },
-      {
-        id: 5,
-        title: 'Juventud en Acción',
-        description: 'Programa especial para los jóvenes de la comunidad',
-        host: 'Hno. David López',
-        artist: 'Pastor Juan Martínez',
-        category: 'enseñanza',
-        duration: '1:15:00',
-        date: '2024-01-11',
-        plays: 321,
-        image: 'http://images.unsplash.com/photo-1593896385987-16bcbf9451e5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1994',
-        audioUrl: 'assets/audio/juventud.mp3'
+  ngAfterViewInit() {
+    // Verificar estado del modal después de renderizar
+    setTimeout(() => {
+      this.checkModalState();
+      this.setupModalListeners();
+    }, 500);
+  }
+
+  ngOnDestroy() {
+    // Limpiar recursos
+    if (this.modalCheckInterval) {
+      clearInterval(this.modalCheckInterval);
+    }
+    console.log('🎵 Station Component Destroyed');
+  }
+
+  // ==================== CONVIVENCIA CON MODAL ====================
+
+  private setupModalCoexistence(): void {
+    console.log('🤝 Setting up modal coexistence...');
+
+    // Ajustar el modal para convivencia
+    this.adjustModalForCoexistence();
+
+    // Configurar monitoreo periódico
+    this.modalCheckInterval = setInterval(() => {
+      this.monitorModalState();
+    }, 2000);
+  }
+
+  private adjustModalForCoexistence(): void {
+    const actividadModal = document.querySelector('.modal-actividades');
+
+    if (actividadModal) {
+      console.log('🎯 Modal de actividades encontrado, ajustando...');
+
+      // Ajustar z-index para convivencia
+      this.renderer.setStyle(actividadModal, 'z-index', '100');
+
+      // Nuestro componente debe estar por encima
+      const wrapper = this.elementRef.nativeElement.querySelector('.wrapper');
+      if (wrapper) {
+        this.renderer.setStyle(wrapper, 'z-index', '101');
       }
-    ];
 
-    this.featuredPrograms.push(...samplePrograms);
-    this.filteredPrograms = [...this.featuredPrograms];
+      // Ajustar backdrop
+      const modalBackdrop = document.querySelector('.modal-backdrop, .backdrop');
+      if (modalBackdrop) {
+        this.renderer.setStyle(modalBackdrop, 'background-color', 'rgba(0, 0, 0, 0.5)');
+        this.renderer.setStyle(modalBackdrop, 'z-index', '99');
+      }
+
+      this.isModalActive = true;
+    }
   }
 
-  // Control del reproductor
+  private ensureComponentVisibility(): void {
+    const wrapper = this.elementRef.nativeElement.querySelector('.wrapper');
+    if (wrapper) {
+      this.renderer.setStyle(wrapper, 'opacity', '1');
+      this.renderer.setStyle(wrapper, 'visibility', 'visible');
+      this.renderer.setStyle(wrapper, 'z-index', '1000');
+    }
+  }
+
+  private checkModalState(): void {
+    const actividadModal = document.querySelector('.modal-actividades');
+
+    if (actividadModal && actividadModal.classList.contains('show')) {
+      console.log('✅ Modal de actividades está activo');
+      this.isModalActive = true;
+      this.adjustActiveModalStyles();
+    } else {
+      this.isModalActive = false;
+    }
+  }
+
+  private adjustActiveModalStyles(): void {
+    const actividadModal = document.querySelector('.modal-actividades');
+    if (actividadModal) {
+      // Hacer el modal más pequeño y moverlo a una esquina
+      this.renderer.setStyle(actividadModal, 'max-width', '400px');
+      this.renderer.setStyle(actividadModal, 'max-height', '300px');
+      this.renderer.setStyle(actividadModal, 'top', '20px');
+      this.renderer.setStyle(actividadModal, 'right', '20px');
+      this.renderer.setStyle(actividadModal, 'left', 'auto');
+      this.renderer.setStyle(actividadModal, 'transform', 'none');
+      this.renderer.setStyle(actividadModal, 'margin', '0');
+    }
+  }
+
+  private setupModalListeners(): void {
+    const closeButtons = document.querySelectorAll(
+      '.modal-actividades .btn-close, .modal-actividades [data-bs-dismiss="modal"]'
+    );
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        console.log('🚪 Modal de actividades cerrado');
+        this.isModalActive = false;
+      });
+    });
+  }
+
+  private monitorModalState(): void {
+    const actividadModal = document.querySelector('.modal-actividades');
+    const isCurrentlyActive = actividadModal &&
+                              actividadModal.classList.contains('show');
+
+    if (isCurrentlyActive !== this.isModalActive) {
+      this.isModalActive = isCurrentlyActive;
+      if (isCurrentlyActive) {
+        this.adjustActiveModalStyles();
+      }
+    }
+  }
+
+  // Método público para cerrar el modal
+  closeActivitiesModal(): void {
+    const actividadModal = document.querySelector('.modal-actividades');
+    if (actividadModal) {
+      actividadModal.classList.remove('show');
+      this.renderer.setStyle(actividadModal, 'display', 'none');
+
+      const backdrops = document.querySelectorAll('.modal-backdrop, .backdrop');
+      backdrops.forEach(backdrop => backdrop.remove());
+
+      this.renderer.removeClass(document.body, 'modal-open');
+
+      console.log('✅ Modal cerrado manualmente');
+      this.isModalActive = false;
+    }
+  }
+
+  // ==================== MÉTODOS DEL REPRODUCTOR ====================
+
   togglePlay() {
     this.isPlaying = !this.isPlaying;
-    // Aquí iría la lógica real de reproducción de audio
   }
 
   playProgram(program: Program) {
     this.currentTrack = program;
     this.isPlaying = true;
-    // Simular reproducción
     this.progress = 0;
     this.currentTime = '0:00';
     this.duration = program.duration;
@@ -216,25 +364,22 @@ export class StationComponent implements OnInit {
     // Lógica para cambiar volumen
   }
 
+  // ==================== MÉTODOS DE INTERACCIÓN ====================
 
-  // Acciones de usuario
   addToFavorites(program: Program) {
-    // Lógica para agregar a favoritos
     console.log('Agregado a favoritos:', program.title);
   }
 
   shareProgram(program: Program) {
-    // Lógica para compartir
     console.log('Compartir programa:', program.title);
   }
 
   downloadProgram(program: Program) {
-    // Lógica para descargar
     console.log('Descargar programa:', program.title);
   }
 
+  // ==================== MÉTODOS DE CAROUSEL ====================
 
-  // Métodos para el carousel de tendencias
   nextTrending(): void {
     if (this.featuredPrograms.length > 0) {
       this.activeTrendingIndex = (this.activeTrendingIndex + 1) % this.featuredPrograms.length;
@@ -252,75 +397,78 @@ export class StationComponent implements OnInit {
   private scrollToTrending(): void {
     if (this.trendingTrack) {
       const track = this.trendingTrack.nativeElement;
-      const cardWidth = 400; // Ancho aproximado de cada card
+      const cardWidth = 400;
       track.scrollTo({
         left: this.activeTrendingIndex * cardWidth,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   }
 
-  // Método para búsqueda
+  // ==================== MÉTODOS DE BÚSQUEDA Y FILTROS ====================
+
   onSearch(event: any): void {
     this.searchTerm = event.target.value.toLowerCase();
     this.applyFilters();
   }
 
-  // Método para contar programas por categoría
   getCategoryCount(categoryId: string): number {
     if (categoryId === 'all') {
       return this.featuredPrograms.length;
     }
-    return this.featuredPrograms.filter(program => program.category === categoryId).length;
+    return this.featuredPrograms.filter(
+      (program) => program.category === categoryId
+    ).length;
   }
 
-  // Método unificado para aplicar filtros
   private applyFilters(): void {
     let filtered = [...this.featuredPrograms];
 
-    // Filtro por categoría
     if (this.activeCategory !== 'all') {
-      filtered = filtered.filter(program => program.category === this.activeCategory);
+      filtered = filtered.filter(
+        (program) => program.category === this.activeCategory
+      );
     }
 
-    // Filtro por búsqueda
     if (this.searchTerm) {
-      filtered = filtered.filter(program =>
-        program.title.toLowerCase().includes(this.searchTerm) ||
-        program.description.toLowerCase().includes(this.searchTerm) ||
-        program.host.toLowerCase().includes(this.searchTerm)
+      filtered = filtered.filter(
+        (program) =>
+          program.title.toLowerCase().includes(this.searchTerm) ||
+          program.description.toLowerCase().includes(this.searchTerm) ||
+          program.host.toLowerCase().includes(this.searchTerm)
       );
     }
 
     this.filteredPrograms = filtered;
   }
 
-  // Actualizar el método filterByCategory para usar applyFilters
   filterByCategory(categoryId: string): void {
     this.activeCategory = categoryId;
     this.applyFilters();
   }
 
-  // Actualizar el método sortPrograms
   sortPrograms(event: any): void {
     const sortBy = event.target.value;
 
     switch (sortBy) {
       case 'newest':
-        this.filteredPrograms.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        this.filteredPrograms.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
         break;
       case 'popular':
         this.filteredPrograms.sort((a, b) => b.plays - a.plays);
         break;
       case 'duration':
-        this.filteredPrograms.sort((a, b) => this.durationToSeconds(a.duration) - this.durationToSeconds(b.duration));
+        this.filteredPrograms.sort(
+          (a, b) => this.durationToSeconds(a.duration) - this.durationToSeconds(b.duration)
+        );
         break;
     }
   }
 
-  // ... el resto de tus métodos existentes (togglePlay, playProgram, etc.)
+  // ==================== MÉTODOS AUXILIARES ====================
 
-  // Método auxiliar para convertir duración a segundos
   private durationToSeconds(duration: string): number {
     const parts = duration.split(':');
     if (parts.length === 2) {
@@ -331,9 +479,14 @@ export class StationComponent implements OnInit {
     return 0;
   }
 
-  // Métodos adicionales para las nuevas funcionalidades
-  playPlaylist(playlist: any): void {
+  playPlaylist(playlist: Playlist): void {
     console.log('Reproduciendo playlist:', playlist.name);
-    // Aquí iría la lógica para reproducir la playlist
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    if (this.isModalActive) {
+      this.adjustActiveModalStyles();
+    }
   }
 }

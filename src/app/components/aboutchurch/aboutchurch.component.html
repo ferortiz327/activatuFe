@@ -1,0 +1,190 @@
+<!-- about-church.component.html -->
+<section class="about-church-section">
+
+  <!-- Banner Moderno -->
+  <div class="about-banner">
+    <div class="banner-image-container">
+
+      <div class="banner-overlay"></div>
+
+      <!-- Contenido del banner -->
+      <div class="banner-content">
+        <h1 class="banner-title">
+          <span class="title-line-1">Nuestra</span>
+          <span class="title-line-2">Familia Espiritual</span>
+        </h1>
+        <p class="banner-subtitle">Una historia de fe, un futuro de esperanza</p>
+
+        <!-- Cita Bíblica -->
+        <div class="banner-verse">
+          <i class="bi-quote"></i>
+          <p class="verse-text">"Y sobre esta roca edificaré mi iglesia"</p>
+          <p class="verse-reference">Mateo 16:18</p>
+        </div>
+      </div>
+
+      <!-- Elementos decorativos -->
+      <div class="banner-shape shape-1"></div>
+      <div class="banner-shape shape-2"></div>
+      <div class="banner-shape shape-3"></div>
+    </div>
+  </div>
+
+  <!-- Navegación Mejorada -->
+  <div class="about-nav-container">
+    <div class="nav-wrapper">
+      <button *ngFor="let section of sections"
+              [class.active]="activeSection === section.id"
+              (click)="setActiveSection(section.id)"
+              class="about-nav-btn">
+        <div class="nav-icon" [style.background]="section.color + '20'">
+          <i [class]="section.icon" [style.color]="section.color"></i>
+        </div>
+        <span class="nav-label">{{ section.title }}</span>
+        <div class="nav-indicator"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenido Principal (sin cambios en el resto) -->
+  <div class="about-content">
+
+    <!-- Sección Activa -->
+    <div *ngFor="let section of sections"
+         [class.active]="activeSection === section.id"
+         class="about-section">
+
+      <div class="section-card">
+        <div class="section-icon" [style.background]="section.color + '20'">
+          <i [class]="section.icon" [style.color]="section.color"></i>
+        </div>
+
+        <h3 class="section-card-title">{{ section.title }}</h3>
+
+        <p class="section-card-content">{{ section.content }}</p>
+
+        <!-- Contenido específico -->
+        <div *ngIf="section.id === 'historia'" class="section-details">
+          <div class="history-year">
+            <span class="year-label">Fundación:</span>
+            <span class="year-value">{{ section.year }}</span>
+          </div>
+        </div>
+
+        <div *ngIf="section.id === 'mision'" class="section-details">
+          <div class="mission-points">
+            <div *ngFor="let point of section.points" class="mission-point">
+              <i class="bi-check-circle-fill" [style.color]="section.color"></i>
+              <span>{{ point }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="section.id === 'vision'" class="section-details">
+          <div class="vision-goals">
+            <div *ngFor="let goal of section.goals; let i = index" class="vision-goal">
+              <span class="goal-number">0{{ i + 1 }}</span>
+              <span class="goal-text">{{ goal }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Familia Pastoral -->
+    <div class="pastoral-section">
+      <div class="section-header">
+        <h3 class="section-title">Nuestra Familia Pastoral</h3>
+        <p class="section-subtitle">Líderes comprometidos con tu crecimiento espiritual</p>
+      </div>
+
+      <div class="pastoral-grid">
+        <div *ngFor="let pastor of pastoralFamily" class="pastoral-card">
+          <div class="pastoral-image-container">
+            <img [src]="pastor.image" [alt]="pastor.name" class="pastoral-image">
+            <div class="pastoral-overlay"></div>
+          </div>
+
+          <div class="pastoral-info">
+            <h4 class="pastoral-name">{{ pastor.name }}</h4>
+            <p class="pastoral-role">{{ pastor.role }}</p>
+            <p class="pastoral-description">{{ pastor.description }}</p>
+
+            <div class="pastoral-social">
+              <a *ngIf="pastor.social.facebook"
+                 [href]="pastor.social.facebook"
+                 class="social-link">
+                <i class="bi-facebook"></i>
+              </a>
+              <a *ngIf="pastor.social.instagram"
+                 [href]="pastor.social.instagram"
+                 class="social-link">
+                <i class="bi-instagram"></i>
+              </a>
+              <a *ngIf="pastor.social.youtube"
+                 [href]="pastor.social.youtube"
+                 class="social-link">
+                <i class="bi-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="bi-calendar"></i>
+          </div>
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Años de Ministerio</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="bi-people"></i>
+          </div>
+          <div class="stat-number">1,500+</div>
+          <div class="stat-label">Miembros Activos</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="bi-heart"></i>
+          </div>
+          <div class="stat-number">15</div>
+          <div class="stat-label">Ministerios</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="bi-globe"></i>
+          </div>
+          <div class="stat-number">5</div>
+          <div class="stat-label">Plantaciones</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta">
+      <h3 class="cta-title">¿Quieres ser parte de nuestra familia?</h3>
+      <p class="cta-text">Te esperamos con los brazos abiertos</p>
+      <div class="cta-buttons">
+        <a href="/visitanos" class="btn btn-primary">
+          Visítanos este domingo
+        </a>
+        <a href="/contacto" class="btn btn-secondary">
+          Contáctanos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
