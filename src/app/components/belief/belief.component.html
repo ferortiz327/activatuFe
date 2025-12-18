@@ -1,146 +1,415 @@
 <div class="wrapper">
-    <!-- Sección de portada -->
-    <div class="hero-section position-relative">
+    <!-- Hero Section que combina con el Home -->
+    <div class="hero-section position-relative" style="background: linear-gradient(135deg, #b7b8b9 0%, #9fa1a5 100%);">
         <div class="hero-image" style="background-image: url('./assets/img/sembrador/creemos.jpg');"></div>
-        <div class="hero-overlay"></div>
+        <div class="hero-overlay" ></div>
         <div class="hero-content text-center text-white">
-            <h1 class="display-4 fw-bold mb-4">En qué Creemos</h1>
-            <p class="lead">Las bases fundamentales de nuestra fe</p>
-        </div>
-    </div>
-
-    <!-- Contenido de creencias -->
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="accordion" id="beliefsAccordion">
-
-                    <!-- Sobre la Biblia -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                <i class="fas fa-bible me-3"></i> Sobre la Biblia
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#beliefsAccordion">
-                            <div class="accordion-body">
-                                <h3 class="h5 text-primary">Inspiración de las Escrituras</h3>
-                                <p>Creemos, afirmamos y enseñamos que toda Escritura fue inspirada por Dios. Cada autor fue movido y dirigido por el Espíritu Santo (preservando sus personalidades y estilos diferentes) para escribir la Palabra de Dios, de tal forma que quedaron plasmadas libres de error en sus escritos originales.</p>
-                                <div class="scripture-references mb-3">
-                                    <span class="badge bg-light text-dark">2 Pedro 1:20-21</span>
-                                    <span class="badge bg-light text-dark">2 Timoteo 3:16</span>
-                                </div>
-
-                                <h3 class="h5 text-primary">Autoridad de la Biblia</h3>
-                                <p>Creemos, afirmamos y enseñamos la autoridad de la Biblia, cuyas enseñanzas deben ser creídas y obedecidas, sin depender del testimonio de ningún hombre o iglesia, sino exclusivamente del testimonio de la Palabra de Dios.</p>
-                                <div class="scripture-references">
-                                    <span class="badge bg-light text-dark">2 Pedro 1:19, 21</span>
-                                    <span class="badge bg-light text-dark">2 Timoteo 3:16</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sobre Dios -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fas fa-pray me-3"></i> Sobre Dios
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#beliefsAccordion">
-                            <div class="accordion-body">
-                                <h3 class="h5 text-primary">La Trinidad</h3>
-                                <p>Creemos, afirmamos y enseñamos que Dios es uno en esencia y tres en personas: Padre, Hijo y Espíritu Santo. Cada una de estas tres personas tienen roles diferentes en todo el plan de Dios y merecen la misma adoración y obediencia.</p>
-                                <div class="scripture-references">
-                                    <span class="badge bg-light text-dark">Mateo 28:19</span>
-                                    <span class="badge bg-light text-dark">2 Corintios 13:14</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sobre Jesucristo -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <i class="fas fa-cross me-3"></i> Sobre Jesucristo
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#beliefsAccordion">
-                            <div class="accordion-body">
-                                <p>Creemos en Jesucristo como el Hijo eterno de Dios. Fue concebido por el Espíritu Santo y nació de una virgen. Vivió sin pecado, murió en la cruz como sacrificio sustitutivo por nuestros pecados, resucitó corporalmente al tercer día y ascendió al cielo. Él regresará con poder y gloria.</p>
-                                <div class="scripture-references">
-                                    <span class="badge bg-light text-dark">Juan 1:1-14</span>
-                                    <span class="badge bg-light text-dark">1 Corintios 15:3-4</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sobre el Espíritu Santo -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                <i class="fas fa-dove me-3"></i> Sobre el Espíritu Santo
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#beliefsAccordion">
-                            <div class="accordion-body">
-                                <p>Creemos en el Espíritu Santo como la tercera persona de la Trinidad. Él convence de pecado, regenera al creyente, mora en él, lo guía, santifica y capacita con dones para edificar la iglesia y dar testimonio de Cristo en el mundo.</p>
-                                <div class="scripture-references">
-                                    <span class="badge bg-light text-dark">Juan 14:16-17</span>
-                                    <span class="badge bg-light text-dark">Hechos 1:8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sobre la Salvación -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                <i class="fas fa-heart me-3"></i> Sobre la Salvación
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#beliefsAccordion">
-                            <div class="accordion-body">
-                                <p>Creemos que la salvación es un regalo de Dios que se recibe por la fe en Jesucristo. No es por obras humanas. Es una transformación del corazón que trae perdón, reconciliación con Dios y vida eterna.</p>
-                                <div class="scripture-references">
-                                    <span class="badge bg-light text-dark">Efesios 2:8-9</span>
-                                    <span class="badge bg-light text-dark">Romanos 10:9-10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Versículo destacado -->
-                <div class="card bg-light border-0 mt-5">
-                    <div class="card-body text-center py-4">
-                        <blockquote class="blockquote mb-0">
-                            <p class="fs-4 fst-italic">"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna."</p>
-                            <footer class="blockquote-footer mt-3">Juan 3:16</footer>
-                        </blockquote>
-                    </div>
+            <div class="container">
+                <h1 class="display-4 fw-bold mb-3 animate-fade-in">En qué Creemos</h1>
+                <p class="lead fs-4 animate-slide-up">Las bases fundamentales de nuestra fe</p>
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Valores del Reino -->
-        <div class="row mt-5">
-            <div class="col-lg-10 mx-auto">
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold">Valores</h2>
-                    <p class="text-muted">Los principios que guían nuestra vida como creyentes</p>
+    <!-- Contenido principal -->
+    <div class="content-wrapper">
+        <div class="faith-background"></div>
+
+        <div class="container py-5">+
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <!-- Título animado -->
+                    <div class="text-center mb-5">
+                        <h2 class="section-title">Nuestras Creencias Fundamentales</h2>
+                        <p class="section-subtitle">Basadas en la Palabra de Dios</p>
+                    </div>
+
+                    <!-- Accordion actualizado para combinar con Home -->
+                    <div class="accordion-modern" id="beliefsAccordion">
+
+                        <!-- Sobre la Biblia -->
+                        <div class="belief-card" [class.active]="activeCard === 1">
+                            <div class="card-header" (click)="toggleCard(1)">
+                                <div class="header-content">
+                                    <div class="icon-wrapper" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+                                        <i class="fas fa-bible" style="color: white;"></i>
+                                    </div>
+                                    <div class="title-content">
+                                        <h3 style="color: #1e3a8a;">Sobre la Biblia</h3>
+                                        <p class="card-subtitle">La Palabra inspirada de Dios</p>
+                                    </div>
+                                </div>
+                                <div class="arrow-icon">
+                                    <i class="fas fa-chevron-down" style="color: #1e3a8a;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-body" *ngIf="activeCard === 1">
+                                <div class="belief-content">
+                                    <div class="scripture-banner" style="background: linear-gradient(135deg, #f0f7ff, #e6f0ff); border-left: 4px solid #1e3a8a;">
+                                        <i class="fas fa-quote-left" style="color: #1e3a8a;"></i>
+                                        <span style="color: #1e3a8a;">Toda la Escritura es inspirada por Dios</span>
+                                        <i class="fas fa-quote-right" style="color: #1e3a8a;"></i>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <h4><i class="fas fa-star" style="color: #3b82f6;"></i> Inspiración de las Escrituras</h4>
+                                        <p>Creemos, afirmamos y enseñamos que toda Escritura fue inspirada por Dios. Cada autor fue movido y dirigido por el Espíritu Santo (preservando sus personalidades y estilos diferentes) para escribir la Palabra de Dios, de tal forma que quedaron plasmadas libres de error en sus escritos originales.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #3b82f6; color: #3b82f6;">
+                                                <i class="fas fa-book" style="color: #3b82f6;"></i> 2 Pedro 1:20-21
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #1e3a8a; color: #1e3a8a;">
+                                                <i class="fas fa-book" style="color: #1e3a8a;"></i> 2 Timoteo 3:16
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <h4><i class="fas fa-crown" style="color: #1e3a8a;"></i> Autoridad de la Biblia</h4>
+                                        <p>Creemos, afirmamos y enseñamos la autoridad de la Biblia, cuyas enseñanzas deben ser creídas y obedecidas, sin depender del testimonio de ningún hombre o iglesia, sino exclusivamente del testimonio de la Palabra de Dios.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #1e3a8a; color: #1e3a8a;">
+                                                <i class="fas fa-book" style="color: #1e3a8a;"></i> 2 Pedro 1:19, 21
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #3b82f6; color: #3b82f6;">
+                                                <i class="fas fa-book" style="color: #3b82f6;"></i> 2 Timoteo 3:16
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sobre Dios -->
+                        <div class="belief-card" [class.active]="activeCard === 2">
+                            <div class="card-header" (click)="toggleCard(2)">
+                                <div class="header-content">
+                                    <div class="icon-wrapper" style="background: linear-gradient(135deg, #059669, #10b981);">
+                                        <i class="fas fa-pray" style="color: white;"></i>
+                                    </div>
+                                    <div class="title-content">
+                                        <h3 style="color: #059669;">Sobre Dios</h3>
+                                        <p class="card-subtitle">La Trinidad Santa</p>
+                                    </div>
+                                </div>
+                                <div class="arrow-icon">
+                                    <i class="fas fa-chevron-down" style="color: #059669;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-body" *ngIf="activeCard === 2">
+                                <div class="belief-content">
+                                    <div class="trinity-visual">
+                                        <div class="trinity-item">
+                                            <i class="fas fa-hands-praying" style="color: #1e3a8a;"></i>
+                                            <span style="color: #1e3a8a;">Padre</span>
+                                        </div>
+                                        <div class="trinity-connector" style="color: #64748b;">+</div>
+                                        <div class="trinity-item">
+                                            <i class="fas fa-cross" style="color: #dc2626;"></i>
+                                            <span style="color: #dc2626;">Hijo</span>
+                                        </div>
+                                        <div class="trinity-connector" style="color: #64748b;">+</div>
+                                        <div class="trinity-item">
+                                            <i class="fas fa-dove" style="color: #3b82f6;"></i>
+                                            <span style="color: #3b82f6;">Espíritu Santo</span>
+                                        </div>
+                                        <div class="trinity-equals" style="color: #64748b;">=</div>
+                                        <div class="trinity-item main">
+                                            <i class="fas fa-gem" style="color: #d97706;"></i>
+                                            <span style="color: #d97706;">Un solo Dios</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <p>Creemos, afirmamos y enseñamos que Dios es uno en esencia y tres en personas: Padre, Hijo y Espíritu Santo. Cada una de estas tres personas tienen roles diferentes en todo el plan de Dios y merecen la misma adoración y obediencia.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #1e3a8a; color: #1e3a8a;">
+                                                <i class="fas fa-book" style="color: #1e3a8a;"></i> Mateo 28:19
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #059669; color: #059669;">
+                                                <i class="fas fa-book" style="color: #059669;"></i> 2 Corintios 13:14
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sobre Jesucristo -->
+                        <div class="belief-card" [class.active]="activeCard === 3">
+                            <div class="card-header" (click)="toggleCard(3)">
+                                <div class="header-content">
+                                    <div class="icon-wrapper" style="background: linear-gradient(135deg, #dc2626, #ef4444);">
+                                        <i class="fas fa-cross" style="color: white;"></i>
+                                    </div>
+                                    <div class="title-content">
+                                        <h3 style="color: #dc2626;">Sobre Jesucristo</h3>
+                                        <p class="card-subtitle">Nuestro Salvador y Señor</p>
+                                    </div>
+                                </div>
+                                <div class="arrow-icon">
+                                    <i class="fas fa-chevron-down" style="color: #dc2626;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-body" *ngIf="activeCard === 3">
+                                <div class="belief-content">
+                                    <div class="christ-timeline">
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon" style="background: linear-gradient(135deg, #fef2f2, #fee2e2);">
+                                                <i class="fas fa-star" style="color: #dc2626;"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h5 style="color: #dc2626;">Nacimiento Virginal</h5>
+                                                <p style="color: #64748b;">Concebido por el Espíritu Santo</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon" style="background: linear-gradient(135deg, #fef2f2, #fee2e2);">
+                                                <i class="fas fa-heart" style="color: #dc2626;"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h5 style="color: #dc2626;">Vida Sin Pecado</h5>
+                                                <p style="color: #64748b;">Ejemplo perfecto de obediencia</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon" style="background: linear-gradient(135deg, #fef2f2, #fee2e2);">
+                                                <i class="fas fa-cross" style="color: #dc2626;"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h5 style="color: #dc2626;">Muerte Expiatoria</h5>
+                                                <p style="color: #64748b;">Sacrificio por nuestros pecados</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon" style="background: linear-gradient(135deg, #fef2f2, #fee2e2);">
+                                                <i class="fas fa-sun" style="color: #d97706;"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <h5 style="color: #d97706;">Resurrección Gloriosa</h5>
+                                                <p style="color: #64748b;">Victoria sobre la muerte</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <p>Creemos en Jesucristo como el Hijo eterno de Dios. Fue concebido por el Espíritu Santo y nació de una virgen. Vivió sin pecado, murió en la cruz como sacrificio sustitutivo por nuestros pecados, resucitó corporalmente al tercer día y ascendió al cielo. Él regresará con poder y gloria.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #dc2626; color: #dc2626;">
+                                                <i class="fas fa-book" style="color: #dc2626;"></i> Juan 1:1-14
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #d97706; color: #d97706;">
+                                                <i class="fas fa-book" style="color: #d97706;"></i> 1 Corintios 15:3-4
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sobre el Espíritu Santo -->
+                        <div class="belief-card" [class.active]="activeCard === 4">
+                            <div class="card-header" (click)="toggleCard(4)">
+                                <div class="header-content">
+                                    <div class="icon-wrapper" style="background: linear-gradient(135deg, #7c3aed, #8b5cf6);">
+                                        <i class="fas fa-dove" style="color: white;"></i>
+                                    </div>
+                                    <div class="title-content">
+                                        <h3 style="color: #7c3aed;">Sobre el Espíritu Santo</h3>
+                                        <p class="card-subtitle">Nuestro Consolador y Guía</p>
+                                    </div>
+                                </div>
+                                <div class="arrow-icon">
+                                    <i class="fas fa-chevron-down" style="color: #7c3aed;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-body" *ngIf="activeCard === 4">
+                                <div class="belief-content">
+                                    <div class="gifts-grid">
+                                        <div class="gift-item">
+                                            <i class="fas fa-heart-circle-check" style="color: #dc2626;"></i>
+                                            <span style="color: #1e293b;">Convence de pecado</span>
+                                        </div>
+                                        <div class="gift-item">
+                                            <i class="fas fa-seedling" style="color: #059669;"></i>
+                                            <span style="color: #1e293b;">Regenera</span>
+                                        </div>
+                                        <div class="gift-item">
+                                            <i class="fas fa-home-user" style="color: #d97706;"></i>
+                                            <span style="color: #1e293b;">Mora en el creyente</span>
+                                        </div>
+                                        <div class="gift-item">
+                                            <i class="fas fa-route" style="color: #3b82f6;"></i>
+                                            <span style="color: #1e293b;">Guía</span>
+                                        </div>
+                                        <div class="gift-item">
+                                            <i class="fas fa-hand-sparkles" style="color: #7c3aed;"></i>
+                                            <span style="color: #1e293b;">Santifica</span>
+                                        </div>
+                                        <div class="gift-item">
+                                            <i class="fas fa-gifts" style="color: #ec4899;"></i>
+                                            <span style="color: #1e293b;">Capacita con dones</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <p>Creemos en el Espíritu Santo como la tercera persona de la Trinidad. Él convence de pecado, regenera al creyente, mora en él, lo guía, santifica y capacita con dones para edificar la iglesia y dar testimonio de Cristo en el mundo.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #7c3aed; color: #7c3aed;">
+                                                <i class="fas fa-book" style="color: #7c3aed;"></i> Juan 14:16-17
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #3b82f6; color: #3b82f6;">
+                                                <i class="fas fa-book" style="color: #3b82f6;"></i> Hechos 1:8
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sobre la Salvación -->
+                        <div class="belief-card" [class.active]="activeCard === 5">
+                            <div class="card-header" (click)="toggleCard(5)">
+                                <div class="header-content">
+                                    <div class="icon-wrapper" style="background: linear-gradient(135deg, #d97706, #f59e0b);">
+                                        <i class="fas fa-heart" style="color: white;"></i>
+                                    </div>
+                                    <div class="title-content">
+                                        <h3 style="color: #d97706;">Sobre la Salvación</h3>
+                                        <p class="card-subtitle">Gracia y Transformación</p>
+                                    </div>
+                                </div>
+                                <div class="arrow-icon">
+                                    <i class="fas fa-chevron-down" style="color: #d97706;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-body" *ngIf="activeCard === 5">
+                                <div class="belief-content">
+                                    <div class="salvation-steps">
+                                        <div class="step">
+                                            <div class="step-number" style="background: linear-gradient(135deg, #dc2626, #ef4444);">1</div>
+                                            <div class="step-content">
+                                                <h5 style="color: #dc2626;">Reconocimiento</h5>
+                                                <p style="color: #64748b;">Arrepentimiento y fe</p>
+                                            </div>
+                                        </div>
+                                        <div class="step-arrow" style="color: #64748b;">→</div>
+                                        <div class="step">
+                                            <div class="step-number" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">2</div>
+                                            <div class="step-content">
+                                                <h5 style="color: #1e3a8a;">Transformación</h5>
+                                                <p style="color: #64748b;">Nuevo nacimiento</p>
+                                            </div>
+                                        </div>
+                                        <div class="step-arrow" style="color: #64748b;">→</div>
+                                        <div class="step">
+                                            <div class="step-number" style="background: linear-gradient(135deg, #059669, #10b981);">3</div>
+                                            <div class="step-content">
+                                                <h5 style="color: #059669;">Vida Eterna</h5>
+                                                <p style="color: #64748b;">Comunión con Dios</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="belief-point">
+                                        <p>Creemos que la salvación es un regalo de Dios que se recibe por la fe en Jesucristo. No es por obras humanas. Es una transformación del corazón que trae perdón, reconciliación con Dios y vida eterna.</p>
+                                        <div class="scripture-tags">
+                                            <span class="scripture-tag" style="border-color: #d97706; color: #d97706;">
+                                                <i class="fas fa-book" style="color: #d97706;"></i> Efesios 2:8-9
+                                            </span>
+                                            <span class="scripture-tag" style="border-color: #1e3a8a; color: #1e3a8a;">
+                                                <i class="fas fa-book" style="color: #1e3a8a;"></i> Romanos 10:9-10
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="salvation-highlight" style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-color: #f59e0b;">
+                                        <i class="fas fa-gift" style="color: #d97706;"></i>
+                                        <div>
+                                            <h5 style="color: #d97706;">¡Es un regalo!</h5>
+                                            <p style="color: #92400e;">No por obras, sino por gracia mediante la fe</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Versículo destacado con colores del Home -->
+                    <div class="verse-card" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6);">
+                        <div class="verse-decoration">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="verse-content">
+                            <p class="verse-text">"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna."</p>
+                            <div class="verse-reference">
+                                <i class="fas fa-book-bible"></i>
+                                <span>Juan 3:16</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush fs-5">
-                    <li class="list-group-item"><i class="fas fa-dove text-success me-2"></i> <span class="text-muted">Adoración sin reservas</span></li>
-                    <li class="list-group-item"><i class="fa-solid fa-book-open"></i><span class="text-muted"> Palabra Centrada</span></li>
-                    <li class="list-group-item"><i class="fas fa-heart text-danger me-2"></i><span class="text-muted">Amor por las Misiones</span></li>
-                    <li class="list-group-item"><i class="fas fa-hands-helping text-info me-2"></i><span class="text-muted">Somos Familia</span></li>
-                </ul>
+            </div>
+
+            <!-- Valores del Reino actualizados -->
+            <div class="row mt-5 pt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title">Valores del Reino</h2>
+                        <p class="section-subtitle">Principios que guían nuestra vida cristiana</p>
+                    </div>
+
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon" style="background: linear-gradient(135deg, #f0f7ff, #e6f0ff);">
+                                <i class="fas fa-hands-praying" style="color: #1e3a8a;"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 style="color: #1e3a8a;">Adoración sin Reservas</h4>
+                                <p style="color: #64748b;">Dedicamos nuestra vida completa a adorar a Dios en espíritu y en verdad</p>
+                            </div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+                                <i class="fas fa-book-open" style="color: #0ea5e9;"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 style="color: #0369a1;">Palabra Centrada</h4>
+                                <p style="color: #64748b;">La Biblia es nuestra autoridad final y guía para la vida y doctrina</p>
+                            </div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                                <i class="fas fa-earth-americas" style="color: #059669;"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 style="color: #059669;">Amor por las Misiones</h4>
+                                <p style="color: #64748b;">Llevamos el evangelio a cada rincón del mundo con pasión</p>
+                            </div>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">
+                                <i class="fas fa-people-group" style="color: #7c3aed;"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4 style="color: #7c3aed;">Somos Familia</h4>
+                                <p style="color: #64748b;">Nos cuidamos, apoyamos y edificamos mutuamente como hermanos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

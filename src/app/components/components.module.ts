@@ -21,6 +21,9 @@ import { MissionsComponent } from './missions/missions.component';
 import { MisionEsperanzaModalComponent } from './mision-esperanza-modal/mision-esperanza-modal.component';
 import { StationComponent } from './station/station.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AboutchurchComponent } from './aboutchurch/aboutchurch.component';
+import { QueHacemosComponent } from './que-hacemos/que-hacemos.component';
+import { MusicPlayerComponent } from './music-player/music-player.component';
 
 
 
@@ -49,11 +52,15 @@ import { RegistrationComponent } from './registration/registration.component';
         MissionsComponent,
         MisionEsperanzaModalComponent,
         StationComponent,
-        RegistrationComponent
+        RegistrationComponent,
+        AboutchurchComponent,
+        QueHacemosComponent,
+        MusicPlayerComponent
     ],
     entryComponents: [NgbdModalContent],
     exports: [ComponentsComponent,
-        StationComponent
+        StationComponent,
+        MusicPlayerComponent
     ]
 })
 export class ComponentsModule { }

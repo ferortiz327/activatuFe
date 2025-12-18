@@ -1,37 +1,52 @@
-<div class="modal-actividades modern" (click)="cerrar()">
-  <div class="carousel slide" id="carouselActividades" data-bs-ride="carousel" data-bs-interval="4000" (click)="$event.stopPropagation()">
-        <!-- Botón de cerrar -->
-    <button type="button" class="btn-close-modern" aria-label="Close" (click)="cerrar()">
-      <i class="fas fa-times"></i>
-    </button>
-    
-    <div class="carousel-inner">
-      <div *ngFor="let act of actividades; let i = index" 
-           class="carousel-item" [class.active]="i === 0">
-        <img [src]="act.imagen" [alt]="act.titulo" onerror="this.src='assets/images/default-image.jpg'">
+<div class="modal-actividades modern" (click)="cerrar($event)">
+  <div class="modal-container" (click)="$event.stopPropagation()">
 
-        <div class="overlay-gradient"></div>
+    <!-- Carrusel -->
+    <div class="carousel slide" id="carouselActividades"
+         data-bs-ride="carousel" data-bs-interval="4000">
 
-        <div class="caption">
-          <div class="badge-new" *ngIf="act.nuevo">Nuevo</div>
-          <h2>{{ act.titulo }}</h2>
-          <p>{{ act.descripcion }}</p>
-          <small>{{ act.fecha | date:'fullDate' }}</small>
-          <button class="btn-details">Ver detalles</button>
+      <!-- Botón cerrar -->
+      <button type="button" class="btn-close" (click)="cerrar($event)">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="carousel-inner">
+        <div *ngFor="let act of actividades; let i = index"
+             class="carousel-item" [class.active]="i === currentSlide">
+
+          <img [src]="act.imagen" [alt]="act.titulo"
+               onerror="this.src='assets/images/default-image.jpg'">
+
+          <div class="image-overlay"></div>
+
+          <div class="caption">
+            <div class="badge" *ngIf="act.nuevo">Nuevo</div>
+            <h2>{{ act.titulo }}</h2>
+            <p>{{ act.descripcion }}</p>
+            <small>{{ act.fecha | date:'fullDate' }}</small>
+            <button class="btn-details" (click)="verDetalles(act, $event)">
+              Ver detalles
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselActividades" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselActividades" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+      <!-- Controles -->
+      <button class="carousel-control prev" (click)="prevSlide()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
 
-    <div class="carousel-indicators-modern">
-      <span *ngFor="let act of actividades; let i = index" 
-            [class.active]="i === 0"></span>
+      <button class="carousel-control next" (click)="nextSlide()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button *ngFor="let act of actividades; let i = index"
+                [class.active]="i === currentSlide"
+                (click)="goToSlide(i, $event)">
+        </button>
+      </div>
     </div>
   </div>
 </div>

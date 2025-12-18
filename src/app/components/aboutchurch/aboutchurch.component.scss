@@ -1,0 +1,868 @@
+/* about-church.component.scss */
+
+.about-church-section {
+  padding: 0;
+  background: #f8fafc;
+}
+
+/* ===== BANNER MODERNO ===== */
+.about-banner {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 700px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.banner-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: transform 10s ease;
+}
+
+.banner-image-container:hover .banner-image {
+  transform: scale(1.05);
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(30, 58, 138, 0.7) 0%,
+      rgba(30, 58, 138, 0.4) 50%,
+      transparent 100%);
+  z-index: 1;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  width: 90%;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.banner-title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.title-line-1 {
+  display: block;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.title-line-2 {
+  display: block;
+  background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.banner-subtitle {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Cita bíblica en banner */
+.banner-verse {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-verse::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 100%);
+  z-index: -1;
+}
+
+.banner-verse i {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.verse-text {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: white;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.verse-reference {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+/* Formas decorativas */
+.banner-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  animation: float 20s infinite linear;
+  z-index: 1;
+}
+
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  right: 15%;
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  right: 25%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -20px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, -40px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-20px, -20px) rotate(270deg);
+  }
+}
+
+/* ===== NAVEGACIÓN MEJORADA ===== */
+.about-nav-container {
+  background: white;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 3rem;
+}
+
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8fafc;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.about-nav-btn {
+  background: transparent;
+  border: none;
+  border-radius: 25px;
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 180px;
+}
+
+.about-nav-btn:hover {
+  background: rgba(30, 58, 138, 0.05);
+  transform: translateY(-2px);
+}
+
+.about-nav-btn.active {
+  background: white;
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+}
+
+.nav-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.about-nav-btn.active .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-icon i {
+  font-size: 1.5rem;
+}
+
+.nav-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.about-nav-btn:hover .nav-label {
+  color: #1e293b;
+}
+
+.about-nav-btn.active .nav-label {
+  color: #1e3a8a;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.about-nav-btn.active .nav-indicator {
+  width: 40px;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Secciones */
+.about-section {
+  display: none;
+}
+
+.about-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  margin-bottom: 3rem;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.section-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.section-icon i {
+  font-size: 2.5rem;
+}
+
+.section-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.section-card-content {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/* Detalles específicos */
+.section-details {
+  margin-top: 2rem;
+}
+
+/* Historia */
+.history-year {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.year-label {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.year-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+/* Misión */
+.mission-points {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mission-point {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.mission-point i {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.mission-point span {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* Visión */
+.vision-goals {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.vision-goal {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid #f1f5f9;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.vision-goal:hover {
+  border-color: #e2e8f0;
+  transform: translateX(5px);
+}
+
+.goal-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  min-width: 50px;
+}
+
+.goal-text {
+  font-size: 1.1rem;
+  color: #1e293b;
+  flex: 1;
+}
+
+/* ===== FAMILIA PASTORAL ===== */
+.pastoral-section {
+  margin: 4rem 0;
+}
+
+/* Header de secciones */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+/* Grid de pastores */
+.pastoral-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pastoral-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.pastoral-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.pastoral-image-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.pastoral-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 5s ease;
+}
+
+.pastoral-card:hover .pastoral-image {
+  transform: scale(1.05);
+}
+
+.pastoral-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30, 58, 138, 0.7), transparent);
+}
+
+.pastoral-info {
+  padding: 2rem;
+}
+
+.pastoral-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.pastoral-role {
+  color: #1e3a8a;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.pastoral-description {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.pastoral-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.social-link i {
+  font-size: 1.2rem;
+}
+
+.social-link:nth-child(1) { background: #1877f2; }
+.social-link:nth-child(2) { background: #e1306c; }
+.social-link:nth-child(3) { background: #ff0000; }
+
+/* ===== ESTADÍSTICAS ===== */
+.stats-section {
+  margin: 4rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(30, 58, 138, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.stat-icon i {
+  font-size: 1.8rem;
+  color: #1e3a8a;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* ===== CTA ===== */
+.about-cta {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  margin-top: 4rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: #f8fafc;
+  color: #1e293b;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .banner-title {
+    font-size: 3.8rem;
+  }
+
+  .about-nav-btn {
+    min-width: 170px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-banner {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .banner-title {
+    font-size: 3.2rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .about-nav-btn {
+    min-width: 160px;
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-label {
+    font-size: 1rem;
+  }
+
+  .section-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-banner {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .nav-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .about-nav-btn {
+    min-width: auto;
+    justify-content: center;
+  }
+
+  .banner-verse {
+    padding: 1.5rem;
+  }
+
+  .verse-text {
+    font-size: 1.2rem;
+  }
+
+  .section-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .pastoral-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-banner {
+    height: 45vh;
+    min-height: 300px;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    display: inline;
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .banner-verse {
+    padding: 1rem;
+  }
+
+  .verse-text {
+    font-size: 1rem;
+  }
+
+  .banner-shape {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-card-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-cta {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 1.5rem;
+  }
+
+  .mission-point,
+  .vision-goal {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .goal-number {
+    min-width: auto;
+  }
+}
+
+
+.about-church-section {
+  padding: 0;
+  background: #f8fafc;
+  padding-bottom: 5rem; /* ← Agregar espacio al final */
+}
+
+/* O también puedes agregar margen al contenedor del CTA: */
+.about-cta {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 3rem; /* ← Agregar margen inferior */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+}

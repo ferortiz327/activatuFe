@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -15,6 +15,9 @@ import { MissionsComponent } from './components/missions/missions.component';
 import { StationComponent } from './components/station/station.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
+import { AboutchurchComponent } from './components/aboutchurch/aboutchurch.component';
+import { QueHacemosComponent } from './components/que-hacemos/que-hacemos.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingComponent },
@@ -28,7 +31,9 @@ const routes: Routes = [
   { path: 'misiones', component: MissionsComponent },
   { path: 'emisora', component: StationComponent },
   { path: 'registro', component: RegistrationComponent },
-  { path: 'unete', component: RegistrationComponent }
+  { path: 'unete', component: RegistrationComponent },
+  { path: 'quienes-somos', component: AboutchurchComponent },
+  { path: 'que-hacemos', component: QueHacemosComponent },
 ];
 
 @NgModule({
@@ -36,10 +41,9 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
-    })
+      useHash: true,
+    }),
   ],
-  exports: [
-  ],
+  exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

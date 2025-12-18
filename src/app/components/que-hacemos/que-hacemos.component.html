@@ -1,0 +1,325 @@
+<!-- que-hacemos.component.html -->
+<section class="que-hacemos-section" [@fadeIn]>
+
+  <!-- Header Principal -->
+  <div class="section-header">
+    <div class="header-background"></div>
+    <div class="header-content">
+      <h1 class="main-title">Nuestro Impacto</h1>
+      <p class="subtitle">Transformando vidas a través del amor, la enseñanza y el servicio</p>
+
+      <!-- Navegación de categorías -->
+      <div class="categories-nav">
+        <button *ngFor="let category of categories" [class.active]="activeCategory === category.id"
+          (click)="setActiveCategory(category.id)" class="category-btn">
+          <div class="category-icon" [style.background]="category.color + '20'">
+            <i [class]="category.icon" [style.color]="category.color"></i>
+          </div>
+          <span class="category-name">{{ category.name }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="main-content">
+
+    <!-- Descripción de la categoría -->
+    <div class="category-description">
+      <h2 class="category-title">{{ getCategoryTitle() }}</h2>
+      <p class="category-text">{{ getCategoryDescription() }}</p>
+    </div>
+
+    <!-- Grid de items y detalle -->
+    <div class="content-grid">
+
+      <!-- Lista de items -->
+      <div class="items-list-container">
+        <div class="items-grid" [@staggerFade]>
+          <div *ngFor="let item of getCurrentItems()" [class.active]="selectedItem?.id === item.id"
+            (click)="selectItem(item)" class="item-card card-item">
+
+            <div class="item-image">
+              <img [src]="item.image" [alt]="item.title">
+              <div class="image-overlay"></div>
+              <div class="item-badge" [style.background]="
+                activeCategory === 'obras' ? '#dc262620' :
+                activeCategory === 'escuelas' ? '#1e3a8a20' :
+                '#05966920'
+              ">
+                <i [class]="
+                  activeCategory === 'obras' ? 'bi-heart-fill' :
+                  activeCategory === 'escuelas' ? 'bi-book-fill' :
+                  'bi-people-fill'
+                " [style.color]="
+                  activeCategory === 'obras' ? '#dc2626' :
+                  activeCategory === 'escuelas' ? '#1e3a8a' :
+                  '#059669'
+                "></i>
+              </div>
+            </div>
+
+            <div class="item-content">
+              <h3 class="item-title">{{ item.title }}</h3>
+              <p class="item-excerpt">{{ item.description | slice:0:100 }}...</p>
+              <div class="item-meta">
+                <span class="meta-tag" *ngIf="item.duration">
+                  <i class="bi-clock"></i> {{ item.duration }}
+                </span>
+                <span class="meta-tag" *ngIf="item.meeting">
+                  <i class="bi-calendar"></i> {{ item.meeting }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalle del item seleccionado -->
+      <div class="item-detail-container" *ngIf="selectedItem">
+        <div class="detail-card">
+
+          <!-- Header del detalle -->
+          <!-- Header del detalle con Carrusel -->
+          <div class="detail-header">
+            <div class="detail-carousel">
+              <!-- Contenedor principal del carrusel -->
+              <div class="carousel-container">
+                <!-- Imagen activa -->
+                <div class="active-slide">
+                  <img [src]="selectedItem.images ? selectedItem.images[activeSlideIndex] : selectedItem.image"
+                    [alt]="selectedItem.title">
+                </div>
+
+                <!-- Controles de navegación -->
+                <button class="carousel-btn prev" (click)="prevSlide()" *ngIf="selectedItem?.images?.length > 1">
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" (click)="nextSlide()" *ngIf="selectedItem?.images?.length > 1">
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+
+                <!-- Indicadores (puntos) -->
+                <div class="carousel-indicators" *ngIf="selectedItem?.images?.length > 1">
+                  <button *ngFor="let img of selectedItem.images; let i = index" [class.active]="i === activeSlideIndex"
+                    (click)="selectSlide(i)" class="indicator-dot">
+                  </button>
+                </div>
+
+                <!-- Badge de categoría (se mantiene igual) -->
+                <div class="detail-badge" [style.background]="
+        activeCategory === 'obras' ? '#dc2626' :
+        activeCategory === 'escuelas' ? '#1e3a8a' :
+        '#059669'
+      ">
+                  {{ getCategoryTitle() | slice:0:1 }}
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-title-section">
+              <h2 class="detail-title">{{ selectedItem.title }}</h2>
+              <div class="detail-line" [style.background]="
+      activeCategory === 'obras' ? '#dc2626' :
+      activeCategory === 'escuelas' ? '#1e3a8a' :
+      '#059669'
+    "></div>
+            </div>
+          </div>
+
+          <!-- Contenido específico por categoría -->
+          <div class="detail-content">
+
+            <!-- OBRAS -->
+            <div *ngIf="activeCategory === 'obras'" class="obra-detail">
+              <p class="detail-description">{{ selectedItem.description }}</p>
+
+              <div class="achievements-section">
+                <h4><i class="bi-trophy"></i> Logros Destacados</h4>
+                <div class="achievements-list">
+                  <div *ngFor="let achievement of selectedItem.achievements" class="achievement-item">
+                    <i class="bi-check-circle-fill"></i>
+                    <span>{{ achievement }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="impact-section">
+                <div class="impact-card">
+                  <i class="bi-graph-up"></i>
+                  <div class="impact-content">
+                    <div class="impact-label">Impacto Anual</div>
+                    <div class="impact-value">{{ selectedItem.impact }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-volunteer">
+                  <i class="bi-hand-index-thumb"></i>
+                  <span>Ser Voluntario</span>
+                </button>
+                <button class="btn-donate">
+                  <i class="bi-heart"></i>
+                  <span>Donar</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- ESCUELAS -->
+            <div *ngIf="activeCategory === 'escuelas'" class="escuela-detail">
+              <p class="detail-description">{{ selectedItem.description }}</p>
+
+              <div class="school-info">
+                <div class="info-row">
+                  <div class="info-item">
+                    <i class="bi-clock-history"></i>
+                    <div>
+                      <div class="info-label">Duración</div>
+                      <div class="info-value">{{ selectedItem.duration }}</div>
+                    </div>
+                  </div>
+
+                  <div class="info-item">
+                    <i class="bi-calendar-event"></i>
+                    <div>
+                      <div class="info-label">Próxima Fecha</div>
+                      <div class="info-value">{{ selectedItem.nextDate }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="requirements-section">
+                <h4><i class="bi-list-check"></i> Requisitos</h4>
+                <div class="requirements-list">
+                  <div *ngFor="let requirement of selectedItem.requirements" class="requirement-item">
+                    <i class="bi-check-square"></i>
+                    <span>{{ requirement }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-enroll">
+                  <i class="bi-pencil-square"></i>
+                  <span>Inscribirse</span>
+                </button>
+                <button class="btn-info">
+                  <i class="bi-info-circle"></i>
+                  <span>Más Información</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- MINISTERIOS -->
+            <div *ngIf="activeCategory === 'ministerios'" class="ministerio-detail">
+              <p class="detail-description">{{ selectedItem.description }}</p>
+
+              <div class="ministerio-info">
+                <div class="leader-info">
+                  <div class="leader-icon">
+                    <i class="bi-person-circle"></i>
+                  </div>
+                  <div class="leader-details">
+                    <div class="info-label">Líder</div>
+                    <div class="info-value">{{ selectedItem.leader }}</div>
+                  </div>
+                </div>
+
+                <div class="meeting-info">
+                  <div class="meeting-icon">
+                    <i class="bi-calendar-check"></i>
+                  </div>
+                  <div class="meeting-details">
+                    <div class="info-label">Reunión</div>
+                    <div class="info-value">{{ selectedItem.meeting }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="activities-section">
+                <h4><i class="bi-activity"></i> Actividades Principales</h4>
+                <div class="activities-grid">
+                  <div *ngFor="let activity of selectedItem.activities" class="activity-card">
+                    <div class="activity-icon">
+                      <i class="bi-check-lg"></i>
+                    </div>
+                    <span class="activity-text">{{ activity }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-join">
+                  <i class="bi-person-plus"></i>
+                  <span>Unirse al Ministerio</span>
+                </button>
+                <button class="btn-contact">
+                  <i class="bi-chat"></i>
+                  <span>Contactar Líder</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas de impacto -->
+    <div class="impact-stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #dc262620;">
+            <i class="bi-heart-fill" style="color: #dc2626;"></i>
+          </div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Obras Sociales</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #1e3a8a20;">
+            <i class="bi-book-fill" style="color: #1e3a8a;"></i>
+          </div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">Escuelas de Formación</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #05966920;">
+            <i class="bi-people-fill" style="color: #059669;"></i>
+          </div>
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Ministerios Activos</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #d9770620;">
+            <i class="bi-person-heart" style="color: #d97706;"></i>
+          </div>
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Voluntarios</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2 class="cta-title">¿Listo para ser parte?</h2>
+        <p class="cta-text">Descubre dónde puedes servir y desarrollar tus dones</p>
+        <div class="cta-actions">
+          <button class="btn-cta-primary">
+            <i class="bi-search"></i>
+            <span>Encontrar Mi Ministerio</span>
+          </button>
+          <button class="btn-cta-secondary">
+            <i class="bi-telephone"></i>
+            <span>Contactarnos</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
