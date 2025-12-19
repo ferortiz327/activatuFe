@@ -1,0 +1,596 @@
+<!-- src/app/components/training-school-form/training-school-form.component.html -->
+<div class="registration-hero training-hero">
+  <div class="hero-background">
+    <div class="gradient-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Escuela de <span class="highlight">Formación</span> Espiritual</h1>
+    <p class="hero-subtitle">Desarrolla tu llamado, crece en el conocimiento de Dios y prepárate para servir</p>
+  </div>
+</div>
+
+<div class="registration-container">
+  <div class="registration-content">
+    <!-- Mensajes de éxito/error -->
+    <div *ngIf="submitSuccess" class="alert alert-success">
+      <i class="material-icons">check_circle</i>
+      <div>
+        <h4>¡Inscripción exitosa!</h4>
+        <p>Te contactaremos pronto para confirmar tu cupo en la escuela de formación. ¡Dios bendiga tu deseo de
+          crecimiento!</p>
+      </div>
+    </div>
+
+    <div *ngIf="submitError" class="alert alert-error">
+      <i class="material-icons">error</i>
+      <div>
+        <h4>Error al enviar la inscripción</h4>
+        <p>Por favor intenta nuevamente o contáctanos directamente al +57 300 123 4567</p>
+      </div>
+    </div>
+
+    <div class="main-sections">
+      <!-- Formulario principal -->
+      <div class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="header-icon">
+              <span class="material-icons">school</span>
+            </div>
+            <h2>Inscripción Escuela de Formación</h2>
+            <p>Selecciona el programa de formación y completa tus datos para comenzar tu camino de crecimiento
+              espiritual.</p>
+          </div>
+
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="modern-form">
+
+            <!-- Información Personal -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">person</i> Información Personal</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">badge</span>
+                  Nombre Completo *
+                </label>
+                <input type="text" formControlName="name" class="form-input" placeholder="Tu nombre completo"
+                  [class.invalid]="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+                <div class="error-message"
+                  *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+                  {{ getErrorMessage('name') }}
+                </div>
+              </div>
+
+              <div class="form-group"
+                [class.error]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">email</span>
+                  Correo Electrónico *
+                </label>
+                <input type="email" formControlName="email" class="form-input" placeholder="correo@email.com"
+                  [class.invalid]="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                <div class="error-message"
+                  *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                  {{ getErrorMessage('email') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">phone</span>
+                  Teléfono *
+                </label>
+                <input type="tel" formControlName="phone" class="form-input" placeholder="+57 300 000 0000"
+                  [class.invalid]="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                <div class="error-message"
+                  *ngIf="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.invalid">
+                  {{ getErrorMessage('phone') }}
+                </div>
+              </div>
+
+              <div class="form-group"
+                [class.error]="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">cake</span>
+                  Edad *
+                </label>
+                <input type="number" formControlName="age" class="form-input" placeholder="Ej: 25" min="18" max="80"
+                  [class.invalid]="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
+                <div class="error-message"
+                  *ngIf="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
+                  {{ getErrorMessage('age') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">work</span>
+                Ocupación / Profesión *
+              </label>
+              <input type="text" formControlName="occupation" class="form-input"
+                placeholder="Ej: Estudiante, Médico, Profesor, Ingeniero..."
+                [class.invalid]="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
+              <div class="error-message"
+                *ngIf="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
+                {{ getErrorMessage('occupation') }}
+              </div>
+            </div>
+
+            <!-- Membresía en la Iglesia -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">church</i> Membresía en la Iglesia</h3>
+            </div>
+
+            <div class="form-group checkbox-group"
+              [class.error]="registrationForm.get('churchMember')?.touched && registrationForm.get('churchMember')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="churchMember" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
+                </span>
+                <span class="checkbox-label">
+                  Soy miembro activo de la Iglesia Activa tu Fe *
+                </span>
+              </label>
+              <div class="error-message"
+                *ngIf="registrationForm.get('churchMember')?.touched && registrationForm.get('churchMember')?.invalid">
+                Debes ser miembro activo para inscribirte
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="isChurchMember"
+              [class.error]="registrationForm.get('memberTime')?.touched && registrationForm.get('memberTime')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">history</span>
+                Tiempo como miembro *
+              </label>
+              <div class="radio-group">
+                <label class="radio-option" *ngFor="let time of memberTimes"
+                  [class.selected]="registrationForm.get('memberTime')?.value === time.id">
+                  <input type="radio" formControlName="memberTime" [value]="time.id" hidden>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">{{ time.name }}</span>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('memberTime')?.touched && registrationForm.get('memberTime')?.invalid">
+                Por favor selecciona tu tiempo como miembro
+              </div>
+            </div>
+
+            <!-- Programas de Formación -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">menu_book</i> Programas de Formación</h3>
+              <p class="section-subtitle">Selecciona el programa(s) que deseas tomar (puedes elegir varios)</p>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('selectedTrainings')?.touched && registrationForm.get('selectedTrainings')?.invalid">
+              <div class="training-grid">
+                <div class="training-card" *ngFor="let program of trainingPrograms"
+                  [class.selected]="isTrainingSelected(program.id)">
+                  <label class="training-option">
+                    <input type="checkbox" [value]="program.id" (change)="onTrainingChange($event, program.id)"
+                      [checked]="isTrainingSelected(program.id)" hidden>
+                    <div class="training-header">
+                      <span class="training-icon">
+                        <span class="material-icons">{{ program.icon }}</span>
+                      </span>
+                      <div class="training-title-info">
+                        <h4 class="training-title">{{ program.name }}</h4>
+                        <span class="training-target">Para: {{ program.target }}</span>
+                      </div>
+                    </div>
+
+                    <p class="training-description">{{ program.description }}</p>
+
+                    <div class="training-details">
+                      <div class="detail-item">
+                        <span class="material-icons">schedule</span>
+                        <span>{{ program.duration }}</span>
+                      </div>
+                      <div class="detail-item">
+                        <span class="material-icons">calendar_today</span>
+                        <span>{{ program.schedule }}</span>
+                      </div>
+                    </div>
+
+                    <div class="training-requirements">
+                      <span class="requirements-label">Requisitos:</span>
+                      <ul class="requirements-list">
+                        <li *ngFor="let req of program.requirements.slice(0, 2)">{{ req }}</li>
+                        <li *ngIf="program.requirements.length > 2">...</li>
+                      </ul>
+                    </div>
+
+                    <div class="training-selector">
+                      <span class="selector-circle"></span>
+                      <span class="selector-text">Inscribirme en este programa</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('selectedTrainings')?.touched && registrationForm.get('selectedTrainings')?.invalid">
+                Por favor selecciona al menos un programa de formación
+              </div>
+            </div>
+
+            <!-- Nivel Espiritual -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">spa</i> Nivel Espiritual</h3>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('spiritualLevel')?.touched && registrationForm.get('spiritualLevel')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">psychology</span>
+                ¿Cómo describirías tu nivel espiritual actual? *
+              </label>
+              <div class="levels-grid">
+                <label class="level-option" *ngFor="let level of spiritualLevels"
+                  [class.selected]="isSpiritualLevelSelected(level.id)">
+                  <input type="radio" formControlName="spiritualLevel" [value]="level.id" hidden>
+                  <div class="level-content">
+                    <span class="level-name">{{ level.name }}</span>
+                    <span class="level-description">{{ level.description }}</span>
+                  </div>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('spiritualLevel')?.touched && registrationForm.get('spiritualLevel')?.invalid">
+                Por favor selecciona tu nivel espiritual
+              </div>
+            </div>
+
+            <!-- Formación Previa -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">history_edu</i> Formación y Objetivos</h3>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">school</span>
+                Formación cristiana previa (si aplica)
+              </label>
+              <textarea formControlName="previousTraining" class="form-textarea"
+                placeholder="Cursos, seminarios, talleres bíblicos previos..." rows="2"></textarea>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">flag</span>
+                ¿Cuáles son tus objetivos al tomar esta formación? *
+              </label>
+              <textarea formControlName="trainingGoals" class="form-textarea"
+                placeholder="¿Qué esperas aprender? ¿Cómo planeas aplicar este conocimiento? ¿Cuál es tu propósito?..."
+                rows="3"
+                [class.invalid]="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid"></textarea>
+              <div class="char-count">
+                {{ registrationForm.get('trainingGoals')?.value?.length || 0 }}/200
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid">
+                {{ getErrorMessage('trainingGoals') }}
+              </div>
+            </div>
+            <!-- Sección de Disponibilidad -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">schedule</i> Disponibilidad</h3>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">access_time</span>
+                ¿En qué horarios podrías asistir?
+              </label>
+              <div class="availability-grid">
+                <!-- Días entre semana -->
+                <label class="availability-option" [class.selected]="isAvailabilitySelected('weekdays')">
+                  <input type="checkbox" [checked]="isAvailabilitySelected('weekdays')"
+                    (change)="onAvailabilityChange('weekdays', $event)">
+                  <span class="availability-icon">
+                    <span class="material-icons">today</span>
+                  </span>
+                  <span class="availability-label">Entre semana</span>
+                </label>
+
+                <!-- Fines de semana -->
+                <label class="availability-option" [class.selected]="isAvailabilitySelected('weekends')">
+                  <input type="checkbox" [checked]="isAvailabilitySelected('weekends')"
+                    (change)="onAvailabilityChange('weekends', $event)">
+                  <span class="availability-icon">
+                    <span class="material-icons">weekend</span>
+                  </span>
+                  <span class="availability-label">Fines de semana</span>
+                </label>
+
+                <!-- Noches -->
+                <label class="availability-option" [class.selected]="isAvailabilitySelected('evenings')">
+                  <input type="checkbox" [checked]="isAvailabilitySelected('evenings')"
+                    (change)="onAvailabilityChange('evenings', $event)">
+                  <span class="availability-icon">
+                    <span class="material-icons">nights_stay</span>
+                  </span>
+                  <span class="availability-label">Noches</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Nivel de Compromiso -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">commitment</i> Nivel de Compromiso</h3>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('commitment')?.touched && registrationForm.get('commitment')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">assignment_turned_in</span>
+                ¿Cuál es tu nivel de compromiso? *
+              </label>
+              <div class="commitment-grid">
+                <label class="commitment-option" *ngFor="let level of commitmentLevels"
+                  [class.selected]="isCommitmentSelected(level.id)">
+                  <input type="radio" formControlName="commitment" [value]="level.id" hidden>
+                  <div class="commitment-content">
+                    <span class="commitment-name">{{ level.name }}</span>
+                    <span class="commitment-description">{{ level.description }}</span>
+                  </div>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('commitment')?.touched && registrationForm.get('commitment')?.invalid">
+                Por favor selecciona tu nivel de compromiso
+              </div>
+            </div>
+
+            <!-- Expectativas -->
+            <div class="form-group"
+              [class.error]="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">lightbulb</span>
+                ¿Qué expectativas tienes de esta formación? *
+              </label>
+              <textarea formControlName="expectations" class="form-textarea"
+                placeholder="¿Qué esperas de los maestros? ¿De los compañeros? ¿Del contenido? ¿Del ambiente de aprendizaje?..."
+                rows="3"
+                [class.invalid]="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid"></textarea>
+              <div class="char-count">
+                {{ registrationForm.get('expectations')?.value?.length || 0 }}/300
+              </div>
+              <div class="error-message"
+                *ngIf="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid">
+                {{ getErrorMessage('expectations') }}
+              </div>
+            </div>
+
+            <!-- Recomendación Pastoral -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">recommend</span>
+                Recomendación pastoral (opcional)
+              </label>
+              <textarea formControlName="pastorRecommendation" class="form-textarea"
+                placeholder="Si un pastor te recomendó, escribe su nombre y congregación..." rows="2"></textarea>
+            </div>
+
+            <!-- Contacto de Emergencia -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">contact_emergency</i> Contacto de Emergencia *</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="registrationForm.get('emergencyContact.name')?.touched && registrationForm.get('emergencyContact.name')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">person</span>
+                  Nombre completo
+                </label>
+                <input type="text" formControlName="emergencyContact.name" class="form-input"
+                  placeholder="Nombre del contacto de emergencia">
+              </div>
+
+              <div class="form-group"
+                [class.error]="registrationForm.get('emergencyContact.phone')?.touched && registrationForm.get('emergencyContact.phone')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">phone</span>
+                  Teléfono
+                </label>
+                <input type="tel" formControlName="emergencyContact.phone" class="form-input"
+                  placeholder="Teléfono de emergencia">
+              </div>
+            </div>
+
+            <div class="form-group"
+              [class.error]="registrationForm.get('emergencyContact.relationship')?.touched && registrationForm.get('emergencyContact.relationship')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">people</span>
+                Parentesco o relación
+              </label>
+              <input type="text" formControlName="emergencyContact.relationship" class="form-input"
+                placeholder="Ej: Padre, Madre, Cónyuge, Hermano">
+            </div>
+
+            <!-- Acuerdos -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">gavel</i> Acuerdos y Políticas *</h3>
+            </div>
+
+            <div class="form-group checkbox-group"
+              [class.error]="registrationForm.get('termsAgreed')?.touched && registrationForm.get('termsAgreed')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="termsAgreed" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
+                </span>
+                <span class="checkbox-label">
+                  Me comprometo a asistir al menos al 75% de las clases y cumplir con los requisitos del programa
+                </span>
+              </label>
+              <div class="error-message"
+                *ngIf="registrationForm.get('termsAgreed')?.touched && registrationForm.get('termsAgreed')?.invalid">
+                Debes aceptar los términos del programa
+              </div>
+            </div>
+
+            <div class="form-group checkbox-group"
+              [class.error]="registrationForm.get('privacyAgreed')?.touched && registrationForm.get('privacyAgreed')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="privacyAgreed" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
+                </span>
+                <span class="checkbox-label">
+                  Autorizo el tratamiento de mis datos según la
+                  <a href="#" class="privacy-link">política de privacidad</a>
+                  de la escuela de formación
+                </span>
+              </label>
+              <div class="error-message"
+                *ngIf="registrationForm.get('privacyAgreed')?.touched && registrationForm.get('privacyAgreed')?.invalid">
+                Debes aceptar la política de privacidad
+              </div>
+            </div>
+
+            <!-- Botón de Envío -->
+            <button type="submit" class="submit-btn" [disabled]="isSubmitting" [class.loading]="isSubmitting">
+              <span class="btn-content">
+                <span class="material-icons" *ngIf="!isSubmitting">school</span>
+                <span class="material-icons spinning" *ngIf="isSubmitting">refresh</span>
+                {{ isSubmitting ? 'Enviando inscripción...' : 'Enviar Inscripción' }}
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sidebar informativo -->
+      <div class="info-sidebar">
+        <div class="info-card">
+          <h3>Beneficios de la Formación</h3>
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <span class="material-icons">auto_stories</span>
+              <div>
+                <h4>Crecimiento Bíblico</h4>
+                <p>Conocimiento profundo de las Escrituras y doctrina cristiana</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">groups</span>
+              <div>
+                <h4>Comunidad</h4>
+                <p>Conecta con hermanos comprometidos con el crecimiento espiritual</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">volunteer_activism</span>
+              <div>
+                <h4>Servicio</h4>
+                <p>Preparación para servir eficazmente en la iglesia y la sociedad</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">travel_explore</span>
+              <div>
+                <h4>Propósito</h4>
+                <p>Descubre y desarrolla tu llamado y dones espirituales</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card">
+          <h3>Nuestra Escuela en Números</h3>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Estudiantes Formados</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4</div>
+              <div class="stat-label">Programas Activos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">10</div>
+              <div class="stat-label">Años Formando</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Coordinación Académica</h3>
+          <p>Para información sobre horarios, costos y requisitos específicos:</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="material-icons">person</span>
+              <span>Pastor de Formación</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">email</span>
+              <span>formacion@elsembrador.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">phone</span>
+              <span>+57 300 987 6543</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">schedule</span>
+              <span>Lunes a Viernes 2pm - 6pm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-card">
+          <h3>Proceso de Inscripción</h3>
+          <ol class="process-steps">
+            <li>
+              <span class="step-number">1</span>
+              <span class="step-text">Completa este formulario</span>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <span class="step-text">Entrevista con coordinador</span>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <span class="step-text">Confirmación de cupo</span>
+            </li>
+            <li>
+              <span class="step-number">4</span>
+              <span class="step-text">Matrícula y pago</span>
+            </li>
+            <li>
+              <span class="step-number">5</span>
+              <span class="step-text">Inicio de clases</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="testimonial-card">
+          <h3>Testimonio</h3>
+          <div class="testimonial-content">
+            <p>"La escuela de formación transformó mi vida espiritual. Ahora sirvo como líder de grupo y entiendo mejor
+              mi llamado."</p>
+            <div class="testimonial-author">
+              <span class="material-icons">format_quote</span>
+              <div>
+                <strong>María González</strong>
+                <span>Diplomada en Discipulado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

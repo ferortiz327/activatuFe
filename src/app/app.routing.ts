@@ -17,6 +17,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 
 import { AboutchurchComponent } from './components/aboutchurch/aboutchurch.component';
 import { QueHacemosComponent } from './components/que-hacemos/que-hacemos.component';
+import { VolunteerFormComponent } from './components/volunteer-form/volunteer-form.component';
+import { TrainingSchoolFormComponent } from './components/training-school-form/training-school-form.component';
+import { MinistriesFormComponent } from './components/ministries-form/ministries-form.component';
+import { FamiliaPastoralComponent } from './components/familia-pastoral/familia-pastoral.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,6 +38,10 @@ const routes: Routes = [
   { path: 'unete', component: RegistrationComponent },
   { path: 'quienes-somos', component: AboutchurchComponent },
   { path: 'que-hacemos', component: QueHacemosComponent },
+  { path: 'voluntario', component: VolunteerFormComponent },
+  { path: 'formacion', component: TrainingSchoolFormComponent },
+  { path: 'ministerios', component: MinistriesFormComponent },
+  { path: 'familia-pastoral', component: FamiliaPastoralComponent },
 ];
 
 @NgModule({

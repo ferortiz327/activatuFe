@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -19,15 +19,8 @@ import { MaterialModule } from './shared/material/material.module';
 import { LOCALE_ID } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
     NgbModule,
@@ -38,14 +31,11 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbAccordionModule,
     MaterialModule,
-    NgbNavModule
+    NgbNavModule,
+    ReactiveFormsModule,
   ],
-  exports: [
-    MaterialModule
-  ],
-  providers: [YoutubeServiceService,
-    { provide: LOCALE_ID, useValue: 'es' },
-  ],
-  bootstrap: [AppComponent]
+  exports: [MaterialModule],
+  providers: [YoutubeServiceService, { provide: LOCALE_ID, useValue: 'es' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
