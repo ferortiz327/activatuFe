@@ -1,0 +1,530 @@
+<!-- src/app/components/volunteer-form/volunteer-form.component.html -->
+<div class="registration-hero volunteer-hero">
+  <div class="hero-background">
+    <div class="gradient-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Únete al <span class="highlight">Servicio</span> de Nuestras Obras</h1>
+    <p class="hero-subtitle">Tu corazón y manos pueden llevar esperanza y amor a quienes más lo necesitan</p>
+  </div>
+</div>
+
+<div class="registration-container">
+  <div class="registration-content">
+    <!-- Mensajes de éxito/error -->
+    <div *ngIf="submitSuccess" class="alert alert-success">
+      <i class="material-icons">check_circle</i>
+      <div>
+        <h4>¡Formulario enviado con éxito!</h4>
+        <p>Te contactaremos pronto para coordinar tu participación en la obra. ¡Dios bendiga tu corazón servidor!</p>
+      </div>
+    </div>
+
+    <div *ngIf="submitError" class="alert alert-error">
+      <i class="material-icons">error</i>
+      <div>
+        <h4>Error al enviar el formulario</h4>
+        <p>Por favor intenta nuevamente o contáctanos directamente al +57 300 123 4567</p>
+      </div>
+    </div>
+
+    <div class="main-sections">
+      <!-- Formulario principal -->
+      <div class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="header-icon">
+              <span class="material-icons">handshake</span>
+            </div>
+            <h2>Voluntario para las Obras</h2>
+            <p>Selecciona la obra donde deseas servir y comparte tus datos para formar parte de nuestro equipo.</p>
+          </div>
+
+          <form [formGroup]="volunteerForm" (ngSubmit)="onSubmit()" class="modern-form">
+
+            <!-- Información Personal -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">person</i> Información Personal</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="volunteerForm.get('name')?.touched && volunteerForm.get('name')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">badge</span>
+                  Nombre Completo *
+                </label>
+                <input type="text" formControlName="name" class="form-input" placeholder="Tu nombre completo"
+                  [class.invalid]="volunteerForm.get('name')?.touched && volunteerForm.get('name')?.invalid">
+                <div class="error-message"
+                  *ngIf="volunteerForm.get('name')?.touched && volunteerForm.get('name')?.invalid">
+                  {{ getErrorMessage('name') }}
+                </div>
+              </div>
+
+              <div class="form-group"
+                [class.error]="volunteerForm.get('email')?.touched && volunteerForm.get('email')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">email</span>
+                  Correo Electrónico *
+                </label>
+                <input type="email" formControlName="email" class="form-input" placeholder="correo@email.com"
+                  [class.invalid]="volunteerForm.get('email')?.touched && volunteerForm.get('email')?.invalid">
+                <div class="error-message"
+                  *ngIf="volunteerForm.get('email')?.touched && volunteerForm.get('email')?.invalid">
+                  {{ getErrorMessage('email') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="volunteerForm.get('phone')?.touched && volunteerForm.get('phone')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">phone</span>
+                  Teléfono *
+                </label>
+                <input type="tel" formControlName="phone" class="form-input" placeholder="+57 300 000 0000"
+                  [class.invalid]="volunteerForm.get('phone')?.touched && volunteerForm.get('phone')?.invalid">
+                <div class="error-message"
+                  *ngIf="volunteerForm.get('phone')?.touched && volunteerForm.get('phone')?.invalid">
+                  {{ getErrorMessage('phone') }}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons">cake</span>
+                  Edad *
+                </label>
+                <input type="number" formControlName="age" class="form-input" placeholder="Ej: 25" min="18" max="80"
+                  [class.invalid]="volunteerForm.get('age')?.touched && volunteerForm.get('age')?.invalid">
+                <div class="error-message"
+                  *ngIf="volunteerForm.get('age')?.touched && volunteerForm.get('age')?.invalid">
+                  {{ getErrorMessage('age') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">work</span>
+                Ocupación / Profesión
+              </label>
+              <input type="text" formControlName="occupation" class="form-input"
+                placeholder="Ej: Estudiante, Médico, Profesor, Ingeniero...">
+            </div>
+
+            <!-- Obras Disponibles -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">church</i> Obras Disponibles</h3>
+              <p class="section-subtitle">Selecciona la(s) obra(s) donde te gustaría servir (puedes elegir varias)</p>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('selectedWorks')?.touched && volunteerForm.get('selectedWorks')?.invalid">
+              <div class="works-grid">
+                <div class="work-card" *ngFor="let work of works" [class.selected]="isWorkSelected(work.id)">
+                  <label class="work-option">
+                    <input type="checkbox" [value]="work.id" (change)="onWorkChange($event, work.id)" hidden>
+                    <div class="work-header">
+                      <span class="work-icon">
+                        <span class="material-icons">{{ work.icon }}</span>
+                      </span>
+                      <h4 class="work-title">{{ work.name }}</h4>
+                    </div>
+                    <p class="work-description">{{ work.description }}</p>
+
+                    <div class="work-needs">
+                      <span class="needs-label">Necesidades:</span>
+                      <ul class="needs-list">
+                        <li *ngFor="let need of work.needs.slice(0, 3)">{{ need }}</li>
+                        <li *ngIf="work.needs.length > 3">...</li>
+                      </ul>
+                    </div>
+
+                    <div class="work-selector">
+                      <span class="selector-circle"></span>
+                      <span class="selector-text">Seleccionar esta obra</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('selectedWorks')?.touched && volunteerForm.get('selectedWorks')?.invalid">
+                Por favor selecciona al menos una obra donde deseas servir
+              </div>
+            </div>
+
+            <!-- Rol Preferido -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">assignment_ind</i> Rol de Servicio</h3>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('preferredRole')?.touched && volunteerForm.get('preferredRole')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">group_work</span>
+                ¿Qué rol te gustaría desempeñar? *
+              </label>
+              <div class="roles-grid">
+                <label class="role-option" *ngFor="let role of roles"
+                  [class.selected]="volunteerForm.get('preferredRole')?.value === role.id">
+                  <input type="radio" formControlName="preferredRole" [value]="role.id" hidden>
+                  <span class="role-icon">
+                    <span class="material-icons">{{ role.icon }}</span>
+                  </span>
+                  <span class="role-name">{{ role.name }}</span>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('preferredRole')?.touched && volunteerForm.get('preferredRole')?.invalid">
+                Por favor selecciona un rol de servicio
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">add_circle</span>
+                Otro rol específico (si no está en la lista)
+              </label>
+              <input type="text" formControlName="otherRole" class="form-input"
+                placeholder="Describe el rol que te gustaría desempeñar">
+            </div>
+
+            <!-- Disponibilidad -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">schedule</i> Disponibilidad</h3>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('availability')?.touched && volunteerForm.get('availability')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">access_time</span>
+                Horarios disponibles *
+              </label>
+              <div class="availability-options-grid">
+                <label class="availability-option" *ngFor="let option of availabilityOptions">
+                  <input type="checkbox" [value]="option.id" (change)="onAvailabilityChange($event, option.id)" hidden>
+                  <span class="availability-checkbox"></span>
+                  <span class="availability-icon">
+                    <span class="material-icons">{{ option.icon }}</span>
+                  </span>
+                  <span class="availability-name">{{ option.name }}</span>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('availability')?.touched && volunteerForm.get('availability')?.invalid">
+                Por favor selecciona al menos un horario disponible
+              </div>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('frequency')?.touched && volunteerForm.get('frequency')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">repeat</span>
+                Frecuencia de servicio *
+              </label>
+              <div class="frequency-grid">
+                <label class="frequency-option" *ngFor="let freq of frequencyOptions"
+                  [class.selected]="volunteerForm.get('frequency')?.value === freq.id">
+                  <input type="radio" formControlName="frequency" [value]="freq.id" hidden>
+                  <span class="frequency-content">
+                    <span class="frequency-name">{{ freq.name }}</span>
+                    <span class="frequency-description">{{ freq.description }}</span>
+                  </span>
+                </label>
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('frequency')?.touched && volunteerForm.get('frequency')?.invalid">
+                Por favor selecciona una frecuencia de servicio
+              </div>
+            </div>
+
+            <!-- Experiencia y Habilidades -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">star</i> Experiencia y Habilidades</h3>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('experience')?.touched && volunteerForm.get('experience')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">history_edu</span>
+                Experiencia previa en servicio voluntario *
+              </label>
+              <textarea formControlName="experience" class="form-textarea"
+                placeholder="Cuéntanos sobre tu experiencia previa en servicio voluntario, trabajo social o actividades similares..."
+                rows="3"
+                [class.invalid]="volunteerForm.get('experience')?.touched && volunteerForm.get('experience')?.invalid"></textarea>
+              <div class="char-count">
+                {{ volunteerForm.get('experience')?.value?.length || 0 }}/200
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('experience')?.touched && volunteerForm.get('experience')?.invalid">
+                {{ getErrorMessage('experience') }}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">psychology</span>
+                Habilidades especiales
+              </label>
+              <textarea formControlName="skills" class="form-textarea"
+                placeholder="Idiomas, primeros auxilios, consejería, música, deportes, cocina, etc..."
+                rows="2"></textarea>
+            </div>
+
+            <!-- Motivación -->
+            <div class="form-group"
+              [class.error]="volunteerForm.get('motivation')?.touched && volunteerForm.get('motivation')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">favorite</span>
+                ¿Por qué deseas servir en esta(s) obra(s)? *
+              </label>
+              <textarea formControlName="motivation" class="form-textarea"
+                placeholder="Comparte tu motivación para servir y cómo crees que puedes contribuir..." rows="3"
+                [class.invalid]="volunteerForm.get('motivation')?.touched && volunteerForm.get('motivation')?.invalid"></textarea>
+              <div class="char-count">
+                {{ volunteerForm.get('motivation')?.value?.length || 0 }}/300
+              </div>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('motivation')?.touched && volunteerForm.get('motivation')?.invalid">
+                {{ getErrorMessage('motivation') }}
+              </div>
+            </div>
+
+            <!-- Transporte y Documentación -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">directions_car</i> Logística</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" formControlName="hasTransport" hidden>
+                  <span class="checkbox-custom">
+                    <span class="material-icons">check</span>
+                  </span>
+                  <span class="checkbox-label">
+                    Cuento con transporte propio para desplazarme
+                  </span>
+                </label>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" formControlName="backgroundCheck" hidden>
+                  <span class="checkbox-custom">
+                    <span class="material-icons">check</span>
+                  </span>
+                  <span class="checkbox-label">
+                    Autorizo verificación de antecedentes (para obras con menores)
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Contacto de Emergencia -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">contact_emergency</i> Contacto de Emergencia *</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group"
+                [class.error]="volunteerForm.get('emergencyContact.name')?.touched && volunteerForm.get('emergencyContact.name')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">person</span>
+                  Nombre completo
+                </label>
+                <input type="text" formControlName="emergencyContact.name" class="form-input"
+                  placeholder="Nombre del contacto de emergencia">
+              </div>
+
+              <div class="form-group"
+                [class.error]="volunteerForm.get('emergencyContact.phone')?.touched && volunteerForm.get('emergencyContact.phone')?.invalid">
+                <label class="form-label">
+                  <span class="material-icons">phone</span>
+                  Teléfono
+                </label>
+                <input type="tel" formControlName="emergencyContact.phone" class="form-input"
+                  placeholder="Teléfono de emergencia">
+              </div>
+            </div>
+
+            <div class="form-group"
+              [class.error]="volunteerForm.get('emergencyContact.relationship')?.touched && volunteerForm.get('emergencyContact.relationship')?.invalid">
+              <label class="form-label">
+                <span class="material-icons">people</span>
+                Parentesco o relación
+              </label>
+              <input type="text" formControlName="emergencyContact.relationship" class="form-input"
+                placeholder="Ej: Padre, Madre, Cónyuge, Hermano">
+            </div>
+
+            <!-- Consideraciones de Salud -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">health_and_safety</span>
+                Consideraciones de salud (opcional)
+              </label>
+              <textarea formControlName="healthConsiderations" class="form-textarea"
+                placeholder="Alergias, condiciones médicas, restricciones físicas, medicamentos..." rows="2"></textarea>
+            </div>
+
+            <!-- Comentarios Adicionales -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons">comment</span>
+                Comentarios adicionales
+              </label>
+              <textarea formControlName="additionalComments" class="form-textarea"
+                placeholder="Algo más que quieras compartir o preguntar..." rows="2"></textarea>
+            </div>
+
+            <!-- Acuerdos -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">gavel</i> Acuerdos y Políticas *</h3>
+            </div>
+
+            <div class="form-group checkbox-group"
+              [class.error]="volunteerForm.get('termsAgreed')?.touched && volunteerForm.get('termsAgreed')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="termsAgreed" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
+                </span>
+                <span class="checkbox-label">
+                  He leído y acepto los
+                  <a href="#" class="privacy-link">términos de servicio voluntario</a>
+                  y me comprometo a seguir las pautas establecidas
+                </span>
+              </label>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('termsAgreed')?.touched && volunteerForm.get('termsAgreed')?.invalid">
+                Debes aceptar los términos de servicio
+              </div>
+            </div>
+
+            <div class="form-group checkbox-group"
+              [class.error]="volunteerForm.get('privacyAgreed')?.touched && volunteerForm.get('privacyAgreed')?.invalid">
+              <label class="checkbox-option">
+                <input type="checkbox" formControlName="privacyAgreed" hidden>
+                <span class="checkbox-custom">
+                  <span class="material-icons">check</span>
+                </span>
+                <span class="checkbox-label">
+                  Autorizo el tratamiento de mis datos según la
+                  <a href="#" class="privacy-link">política de privacidad</a>
+                  de la iglesia
+                </span>
+              </label>
+              <div class="error-message"
+                *ngIf="volunteerForm.get('privacyAgreed')?.touched && volunteerForm.get('privacyAgreed')?.invalid">
+                Debes aceptar la política de privacidad
+              </div>
+            </div>
+
+            <!-- Botón de Envío -->
+            <button type="submit" class="submit-btn" [disabled]="isSubmitting" [class.loading]="isSubmitting">
+              <span class="btn-content">
+                <span class="material-icons" *ngIf="!isSubmitting">handshake</span>
+                <span class="material-icons spinning" *ngIf="isSubmitting">refresh</span>
+                {{ isSubmitting ? 'Enviando solicitud...' : 'Enviar Solicitud de Voluntario' }}
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sidebar informativo -->
+      <div class="info-sidebar">
+        <div class="info-card">
+          <h3>Impacto de Nuestras Obras</h3>
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <span class="material-icons">local_hospital</span>
+              <div>
+                <h4>Obra Hospitalaria</h4>
+                <p>+500 personas atendidas mensualmente con apoyo espiritual y emocional</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">shopping_basket</span>
+              <div>
+                <h4>Canasta de Amor</h4>
+                <p>+200 familias apoyadas con alimentos y necesidades básicas cada mes</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">family_restroom</span>
+              <div>
+                <h4>Fundación Rema</h4>
+                <p>+150 niños y jóvenes beneficiados con programas educativos y recreativos</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <span class="material-icons">elderly</span>
+              <div>
+                <h4>Obra de Abuelos</h4>
+                <p>+80 adultos mayores acompañados regularmente en Sibaté y Silvania</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card">
+          <h3>Nuestro Equipo de Voluntarios</h3>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">250+</div>
+              <div class="stat-label">Voluntarios Activos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4</div>
+              <div class="stat-label">Obras Sociales</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Años Sirviendo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Coordinación de Obras</h3>
+          <p>Para más información sobre las obras y proceso de voluntariado:</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="material-icons">person</span>
+              <span>Pastor de Obras Sociales</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">email</span>
+              <span>obras@elsembrador.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">phone</span>
+              <span>+57 300 123 4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-icons">schedule</span>
+              <span>Lunes a Viernes 8am - 5pm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="requirements-card">
+          <h3>Requisitos para Voluntarios</h3>
+          <ul class="requirements-list">
+            <li><i class="material-icons">check_circle</i> Mayor de 18 años</li>
+            <li><i class="material-icons">check_circle</i> Entrevista con coordinador</li>
+            <li><i class="material-icons">check_circle</i> Capacitación inicial</li>
+            <li><i class="material-icons">check_circle</i> Compromiso mínimo 3 meses</li>
+            <li><i class="material-icons">check_circle</i> Certificado de antecedentes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

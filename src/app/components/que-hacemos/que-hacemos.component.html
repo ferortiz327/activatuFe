@@ -155,11 +155,11 @@
               </div>
 
               <div class="action-buttons">
-                <button class="btn-volunteer">
+                <button  [routerLink]="['/voluntario']"  class="btn-volunteer">
                   <i class="bi-hand-index-thumb"></i>
                   <span>Ser Voluntario</span>
                 </button>
-                <button class="btn-donate">
+                <button [routerLink]="['/donaciones']" class="btn-donate">
                   <i class="bi-heart"></i>
                   <span>Donar</span>
                 </button>
@@ -201,7 +201,7 @@
               </div>
 
               <div class="action-buttons">
-                <button class="btn-enroll">
+                <button [routerLink]="['/formacion']"class="btn-enroll">
                   <i class="bi-pencil-square"></i>
                   <span>Inscribirse</span>
                 </button>
@@ -251,7 +251,7 @@
               </div>
 
               <div class="action-buttons">
-                <button class="btn-join">
+                <button [routerLink]="['/ministerios']" class="btn-join">
                   <i class="bi-person-plus"></i>
                   <span>Unirse al Ministerio</span>
                 </button>

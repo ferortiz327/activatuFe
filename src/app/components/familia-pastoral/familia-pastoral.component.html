@@ -1,0 +1,296 @@
+<!-- familia-pastoral.component.html -->
+<section class="familia-pastoral-section" [@fadeIn]>
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-10 col-xl-8">
+            <span class="hero-badge animate__animated animate__fadeInDown">
+              <i class="bi-house-heart me-2"></i>
+              <span>Familia Pastoral</span>
+            </span>
+
+            <h1 class="hero-title animate__animated animate__fadeInUp">
+              Pastores Oscar Pérez &<br>Lorena Vargas
+            </h1>
+
+            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+              Una familia consagrada al servicio de Dios y a su congregación,
+              guiando con amor y ejemplo por más de 25 años.
+            </p>
+
+            <div class="hero-stats animate__animated animate__fadeInUp animate__delay-2s">
+              <div class="stat-item">
+                <div class="stat-number">{{ datosFamilia.anosMatrimonio }}</div>
+                <div class="stat-label">Años de Matrimonio</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">{{ datosFamilia.anosMinisterio }}</div>
+                <div class="stat-label">Años de Ministerio</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">{{ datosFamilia.hijas }}</div>
+                <div class="stat-label">Hijas</div>
+              </div>
+            </div>
+
+            <!-- FOTO FAMILIAR EN EL HERO -->
+            <div class="family-hero-image animate__animated animate__fadeInUp animate__delay-3s">
+              <div class="image-frame">
+                <img [src]="'assets/images/familia/familia-completa.jpg'"
+                     alt="Familia Pérez Vargas"
+                     class="family-photo"
+                     onerror="this.src='https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                <div class="photo-overlay">
+                  <span>Familia Pérez Vargas</span>
+                  <small>Juntos en el servicio a Dios</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="scroll-indicator animate__animated animate__bounce animate__delay-4s animate__infinite">
+              <i class="bi-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN DE MISIONES -->
+  <div class="misiones-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nuestro Enfoque Ministerial</h2>
+        <p class="section-subtitle">Cuatro pilares que guían nuestro servicio pastoral</p>
+      </div>
+
+      <div class="row g-4">
+        <div *ngFor="let mision of misiones"
+             class="col-md-6 col-lg-3">
+          <div class="mision-card"
+               [class.active]="misionActiva === mision.id"
+               (click)="setMisionActiva(mision.id)">
+            <div class="mision-icon-wrapper">
+              <i [class]="mision.icono" [style.color]="mision.color"></i>
+            </div>
+            <h3 class="mision-card-title">{{ mision.titulo }}</h3>
+            <p class="mision-card-subtitle">{{ mision.subtitulo }}</p>
+            <div class="mision-card-line" [style.background]="mision.color"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETALLE DE MISIÓN ACTIVA -->
+  <div class="mision-detalle-section" *ngIf="misionActiva">
+    <div class="container">
+      <div class="mision-content">
+        <h3 class="mision-active-title">{{ getMisionActiva().titulo }}</h3>
+        <p class="mision-active-description">{{ getMisionActiva().descripcion }}</p>
+
+        <div class="row g-4 mt-4">
+          <div *ngFor="let caracteristica of getMisionActiva().caracteristicas"
+               class="col-md-6">
+            <div class="caracteristica-card" [@cardHover]>
+              <i [class]="getMisionActiva().icono" class="caracteristica-icon"></i>
+              <div class="caracteristica-content">
+                <h4 class="caracteristica-title">{{ caracteristica }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN DE LA FAMILIA -->
+  <div class="familia-detalle-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Conoce a Nuestra Familia</h2>
+        <p class="section-subtitle">Cada miembro contribuye con dones únicos al ministerio</p>
+      </div>
+
+      <div class="row">
+        <!-- LISTA DE MIEMBROS -->
+        <div class="col-lg-5">
+          <div class="miembros-sidebar">
+            <div class="miembros-list" [@staggerFade]>
+              <div *ngFor="let miembro of getMiembrosVisibles()"
+                   [class.active]="miembroSeleccionado?.id === miembro.id"
+                   (click)="seleccionarMiembro(miembro)"
+                   class="miembro-sidebar-item">
+
+                <div class="miembro-avatar">
+                  <img [src]="miembro.imagen"
+                       [alt]="miembro.nombre"
+                       class="avatar-img"
+                       onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'">
+                  <div class="avatar-badge" [style.background]="
+                    miembro.rol.includes('Pastor') ? '#1e40af' :
+                    miembro.rol.includes('Esposa') ? '#059669' :
+                    '#7c3aed'
+                  ">
+                    <i [class]="
+                      miembro.rol.includes('Pastor') ? 'bi-person-badge' :
+                      miembro.rol.includes('Esposa') ? 'bi-person-heart' :
+                      'bi-person'
+                    "></i>
+                  </div>
+                </div>
+
+                <div class="miembro-sidebar-info">
+                  <h4 class="miembro-sidebar-name">{{ miembro.nombre }}</h4>
+                  <span class="miembro-sidebar-rol">{{ miembro.rol }}</span>
+                  <p class="miembro-sidebar-desc">{{ miembro.descripcion | slice:0:80 }}...</p>
+                </div>
+              </div>
+            </div>
+
+            <button *ngIf="!familiaCompleta" (click)="toggleFamiliaCompleta()" class="btn-toggle-familia">
+              <i class="bi-eye me-2"></i>
+              Ver Familia Completa
+            </button>
+            <button *ngIf="familiaCompleta" (click)="toggleFamiliaCompleta()" class="btn-toggle-familia">
+              <i class="bi-eye-slash me-2"></i>
+              Ver Solo Padres
+            </button>
+          </div>
+        </div>
+
+        <!-- DETALLE DEL MIEMBRO -->
+        <div class="col-lg-7">
+          <div class="miembro-detalle-card" *ngIf="miembroSeleccionado">
+            <div class="detalle-header">
+              <div class="detalle-avatar-main">
+                <img [src]="miembroSeleccionado.imagen"
+                     [alt]="miembroSeleccionado.nombre"
+                     class="detalle-img"
+                     onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80'">
+                <div class="detalle-img-overlay">
+                  <span>{{ miembroSeleccionado.rol }}</span>
+                </div>
+              </div>
+
+              <div class="detalle-info">
+                <h2 class="detalle-name">{{ miembroSeleccionado.nombre }}</h2>
+                <div class="detalle-rol-badge" [style.background]="
+                  miembroSeleccionado.rol.includes('Pastor') ? '#1e40af20' :
+                  miembroSeleccionado.rol.includes('Esposa') ? '#05966920' :
+                  '#7c3aed20'
+                ">
+                  <span [style.color]="
+                    miembroSeleccionado.rol.includes('Pastor') ? '#1e40af' :
+                    miembroSeleccionado.rol.includes('Esposa') ? '#059669' :
+                    '#7c3aed'
+                  ">
+                    {{ miembroSeleccionado.rol }}
+                  </span>
+                </div>
+                <p class="detalle-description">{{ miembroSeleccionado.descripcion }}</p>
+
+                <!-- Redes sociales -->
+                <div class="detalle-redes" *ngIf="miembroSeleccionado.redes">
+                  <div class="redes-label">Conecta con {{ miembroSeleccionado.nombre.split(' ')[0] }}:</div>
+                  <div class="redes-icons">
+                    <a *ngIf="miembroSeleccionado.redes.facebook"
+                       [href]="miembroSeleccionado.redes.facebook"
+                       class="red-social" target="_blank">
+                      <i class="bi-facebook"></i>
+                    </a>
+                    <a *ngIf="miembroSeleccionado.redes.instagram"
+                       [href]="miembroSeleccionado.redes.instagram"
+                       class="red-social" target="_blank">
+                      <i class="bi-instagram"></i>
+                    </a>
+                    <a *ngIf="miembroSeleccionado.redes.twitter"
+                       [href]="miembroSeleccionado.redes.twitter"
+                       class="red-social" target="_blank">
+                      <i class="bi-twitter"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detalle-content">
+              <h4 class="content-title">
+                <i class="bi-list-check me-2"></i>
+                Áreas de Servicio y Contribución
+              </h4>
+              <div class="servicios-grid">
+                <div *ngFor="let detalle of miembroSeleccionado.detalles" class="servicio-item">
+                  <i class="bi-check-circle-fill servicio-icon"></i>
+                  <span class="servicio-text">{{ detalle }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENSAJE DE LA FAMILIA -->
+  <div class="mensaje-familiar-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Un Mensaje de Nuestra Familia</h2>
+        <p class="section-subtitle">Palabras desde el corazón de nuestros pastores</p>
+      </div>
+
+      <div class="mensaje-card">
+        <div class="mensaje-family-photo">
+          <img [src]="'assets/images/familia/familia-mensaje.jpg'"
+               alt="Familia pastoral unida"
+               class="family-message-img"
+               onerror="this.src='https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+        </div>
+        <div class="mensaje-content">
+          <div class="mensaje-icon">
+            <i class="bi-chat-heart"></i>
+          </div>
+          <blockquote class="mensaje-text">
+            "Para nosotros es un honor servir a Dios y a esta maravillosa congregación.
+            Creemos que la familia es el corazón de la sociedad y el ministerio familiar
+            es fundamental para el crecimiento del Reino de Dios. Nuestro hogar siempre
+            está abierto, porque más que pastores, somos hermanos en la fe que caminamos
+            juntos hacia la madurez espiritual."
+          </blockquote>
+          <div class="mensaje-signature">
+            <span>Con amor y gratitud,</span>
+            <strong>Familia Pérez Vargas</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-content">
+          <h3 class="cta-title">¿Necesitas Oración o Consejería Pastoral?</h3>
+          <p class="cta-text">Nuestra familia está aquí para acompañarte en tu caminar con Dios</p>
+        </div>
+        <div class="cta-buttons">
+          <button class="btn-cta-primary" [routerLink]="['/contacto']">
+            <i class="bi-chat-dots me-2"></i>
+            Solicitar Oración
+          </button>
+          <button class="btn-cta-secondary" (click)="compartirRedSocial('whatsapp')">
+            <i class="bi-share me-2"></i>
+            Compartir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,679 @@
+// src/app/components/training-school-form/training-school-form.component.scss
+@import '../volunteer-form/volunteer-form.component.scss';
+
+// Variables específicas para formación - SOLO AZULES
+$training-primary: #1e3a8a; // Azul principal
+$training-secondary: #3b82f6; // Azul secundario
+$training-accent: #2563eb; // Azul más vibrante
+$training-light: #eff6ff; // Azul muy claro
+$training-dark: #1e40af; // Azul oscuro
+$training-highlight: #fbbf24; // Amarillo para destacados
+
+// Sobreescribir hero para formación - SOLO AZULES
+.training-hero {
+  background: linear-gradient(135deg, $training-primary 0%, $training-secondary 100%);
+
+  &::before {
+    background:
+      radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(30, 64, 175, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+  }
+
+  .hero-background .gradient-overlay {
+    background: linear-gradient(45deg, rgba($training-primary, 0.95) 0%, rgba($training-secondary, 0.85) 100%);
+  }
+
+  .hero-title .highlight {
+    color: $training-highlight; // Amarillo para destacar
+  }
+}
+
+// Grid de programas de formación
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.training-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border-color: $training-secondary;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+  }
+
+  &.selected {
+    border-color: $training-primary;
+    background: $training-light;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.2);
+
+    .training-icon {
+      background: $training-primary;
+      color: white;
+    }
+
+    .training-target {
+      color: $training-primary;
+    }
+
+    .selector-circle {
+      background: $training-primary;
+      border-color: $training-primary;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .training-option {
+    display: block;
+    cursor: pointer;
+  }
+
+  .training-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .training-icon {
+    width: 50px;
+    height: 50px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    .material-icons {
+      font-size: 1.8rem;
+      color: #6b7280;
+    }
+  }
+
+  .training-title-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .training-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $training-primary;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .training-target {
+    display: block;
+    font-size: 0.8rem;
+    color: $training-secondary;
+    font-weight: 500;
+  }
+
+  .training-description {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .training-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+
+      .material-icons {
+        font-size: 1rem;
+        color: $training-secondary;
+      }
+    }
+  }
+
+  .training-requirements {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .requirements-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $training-primary;
+      margin-bottom: 0.5rem;
+    }
+
+    .requirements-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 0.25rem;
+        padding-left: 1rem;
+        position: relative;
+
+        &::before {
+          content: '•';
+          position: absolute;
+          left: 0;
+          color: $training-secondary;
+        }
+      }
+    }
+  }
+
+  .training-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e5e7eb;
+
+    .selector-circle {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    .selector-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #6b7280;
+    }
+  }
+}
+
+// Grid de niveles espirituales
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.level-option {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+
+  &:hover {
+    border-color: $training-secondary;
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: $training-primary;
+    background: $training-light;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+
+    .level-name {
+      color: $training-primary;
+    }
+  }
+
+  .level-content {
+    display: block;
+  }
+
+  .level-name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+
+  .level-description {
+    display: block;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+}
+
+// Grid de compromiso
+.commitment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commitment-option {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+
+  &:hover {
+    border-color: $training-secondary;
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: $training-primary;
+    background: $training-light;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+
+    .commitment-name {
+      color: $training-primary;
+    }
+  }
+
+  .commitment-content {
+    display: block;
+  }
+
+  .commitment-name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+
+  .commitment-description {
+    display: block;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+}
+
+// Tarjetas adicionales
+.process-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+  width: 100%;
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $training-primary;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}
+
+.process-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step-counter;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f3f4f6;
+    position: relative;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: $training-light;
+      color: $training-primary;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 48px;
+      bottom: -1rem;
+      width: 2px;
+      background: #e5e7eb;
+      z-index: 1;
+    }
+
+    &:last-child::before {
+      display: none;
+    }
+  }
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 4rem;
+    color: $training-light;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $training-primary;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+}
+
+.testimonial-content {
+  p {
+    font-style: italic;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+
+  .material-icons {
+    color: $training-primary;
+    font-size: 1.5rem;
+  }
+
+  div {
+    flex: 1;
+
+    strong {
+      display: block;
+      font-size: 0.9rem;
+      color: $training-primary;
+      margin-bottom: 0.25rem;
+    }
+
+    span {
+      display: block;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+  }
+}
+
+// Ajustes específicos para botón de formación
+.submit-btn {
+  background: linear-gradient(135deg, $training-primary, $training-secondary);
+  box-shadow: 0 8px 25px rgba($training-primary, 0.3);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 12px 30px rgba($training-primary, 0.4);
+  }
+}
+
+// Correcciones para los links de privacidad
+.privacy-link {
+  color: $training-primary;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $training-dark;
+    text-decoration: underline;
+  }
+}
+
+// Responsive adicional
+@media (max-width: 1024px) {
+  .training-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .training-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .levels-grid,
+  .commitment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .training-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .process-steps li {
+    align-items: flex-start;
+  }
+
+  .training-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .training-icon {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Animaciones específicas para formación
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.training-card {
+  animation: fadeInUp 0.5s ease forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.1s);
+  opacity: 0;
+}
+
+// Estilos para el campo de edad específico
+.age-input-container {
+  position: relative;
+
+  .age-hint {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: #6b7280;
+    background: #f9fafb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+}
+
+// Mejora para los checkboxes de membresía
+.checkbox-group {
+  .checkbox-option {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $training-secondary;
+      background: #f8fafc;
+    }
+
+    &.selected {
+      border-color: $training-primary;
+      background: $training-light;
+    }
+  }
+}
+
+
+// Estilos específicos para los checkboxes de disponibilidad
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.availability-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+
+  &:hover {
+    border-color: $training-secondary;
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    border-color: $training-primary;
+    background: $training-light;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
+
+    .availability-icon {
+      background: $training-primary;
+      color: white;
+    }
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .availability-icon {
+    width: 44px;
+    height: 44px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+
+    .material-icons {
+      font-size: 1.3rem;
+      color: #6b7280;
+    }
+  }
+
+  .availability-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    text-align: center;
+  }
+}

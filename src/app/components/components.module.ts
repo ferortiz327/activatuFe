@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { NouisliderModule } from 'ng2-nouislider';
 import { RouterModule } from '@angular/router';
 
@@ -17,13 +17,16 @@ import { DonationsComponent } from './donations/donations.component';
 import { BeliefComponent } from './belief/belief.component';
 import { MaterialModule } from 'app/shared/material/material.module';
 import { ModalPromotionsComponent } from './modal-promotions/modal-promotions.component';
-import { MissionsComponent } from './missions/missions.component';
-import { MisionEsperanzaModalComponent } from './mision-esperanza-modal/mision-esperanza-modal.component';
 import { StationComponent } from './station/station.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AboutchurchComponent } from './aboutchurch/aboutchurch.component';
 import { QueHacemosComponent } from './que-hacemos/que-hacemos.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
+import { TrainingSchoolFormComponent } from './training-school-form/training-school-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VolunteerFormComponent } from './volunteer-form/volunteer-form.component';
+import { MinistriesFormComponent } from './ministries-form/ministries-form.component';
+import { FamiliaPastoralComponent } from './familia-pastoral/familia-pastoral.component';
 
 
 
@@ -49,13 +52,15 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
         DonationsComponent,
         BeliefComponent,
         ModalPromotionsComponent,
-        MissionsComponent,
-        MisionEsperanzaModalComponent,
         StationComponent,
         RegistrationComponent,
         AboutchurchComponent,
         QueHacemosComponent,
-        MusicPlayerComponent
+        MusicPlayerComponent,
+        TrainingSchoolFormComponent,
+        VolunteerFormComponent,
+        MinistriesFormComponent,
+        FamiliaPastoralComponent
     ],
     entryComponents: [NgbdModalContent],
     exports: [ComponentsComponent,
