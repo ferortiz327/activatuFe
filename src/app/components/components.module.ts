@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VolunteerFormComponent } from './volunteer-form/volunteer-form.component';
 import { MinistriesFormComponent } from './ministries-form/ministries-form.component';
 import { FamiliaPastoralComponent } from './familia-pastoral/familia-pastoral.component';
+import { SedesComponent } from './sedes/sedes.component';
 
 
 
@@ -60,7 +61,8 @@ import { FamiliaPastoralComponent } from './familia-pastoral/familia-pastoral.co
         TrainingSchoolFormComponent,
         VolunteerFormComponent,
         MinistriesFormComponent,
-        FamiliaPastoralComponent
+        FamiliaPastoralComponent,
+        SedesComponent
     ],
     entryComponents: [NgbdModalContent],
     exports: [ComponentsComponent,

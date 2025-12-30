@@ -20,20 +20,20 @@ export class MusicPlayerService {
  private tracks: Track[] = [
     {
       id: 1,
-      title: 'Dios está aquí',
-      artist: 'Ministerio de Alabanza',
-      src: 'assets/audio/dios-esta-aqui.mp3',
-      cover: 'assets/img/music/covers/dios-esta-aqui.jpg',
+      title: 'Un Corazón',
+      artist: '/Un Corazón',
+      src: '../../assets/img/Activa/audio/Un Corazón feat. Living - Jesucristo Basta (Versión acústica).mp3',
+      cover: '../../assets/img/Activa/home2.jpg',
       duration: 245,
       album: 'Adoración Viva',
       year: 2023
     },
     {
       id: 2,
-      title: 'Grande es tu fidelidad',
+      title: 'Tú dices',
       artist: 'Coro El Sembrador',
-      src: 'assets/audio/grande-es-tu-fidelidad.mp3',
-      cover: 'assets/img/music/covers/fidelidad.jpg',
+      src: '../../assets/img/Activa/audio/TWICE MÚSICA - Tú dices feat. Valeria Farías (LAUREN DAIGLE - You Say en español).mp3',
+      cover: '../../assets/img/Activa/home3.jpg',
       duration: 312,
       album: 'Himnos Eternos',
       year: 2024
@@ -42,8 +42,8 @@ export class MusicPlayerService {
       id: 3,
       title: 'Ríos de Agua Viva',
       artist: 'Ministerio de Jóvenes',
-      src: 'assets/audio/rios-agua-viva.mp3',
-      cover: 'assets/img/music/covers/rios.jpg',
+      src: '../../assets/img/Activa/audio/Generación 12 Ft. Redimi2  - Tu Amor No Tiene Fin (Versión En vivo).mp3',
+      cover: '../../assets/img/Activa/kids.jpg',
       duration: 278,
       album: 'Fluye en Mí',
       year: 2023

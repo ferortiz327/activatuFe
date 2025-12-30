@@ -1,115 +1,220 @@
-<!-- El mismo HTML que te mostré anteriormente, pero con algunas mejoras -->
-<div class="music-player" [class.active]="isPlayerOpen" [class.playing]="isPlaying">
-  <!-- Botón flotante -->
-  <button class="music-player-toggle" (click)="togglePlayer()" [attr.aria-expanded]="isPlayerOpen">
-    <i class="bi" [class.bi-music-note-beamed]="!isPlaying" [class.bi-pause-circle]="isPlaying"></i>
-    <div class="pulse-animation" *ngIf="isPlaying"></div>
+<!-- music-player.component.html -->
+<div class="radio-station" [class.active]="isPlayerOpen" [class.on-air]="isPlaying">
+  <!-- Botón emisora estilo radio -->
+  <button class="radio-toggle-btn" (click)="togglePlayer()"
+          [attr.aria-expanded]="isPlayerOpen"
+          [attr.aria-label]="'Emisora ' + (isPlaying ? 'en vivo' : 'pausada')">
+
+    <!-- Indicador de "En Vivo" -->
+    <div class="live-indicator" *ngIf="isPlaying">
+      <span class="live-dot"></span>
+      <span class="live-text">EN VIVO</span>
+    </div>
+
+    <!-- Ícono de radio -->
+    <div class="radio-icon">
+      <i class="bi bi-broadcast"></i>
+      <div class="radio-signal" *ngIf="isPlaying">
+        <div class="signal-wave wave-1"></div>
+        <div class="signal-wave wave-2"></div>
+        <div class="signal-wave wave-3"></div>
+      </div>
+    </div>
+
+    <!-- Frecuencia de la emisora -->
+    <div class="station-frequency">
+      <span class="frequency">FM 96.7</span>
+      <small class="station-name">ATF</small>
+    </div>
+
+    <!-- Tooltip automático -->
+    <div class="radio-tooltip">
+      <i class="bi bi-info-circle"></i>
+      <div class="tooltip-content">
+        {{ isPlaying ? 'Escuchando: ' + (currentTrack?.title || '') : 'Haz clic para abrir la emisora' }}
+      </div>
+    </div>
   </button>
 
-  <!-- Panel del reproductor -->
-  <div class="player-panel" *ngIf="isPlayerOpen">
-    <!-- Cabecera -->
-    <div class="player-header">
-      <h5 class="player-title">
-        <i class="bi bi-music-note-list me-2"></i>
-        Alabanza y Adoración
-      </h5>
-      <button class="player-close" (click)="togglePlayer()">
+  <!-- Panel de la emisora -->
+  <div class="radio-panel" *ngIf="isPlayerOpen">
+    <!-- Cabecera estilo radio -->
+    <div class="radio-header">
+      <div class="station-info">
+        <div class="station-logo">
+          <i class="bi bi-broadcast"></i>
+        </div>
+        <div class="station-details">
+          <h5 class="station-title">Emisora ATF</h5>
+          <p class="station-slogan">Tu frecuencia de alabanza y adoración</p>
+          <div class="station-meta">
+            <span class="meta-item">
+              <i class="bi bi-clock"></i>
+              24/7
+            </span>
+            <span class="meta-item">
+              <i class="bi bi-headphones"></i>
+              {{ listenersCount }} oyentes
+            </span>
+            <span class="meta-item">
+              <i class="bi bi-geo-alt"></i>
+              En línea
+            </span>
+          </div>
+        </div>
+      </div>
+      <button class="radio-close" (click)="togglePlayer()" aria-label="Cerrar emisora">
         <i class="bi bi-x-lg"></i>
       </button>
     </div>
 
-    <!-- Canción actual -->
-    <div class="current-track" *ngIf="currentTrack">
-      <div class="track-thumbnail">
-        <img [src]="currentTrack.cover" [alt]="currentTrack.title">
-        <div class="vinyl-effect"></div>
-      </div>
-      <div class="track-info">
-        <h6 class="track-title">{{ currentTrack.title }}</h6>
-        <p class="track-artist">{{ currentTrack.artist }}</p>
-        <small class="text-muted" *ngIf="currentTrack.album">{{ currentTrack.album }} • {{ currentTrack.year }}</small>
+    <!-- Indicador de transmisión en vivo -->
+    <div class="broadcast-indicator" *ngIf="isPlaying">
+      <div class="broadcast-content">
+        <div class="broadcast-status">
+          <span class="status-dot"></span>
+          <span class="status-text">TRANSMITIENDO EN VIVO</span>
+        </div>
+        <div class="broadcast-time">
+          <i class="bi bi-clock-history"></i>
+          {{ formatBroadcastTime() }}
+        </div>
       </div>
     </div>
 
-    <!-- Controles -->
-    <div class="player-controls">
+    <!-- Programa actual -->
+    <div class="current-program">
+      <div class="program-thumbnail">
+        <img [src]="currentTrack?.cover || 'assets/images/radio-default.jpg'"
+             [alt]="currentTrack?.title || 'Programa actual'"
+             class="program-img">
+        <div class="vinyl-overlay" *ngIf="isPlaying"></div>
+      </div>
+      <div class="program-info">
+        <h6 class="program-title">{{ currentTrack?.title || 'Selecciona un programa' }}</h6>
+        <p class="program-description">{{ currentTrack?.artist || 'Alabanza y adoración 24/7' }}</p>
+        <div class="program-schedule">
+          <span class="schedule-time">
+            <i class="bi bi-calendar-event"></i>
+            {{ getCurrentSchedule() }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles de radio -->
+    <div class="radio-controls">
       <audio #audioPlayer preload="metadata"></audio>
 
-      <!-- Barra de progreso -->
-      <div class="progress-container">
-        <span class="time">{{ formatTime(currentTime) }}</span>
-        <div class="progress-bar" #progressBar
-             (mousedown)="startDragging()"
-             (click)="seek($event)">
-          <div class="progress-fill" [style.width.%]="progress"></div>
-          <div class="progress-thumb" [style.left.%]="progress"></div>
+      <!-- Sintonizador de frecuencia -->
+      <div class="frequency-tuner">
+        <button class="tune-btn" (click)="tuneDown()" aria-label="Bajar frecuencia">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="tuner-display">
+          <span class="tuner-label">FRECUENCIA</span>
+          <div class="tuner-frequency">
+            <span class="frequency-value">FM 96.7</span>
+            <span class="frequency-unit">MHz</span>
+          </div>
+          <div class="tuner-visualizer">
+            <div class="tuner-bar" [style.width.%]="signalStrength"></div>
+          </div>
         </div>
-        <span class="time">{{ formatTime(duration) }}</span>
+        <button class="tune-btn" (click)="tuneUp()" aria-label="Subir frecuencia">
+          <i class="bi bi-chevron-right"></i>
+        </button>
       </div>
 
-      <!-- Botones de control -->
-      <div class="control-buttons">
-        <button class="control-btn" (click)="playPrevious()">
+      <!-- Controles principales -->
+      <div class="main-controls">
+        <button class="control-btn preset-btn"
+                (click)="presetBtn.click()"
+                [attr.aria-label]="'Preset ' + (currentPreset + 1)">
+          <i class="bi bi-bookmark"></i>
+          <span class="preset-number">{{ currentPreset + 1 }}</span>
+        </button>
+
+        <button class="control-btn prev-btn" (click)="playPrevious()" aria-label="Programa anterior">
           <i class="bi bi-skip-backward-fill"></i>
         </button>
 
-        <button class="control-btn play-btn" (click)="togglePlay()">
+        <button class="control-btn play-btn" (click)="togglePlay()" aria-label="Reproducir/Pausar">
           <i class="bi bi-play-fill" *ngIf="!isPlaying"></i>
           <i class="bi bi-pause-fill" *ngIf="isPlaying"></i>
+          <div class="play-btn-glow"></div>
         </button>
 
-        <button class="control-btn" (click)="playNext()">
+        <button class="control-btn next-btn" (click)="playNext()" aria-label="Siguiente programa">
           <i class="bi bi-skip-forward-fill"></i>
         </button>
 
-        <button class="control-btn volume-btn" (click)="volumeBtn.click()">
-          <i class="bi" [class.bi-volume-up-fill]="volume > 0.5"
-                        [class.bi-volume-down-fill]="volume > 0 && volume <= 0.5"
-                        [class.bi-volume-mute-fill]="volume === 0"></i>
+        <button class="control-btn volume-btn" (click)="toggleMute()" aria-label="Silenciar">
+          <i class="bi" [class.bi-volume-up-fill]="volume > 0.5 && !isMuted"
+                      [class.bi-volume-down-fill]="volume > 0 && volume <= 0.5 && !isMuted"
+                      [class.bi-volume-mute-fill]="volume === 0 || isMuted"></i>
         </button>
       </div>
 
       <!-- Control de volumen -->
-      <div class="volume-control">
-        <div class="volume-bar" #volumeBar
+      <div class="volume-slider">
+        <i class="bi bi-volume-down volume-icon"></i>
+        <div class="volume-track" #volumeBar
              (mousedown)="startVolumeDragging()"
              (click)="setVolume($event)">
-          <div class="volume-fill" [style.width.%]="volume * 100"></div>
-          <div class="volume-thumb" [style.left.%]="volume * 100"></div>
+          <div class="volume-progress" [style.width.%]="(isMuted ? 0 : volume) * 100"></div>
+          <div class="volume-thumb" [style.left.%]="(isMuted ? 0 : volume) * 100"></div>
         </div>
+        <i class="bi bi-volume-up volume-icon"></i>
       </div>
     </div>
 
-    <!-- Playlist -->
-    <div class="playlist-container">
-      <h6 class="playlist-title">
-        <i class="bi bi-list-ul me-2"></i>
-        Playlist ({{ tracks.length }} canciones)
-      </h6>
-      <div class="playlist">
-        <div class="playlist-item"
-             *ngFor="let track of tracks; let i = index"
-             [class.active]="i === currentTrackIndex"
+    <!-- Lista de programas (playlist) -->
+    <div class="programs-list">
+      <div class="programs-header">
+        <h6 class="programs-title">
+          <i class="bi bi-list-ol"></i>
+          Programación de Hoy
+        </h6>
+        <div class="programs-filter">
+          <button class="filter-btn" [class.active]="filter === 'all'" (click)="filter = 'all'">Todos</button>
+          <button class="filter-btn" [class.active]="filter === 'live'" (click)="filter = 'live'">En Vivo</button>
+          <button class="filter-btn" [class.active]="filter === 'upcoming'" (click)="filter = 'upcoming'">Próximos</button>
+        </div>
+      </div>
+
+      <div class="programs-scroll">
+        <div class="program-item"
+             *ngFor="let track of getFilteredTracks(); let i = index"
+             [class.current]="i === currentTrackIndex"
+             [class.live]="isLiveProgram(track)"
              (click)="playTrack(i)">
-          <img [src]="track.cover" [alt]="track.title" class="playlist-item-img">
-          <div class="playlist-item-info">
-            <div class="playlist-item-title">{{ track.title }}</div>
-            <div class="playlist-item-artist">{{ track.artist }}</div>
+          <div class="program-item-time">
+            <span class="time-start">{{ getProgramTime(i) }}</span>
           </div>
-          <span class="playlist-item-duration">{{ formatTime(track.duration) }}</span>
+          <div class="program-item-info">
+            <div class="program-item-title">{{ track.title }}</div>
+            <div class="program-item-desc">{{ track.artist }}</div>
+          </div>
+          <div class="program-item-status">
+            <span class="status-badge" *ngIf="isLiveProgram(track)">EN VIVO</span>
+            <span class="duration-badge">{{ formatTime(track.duration) }}</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Información -->
-    <div class="player-footer">
-      <div class="autoplay-info">
-        <i class="bi bi-info-circle me-2"></i>
-        <small>{{ autoplay ? 'Reproducción automática activada' : 'Click en play para iniciar' }}</small>
+    <!-- Footer con información -->
+    <div class="radio-footer">
+      <div class="footer-info">
+        <i class="bi bi-info-circle"></i>
+        <small>{{ getRadioInfo() }}</small>
       </div>
-      <div class="player-stats">
-        <small>{{ currentTrackIndex + 1 }} de {{ tracks.length }}</small>
+      <div class="footer-stats">
+        <button class="share-btn" (click)="shareStation()" aria-label="Compartir emisora">
+          <i class="bi bi-share"></i>
+          Compartir
+        </button>
       </div>
     </div>
   </div>

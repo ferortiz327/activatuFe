@@ -172,252 +172,113 @@
               <p class="section-subtitle">Selecciona el programa(s) que deseas tomar (puedes elegir varios)</p>
             </div>
 
-            <div class="form-group"
+            <!-- Programas de Formación - Ahora en Acordeón -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">menu_book</i> Programas de Formación</h3>
+              <p class="section-subtitle">Selecciona el programa(s) que deseas tomar (puedes elegir varios)</p>
+            </div>
+
+            <div class="accordion" id="trainingProgramsAccordion"
               [class.error]="registrationForm.get('selectedTrainings')?.touched && registrationForm.get('selectedTrainings')?.invalid">
-              <div class="training-grid">
-                <div class="training-card" *ngFor="let program of trainingPrograms"
-                  [class.selected]="isTrainingSelected(program.id)">
-                  <label class="training-option">
-                    <input type="checkbox" [value]="program.id" (change)="onTrainingChange($event, program.id)"
-                      [checked]="isTrainingSelected(program.id)" hidden>
-                    <div class="training-header">
-                      <span class="training-icon">
+
+              <div *ngFor="let program of trainingPrograms; let i = index" class="accordion-item">
+                <h2 class="accordion-header" id="heading-{{i}}">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse-' + i" [attr.aria-expanded]="i === 0 ? 'true' : 'false'"
+                    [attr.aria-controls]="'collapse-' + i" [class.collapsed]="i !== 0">
+
+                    <div class="accordion-header-content">
+                      <!-- Checkbox para seleccionar programa -->
+                      <label class="accordion-checkbox-label" (click)="$event.stopPropagation()">
+                        <input type="checkbox" [value]="program.id" (change)="onTrainingChange($event, program.id)"
+                          [checked]="isTrainingSelected(program.id)" class="form-check-input me-2">
+                      </label>
+
+                      <!-- Icono del programa -->
+                      <span class="accordion-icon me-3">
                         <span class="material-icons">{{ program.icon }}</span>
                       </span>
-                      <div class="training-title-info">
-                        <h4 class="training-title">{{ program.name }}</h4>
-                        <span class="training-target">Para: {{ program.target }}</span>
+
+                      <!-- Información principal -->
+                      <div class="accordion-title-info">
+                        <h4 class="accordion-program-title">{{ program.name }}</h4>
+                        <div class="accordion-program-meta">
+                          <span class="badge bg-primary me-2">{{ program.target }}</span>
+                          <small class="text-muted">
+                            <i class="material-icons align-middle me-1" style="font-size: 16px;">schedule</i>
+                            {{ program.duration }}
+                          </small>
+                        </div>
                       </div>
                     </div>
+                  </button>
+                </h2>
 
-                    <p class="training-description">{{ program.description }}</p>
+                <div [id]="'collapse-' + i" class="accordion-collapse collapse" [class.show]="i === 0"
+                  [attr.aria-labelledby]="'heading-' + i" [attr.data-bs-parent]="'#trainingProgramsAccordion'">
 
-                    <div class="training-details">
-                      <div class="detail-item">
-                        <span class="material-icons">schedule</span>
-                        <span>{{ program.duration }}</span>
+                  <div class="accordion-body">
+                    <div class="program-details">
+                      <!-- Descripción -->
+                      <p class="program-description">{{ program.description }}</p>
+
+                      <!-- Detalles -->
+                      <div class="row program-info">
+                        <div class="col-md-6">
+                          <div class="program-info-item">
+                            <i class="material-icons me-2">calendar_today</i>
+                            <strong>Horario:</strong> {{ program.schedule }}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="program-info-item">
+                            <i class="material-icons me-2">location_on</i>
+                            <strong>Modalidad:</strong> {{ program.modality || 'Presencial' }}
+                          </div>
+                        </div>
                       </div>
-                      <div class="detail-item">
-                        <span class="material-icons">calendar_today</span>
-                        <span>{{ program.schedule }}</span>
+
+                      <!-- Requisitos -->
+                      <div class="program-requirements mt-3">
+                        <h6 class="requirements-title">
+                          <i class="material-icons me-2">checklist</i>
+                          Requisitos de ingreso:
+                        </h6>
+                        <ul class="requirements-list">
+                          <li *ngFor="let req of program.requirements">{{ req }}</li>
+                        </ul>
+                      </div>
+
+                      <!-- Costo (opcional) -->
+                      <div *ngIf="program.cost" class="program-cost mt-3">
+                        <h6 class="cost-title">
+                          <i class="material-icons me-2">payments</i>
+                          Inversión:
+                        </h6>
+                        <p class="cost-amount">{{ program.cost }}</p>
+                      </div>
+
+                      <!-- Botón para seleccionar dentro del acordeón -->
+                      <div class="mt-4 text-end">
+                        <button type="button" class="btn btn-outline-primary btn-sm"
+                          (click)="toggleProgramSelection(program.id)">
+                          <i class="material-icons align-middle me-1">{{
+                            isTrainingSelected(program.id) ? 'remove' : 'add'
+                            }}</i>
+                          {{ isTrainingSelected(program.id) ? 'Quitar programa' : 'Seleccionar programa' }}
+                        </button>
                       </div>
                     </div>
-
-                    <div class="training-requirements">
-                      <span class="requirements-label">Requisitos:</span>
-                      <ul class="requirements-list">
-                        <li *ngFor="let req of program.requirements.slice(0, 2)">{{ req }}</li>
-                        <li *ngIf="program.requirements.length > 2">...</li>
-                      </ul>
-                    </div>
-
-                    <div class="training-selector">
-                      <span class="selector-circle"></span>
-                      <span class="selector-text">Inscribirme en este programa</span>
-                    </div>
-                  </label>
+                  </div>
                 </div>
               </div>
-              <div class="error-message"
-                *ngIf="registrationForm.get('selectedTrainings')?.touched && registrationForm.get('selectedTrainings')?.invalid">
-                Por favor selecciona al menos un programa de formación
-              </div>
             </div>
 
-            <!-- Nivel Espiritual -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">spa</i> Nivel Espiritual</h3>
-            </div>
-
-            <div class="form-group"
-              [class.error]="registrationForm.get('spiritualLevel')?.touched && registrationForm.get('spiritualLevel')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">psychology</span>
-                ¿Cómo describirías tu nivel espiritual actual? *
-              </label>
-              <div class="levels-grid">
-                <label class="level-option" *ngFor="let level of spiritualLevels"
-                  [class.selected]="isSpiritualLevelSelected(level.id)">
-                  <input type="radio" formControlName="spiritualLevel" [value]="level.id" hidden>
-                  <div class="level-content">
-                    <span class="level-name">{{ level.name }}</span>
-                    <span class="level-description">{{ level.description }}</span>
-                  </div>
-                </label>
-              </div>
-              <div class="error-message"
-                *ngIf="registrationForm.get('spiritualLevel')?.touched && registrationForm.get('spiritualLevel')?.invalid">
-                Por favor selecciona tu nivel espiritual
-              </div>
-            </div>
-
-            <!-- Formación Previa -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">history_edu</i> Formación y Objetivos</h3>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">
-                <span class="material-icons">school</span>
-                Formación cristiana previa (si aplica)
-              </label>
-              <textarea formControlName="previousTraining" class="form-textarea"
-                placeholder="Cursos, seminarios, talleres bíblicos previos..." rows="2"></textarea>
-            </div>
-
-            <div class="form-group"
-              [class.error]="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">flag</span>
-                ¿Cuáles son tus objetivos al tomar esta formación? *
-              </label>
-              <textarea formControlName="trainingGoals" class="form-textarea"
-                placeholder="¿Qué esperas aprender? ¿Cómo planeas aplicar este conocimiento? ¿Cuál es tu propósito?..."
-                rows="3"
-                [class.invalid]="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid"></textarea>
-              <div class="char-count">
-                {{ registrationForm.get('trainingGoals')?.value?.length || 0 }}/200
-              </div>
-              <div class="error-message"
-                *ngIf="registrationForm.get('trainingGoals')?.touched && registrationForm.get('trainingGoals')?.invalid">
-                {{ getErrorMessage('trainingGoals') }}
-              </div>
-            </div>
-            <!-- Sección de Disponibilidad -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">schedule</i> Disponibilidad</h3>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">
-                <span class="material-icons">access_time</span>
-                ¿En qué horarios podrías asistir?
-              </label>
-              <div class="availability-grid">
-                <!-- Días entre semana -->
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('weekdays')">
-                  <input type="checkbox" [checked]="isAvailabilitySelected('weekdays')"
-                    (change)="onAvailabilityChange('weekdays', $event)">
-                  <span class="availability-icon">
-                    <span class="material-icons">today</span>
-                  </span>
-                  <span class="availability-label">Entre semana</span>
-                </label>
-
-                <!-- Fines de semana -->
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('weekends')">
-                  <input type="checkbox" [checked]="isAvailabilitySelected('weekends')"
-                    (change)="onAvailabilityChange('weekends', $event)">
-                  <span class="availability-icon">
-                    <span class="material-icons">weekend</span>
-                  </span>
-                  <span class="availability-label">Fines de semana</span>
-                </label>
-
-                <!-- Noches -->
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('evenings')">
-                  <input type="checkbox" [checked]="isAvailabilitySelected('evenings')"
-                    (change)="onAvailabilityChange('evenings', $event)">
-                  <span class="availability-icon">
-                    <span class="material-icons">nights_stay</span>
-                  </span>
-                  <span class="availability-label">Noches</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Nivel de Compromiso -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">commitment</i> Nivel de Compromiso</h3>
-            </div>
-
-            <div class="form-group"
-              [class.error]="registrationForm.get('commitment')?.touched && registrationForm.get('commitment')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">assignment_turned_in</span>
-                ¿Cuál es tu nivel de compromiso? *
-              </label>
-              <div class="commitment-grid">
-                <label class="commitment-option" *ngFor="let level of commitmentLevels"
-                  [class.selected]="isCommitmentSelected(level.id)">
-                  <input type="radio" formControlName="commitment" [value]="level.id" hidden>
-                  <div class="commitment-content">
-                    <span class="commitment-name">{{ level.name }}</span>
-                    <span class="commitment-description">{{ level.description }}</span>
-                  </div>
-                </label>
-              </div>
-              <div class="error-message"
-                *ngIf="registrationForm.get('commitment')?.touched && registrationForm.get('commitment')?.invalid">
-                Por favor selecciona tu nivel de compromiso
-              </div>
-            </div>
-
-            <!-- Expectativas -->
-            <div class="form-group"
-              [class.error]="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">lightbulb</span>
-                ¿Qué expectativas tienes de esta formación? *
-              </label>
-              <textarea formControlName="expectations" class="form-textarea"
-                placeholder="¿Qué esperas de los maestros? ¿De los compañeros? ¿Del contenido? ¿Del ambiente de aprendizaje?..."
-                rows="3"
-                [class.invalid]="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid"></textarea>
-              <div class="char-count">
-                {{ registrationForm.get('expectations')?.value?.length || 0 }}/300
-              </div>
-              <div class="error-message"
-                *ngIf="registrationForm.get('expectations')?.touched && registrationForm.get('expectations')?.invalid">
-                {{ getErrorMessage('expectations') }}
-              </div>
-            </div>
-
-            <!-- Recomendación Pastoral -->
-            <div class="form-group">
-              <label class="form-label">
-                <span class="material-icons">recommend</span>
-                Recomendación pastoral (opcional)
-              </label>
-              <textarea formControlName="pastorRecommendation" class="form-textarea"
-                placeholder="Si un pastor te recomendó, escribe su nombre y congregación..." rows="2"></textarea>
-            </div>
-
-            <!-- Contacto de Emergencia -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">contact_emergency</i> Contacto de Emergencia *</h3>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group"
-                [class.error]="registrationForm.get('emergencyContact.name')?.touched && registrationForm.get('emergencyContact.name')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">person</span>
-                  Nombre completo
-                </label>
-                <input type="text" formControlName="emergencyContact.name" class="form-input"
-                  placeholder="Nombre del contacto de emergencia">
-              </div>
-
-              <div class="form-group"
-                [class.error]="registrationForm.get('emergencyContact.phone')?.touched && registrationForm.get('emergencyContact.phone')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">phone</span>
-                  Teléfono
-                </label>
-                <input type="tel" formControlName="emergencyContact.phone" class="form-input"
-                  placeholder="Teléfono de emergencia">
-              </div>
-            </div>
-
-            <div class="form-group"
-              [class.error]="registrationForm.get('emergencyContact.relationship')?.touched && registrationForm.get('emergencyContact.relationship')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">people</span>
-                Parentesco o relación
-              </label>
-              <input type="text" formControlName="emergencyContact.relationship" class="form-input"
-                placeholder="Ej: Padre, Madre, Cónyuge, Hermano">
+            <!-- Mensaje de error -->
+            <div class="error-message mt-2"
+              *ngIf="registrationForm.get('selectedTrainings')?.touched && registrationForm.get('selectedTrainings')?.invalid">
+              <i class="material-icons me-1">error</i>
+              Por favor selecciona al menos un programa de formación
             </div>
 
             <!-- Acuerdos -->
@@ -427,15 +288,6 @@
 
             <div class="form-group checkbox-group"
               [class.error]="registrationForm.get('termsAgreed')?.touched && registrationForm.get('termsAgreed')?.invalid">
-              <label class="checkbox-option">
-                <input type="checkbox" formControlName="termsAgreed" hidden>
-                <span class="checkbox-custom">
-                  <span class="material-icons">check</span>
-                </span>
-                <span class="checkbox-label">
-                  Me comprometo a asistir al menos al 75% de las clases y cumplir con los requisitos del programa
-                </span>
-              </label>
               <div class="error-message"
                 *ngIf="registrationForm.get('termsAgreed')?.touched && registrationForm.get('termsAgreed')?.invalid">
                 Debes aceptar los términos del programa

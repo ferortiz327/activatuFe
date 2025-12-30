@@ -16,7 +16,8 @@
       <i class="material-icons">check_circle</i>
       <div>
         <h4>¡Inscripción exitosa!</h4>
-        <p>El líder del ministerio se pondrá en contacto contigo para coordinar tu participación. ¡Dios bendiga tu deseo de servir!</p>
+        <p>El líder del ministerio se pondrá en contacto contigo para coordinar tu participación. ¡Dios bendiga tu deseo
+          de servir!</p>
       </div>
     </div>
 
@@ -48,68 +49,57 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group" [class.error]="ministryForm.get('name')?.touched && ministryForm.get('name')?.invalid">
+              <div class="form-group"
+                [class.error]="ministryForm.get('name')?.touched && ministryForm.get('name')?.invalid">
                 <label class="form-label">
                   <span class="material-icons">badge</span>
                   Nombre Completo *
                 </label>
-                <input
-                  type="text"
-                  formControlName="name"
-                  class="form-input"
-                  placeholder="Tu nombre completo"
+                <input type="text" formControlName="name" class="form-input" placeholder="Tu nombre completo"
                   [class.invalid]="ministryForm.get('name')?.touched && ministryForm.get('name')?.invalid">
-                <div class="error-message" *ngIf="ministryForm.get('name')?.touched && ministryForm.get('name')?.invalid">
+                <div class="error-message"
+                  *ngIf="ministryForm.get('name')?.touched && ministryForm.get('name')?.invalid">
                   {{ getErrorMessage('name') }}
                 </div>
               </div>
 
-              <div class="form-group" [class.error]="ministryForm.get('email')?.touched && ministryForm.get('email')?.invalid">
+              <div class="form-group"
+                [class.error]="ministryForm.get('email')?.touched && ministryForm.get('email')?.invalid">
                 <label class="form-label">
                   <span class="material-icons">email</span>
                   Correo Electrónico *
                 </label>
-                <input
-                  type="email"
-                  formControlName="email"
-                  class="form-input"
-                  placeholder="correo@email.com"
+                <input type="email" formControlName="email" class="form-input" placeholder="correo@email.com"
                   [class.invalid]="ministryForm.get('email')?.touched && ministryForm.get('email')?.invalid">
-                <div class="error-message" *ngIf="ministryForm.get('email')?.touched && ministryForm.get('email')?.invalid">
+                <div class="error-message"
+                  *ngIf="ministryForm.get('email')?.touched && ministryForm.get('email')?.invalid">
                   {{ getErrorMessage('email') }}
                 </div>
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group" [class.error]="ministryForm.get('phone')?.touched && ministryForm.get('phone')?.invalid">
+              <div class="form-group"
+                [class.error]="ministryForm.get('phone')?.touched && ministryForm.get('phone')?.invalid">
                 <label class="form-label">
                   <span class="material-icons">phone</span>
                   Teléfono *
                 </label>
-                <input
-                  type="tel"
-                  formControlName="phone"
-                  class="form-input"
-                  placeholder="+57 300 000 0000"
+                <input type="tel" formControlName="phone" class="form-input" placeholder="+57 300 000 0000"
                   [class.invalid]="ministryForm.get('phone')?.touched && ministryForm.get('phone')?.invalid">
-                <div class="error-message" *ngIf="ministryForm.get('phone')?.touched && ministryForm.get('phone')?.invalid">
+                <div class="error-message"
+                  *ngIf="ministryForm.get('phone')?.touched && ministryForm.get('phone')?.invalid">
                   {{ getErrorMessage('phone') }}
                 </div>
               </div>
 
-              <div class="form-group" [class.error]="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
+              <div class="form-group"
+                [class.error]="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
                 <label class="form-label">
                   <span class="material-icons">cake</span>
                   Edad *
                 </label>
-                <input
-                  type="number"
-                  formControlName="age"
-                  class="form-input"
-                  placeholder="Ej: 25"
-                  min="15"
-                  max="80"
+                <input type="number" formControlName="age" class="form-input" placeholder="Ej: 25" min="15" max="80"
                   [class.invalid]="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
                 <div class="error-message" *ngIf="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
                   {{ getErrorMessage('age') }}
@@ -119,25 +109,28 @@
 
             <!-- Membresía en la Iglesia -->
             <div class="form-section-divider">
-              <h3><i class="material-icons">church</i> Membresía en la Iglesia</h3>
+              <h3><i class="material-icons">church</i> Asistencia en la Iglesia</h3>
             </div>
 
-            <div class="form-group checkbox-group" [class.error]="ministryForm.get('churchMember')?.touched && ministryForm.get('churchMember')?.invalid">
+            <div class="form-group checkbox-group"
+              [class.error]="ministryForm.get('churchMember')?.touched && ministryForm.get('churchMember')?.invalid">
               <label class="checkbox-option">
                 <input type="checkbox" formControlName="churchMember" hidden>
                 <span class="checkbox-custom">
                   <span class="material-icons">check</span>
                 </span>
                 <span class="checkbox-label">
-                  Soy miembro activo de la Iglesia El Sembrador *
+                  Soy miembro activo de la Iglesia Activa tu Fe *
                 </span>
               </label>
-              <div class="error-message" *ngIf="ministryForm.get('churchMember')?.touched && ministryForm.get('churchMember')?.invalid">
+              <div class="error-message"
+                *ngIf="ministryForm.get('churchMember')?.touched && ministryForm.get('churchMember')?.invalid">
                 Debes ser miembro activo para servir en los ministerios
               </div>
             </div>
 
-            <div class="form-group" *ngIf="isChurchMember" [class.error]="ministryForm.get('memberTime')?.touched && ministryForm.get('memberTime')?.invalid">
+            <div class="form-group" *ngIf="isChurchMember"
+              [class.error]="ministryForm.get('memberTime')?.touched && ministryForm.get('memberTime')?.invalid">
               <label class="form-label">
                 <span class="material-icons">history</span>
                 Tiempo como miembro *
@@ -164,7 +157,8 @@
                   <span class="radio-label">Más de 3 años</span>
                 </label>
               </div>
-              <div class="error-message" *ngIf="ministryForm.get('memberTime')?.touched && ministryForm.get('memberTime')?.invalid">
+              <div class="error-message"
+                *ngIf="ministryForm.get('memberTime')?.touched && ministryForm.get('memberTime')?.invalid">
                 Por favor selecciona tu tiempo como miembro
               </div>
             </div>
@@ -172,384 +166,161 @@
             <!-- Ministerios Disponibles -->
             <div class="form-section-divider">
               <h3><i class="material-icons">category</i> Ministerios Disponibles</h3>
-              <p class="section-subtitle">Selecciona el ministerio(s) donde te gustaría servir (puedes elegir varios)</p>
+              <p class="section-subtitle">Selecciona el ministerio(s) donde te gustaría servir (puedes elegir varios)
+              </p>
             </div>
 
-            <div class="form-group" [class.error]="ministryForm.get('selectedMinistries')?.touched && ministryForm.get('selectedMinistries')?.invalid">
-              <div class="ministries-grid">
-                <div class="ministry-card" *ngFor="let ministry of ministries"
-                     [class.selected]="isMinistrySelected(ministry.id)">
-                  <label class="ministry-option">
-                    <input type="checkbox"
-                           [value]="ministry.id"
-                           (change)="onMinistryChange($event, ministry.id)"
-                           [checked]="isMinistrySelected(ministry.id)"
-                           hidden>
-                    <div class="ministry-header">
-                      <span class="ministry-icon">
+            <!-- Ministerios Disponibles - Ahora en Acordeón -->
+            <div class="form-section-divider">
+              <h3><i class="material-icons">category</i> Ministerios Disponibles</h3>
+              <p class="section-subtitle">Selecciona el ministerio(s) donde te gustaría servir (puedes elegir varios)
+              </p>
+            </div>
+
+            <div class="accordion" id="ministriesAccordion"
+              [class.error]="ministryForm.get('selectedMinistries')?.touched && ministryForm.get('selectedMinistries')?.invalid">
+
+              <div *ngFor="let ministry of ministries; let i = index" class="accordion-item"
+                [class.selected-ministery]="isMinistrySelected(ministry.id)">
+
+                <h2 class="accordion-header" id="ministry-heading-{{i}}">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#ministry-collapse-' + i" [attr.aria-expanded]="i === 0 ? 'true' : 'false'"
+                    [attr.aria-controls]="'ministry-collapse-' + i" [class.collapsed]="i !== 0">
+
+                    <div class="accordion-header-content">
+                      <!-- Checkbox para seleccionar ministerio -->
+                      <label class="accordion-checkbox-label" (click)="$event.stopPropagation()">
+                        <input type="checkbox" [value]="ministry.id" (change)="onMinistryChange($event, ministry.id)"
+                          [checked]="isMinistrySelected(ministry.id)" class="form-check-input me-2">
+                      </label>
+
+                      <!-- Icono del ministerio -->
+                      <span class="accordion-icon me-3">
                         <span class="material-icons">{{ ministry.icon }}</span>
                       </span>
-                      <h4 class="ministry-title">{{ ministry.name }}</h4>
-                    </div>
 
-                    <p class="ministry-description">{{ ministry.description }}</p>
-
-                    <div class="ministry-activities">
-                      <span class="activities-label">Actividades:</span>
-                      <ul class="activities-list">
-                        <li *ngFor="let activity of ministry.activities.slice(0, 2)">{{ activity }}</li>
-                        <li *ngIf="ministry.activities.length > 2">...</li>
-                      </ul>
+                      <!-- Información principal -->
+                      <div class="accordion-title-info">
+                        <h4 class="accordion-ministry-title">{{ ministry.name }}</h4>
+                        <div class="accordion-ministry-meta">
+                          <small class="text-muted">
+                            <span class="badge bg-primary me-2">{{ ministry.category || 'General' }}</span>
+                            <i class="material-icons align-middle me-1" style="font-size: 16px;">group</i>
+                            <span>{{ ministry.members || 0 }} miembros</span>
+                          </small>
+                        </div>
+                      </div>
                     </div>
+                  </button>
+                </h2>
 
-                    <div class="ministry-requirements">
-                      <span class="requirements-label">Requisitos:</span>
-                      <ul class="requirements-list">
-                        <li *ngFor="let req of ministry.requirements.slice(0, 2)">{{ req }}</li>
-                        <li *ngIf="ministry.requirements.length > 2">...</li>
-                      </ul>
-                    </div>
+                <div [id]="'ministry-collapse-' + i" class="accordion-collapse collapse" [class.show]="i === 0"
+                  [attr.aria-labelledby]="'ministry-heading-' + i" [attr.data-bs-parent]="'#ministriesAccordion'">
 
-                    <div class="ministry-selector">
-                      <span class="selector-circle"></span>
-                      <span class="selector-text">Unirme a este ministerio</span>
+                  <div class="accordion-body">
+                    <div class="ministry-details">
+                      <!-- Descripción -->
+                      <p class="ministry-description">{{ ministry.description }}</p>
+
+                      <!-- Información detallada -->
+                      <div class="row ministry-info">
+                        <div class="col-md-6">
+                          <div class="ministry-info-item">
+                            <i class="material-icons me-2">schedule</i>
+                            <div>
+                              <strong>Horarios de Reunión:</strong>
+                              <p class="mb-0">{{ ministry.schedule || 'Por definir' }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="ministry-info-item">
+                            <i class="material-icons me-2">person</i>
+                            <div>
+                              <strong>Líder del Ministerio:</strong>
+                              <p class="mb-0">{{ ministry.leader || 'Pastor Asignado' }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Actividades -->
+                      <div class="ministry-activities mt-3">
+                        <h6 class="activities-title">
+                          <i class="material-icons me-2">task_alt</i>
+                          Actividades Principales:
+                        </h6>
+                        <ul class="activities-list">
+                          <li *ngFor="let activity of ministry.activities">{{ activity }}</li>
+                        </ul>
+                      </div>
+
+                      <!-- Requisitos -->
+                      <div class="ministry-requirements mt-3">
+                        <h6 class="requirements-title">
+                          <i class="material-icons me-2">checklist</i>
+                          Requisitos para participar:
+                        </h6>
+                        <ul class="requirements-list">
+                          <li *ngFor="let req of ministry.requirements">{{ req }}</li>
+                        </ul>
+                      </div>
+
+                      <!-- Información adicional -->
+                      <div class="ministry-extra-info mt-4">
+                        <div class="alert alert-info">
+                          <div class="d-flex align-items-center">
+                            <i class="material-icons me-2">info</i>
+                            <div>
+                              <strong>Proceso de Incorporación:</strong>
+                              <p class="mb-0 small">Después de seleccionar este ministerio, serás contactado para una
+                                entrevista y capacitación inicial.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Botón para seleccionar dentro del acordeón -->
+                      <div class="mt-4 text-end">
+                        <button type="button" class="btn btn-outline-primary btn-sm"
+                          (click)="toggleMinistrySelection(ministry.id)">
+                          <i class="material-icons align-middle me-1">{{
+                            isMinistrySelected(ministry.id) ? 'remove' : 'add'
+                            }}</i>
+                          {{ isMinistrySelected(ministry.id) ? 'Quitar ministerio' : 'Seleccionar ministerio' }}
+                        </button>
+                      </div>
                     </div>
-                  </label>
+                  </div>
                 </div>
               </div>
-              <div class="error-message" *ngIf="ministryForm.get('selectedMinistries')?.touched && ministryForm.get('selectedMinistries')?.invalid">
-                Por favor selecciona al menos un ministerio
-              </div>
             </div>
 
-            <!-- Dones Espirituales -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">psychology</i> Dones Espirituales</h3>
-              <p class="section-subtitle">Selecciona los dones espirituales que reconoces tener (máximo 5)</p>
+            <!-- Mensaje de error -->
+            <div class="error-message mt-2"
+              *ngIf="ministryForm.get('selectedMinistries')?.touched && ministryForm.get('selectedMinistries')?.invalid">
+              <i class="material-icons me-1">error</i>
+              Por favor selecciona al menos un ministerio
             </div>
 
-            <div class="form-group">
-              <div class="gifts-grid">
-                <label class="gift-option" *ngFor="let gift of spiritualGifts">
-                  <input type="checkbox"
-                         [value]="gift"
-                         (change)="onGiftChange($event, gift)"
-                         [checked]="isGiftSelected(gift)"
-                         [disabled]="!isGiftSelected(gift) && selectedGifts.length >= 5"
-                         hidden>
-                  <span class="gift-checkbox"></span>
-                  <span class="gift-name">{{ gift }}</span>
-                </label>
-              </div>
-              <div class="selection-info">
-                <small *ngIf="selectedGifts.length >= 5" class="text-warning">
-                  Has seleccionado el máximo de 5 dones
-                </small>
-                <small *ngIf="selectedGifts.length === 0" class="text-muted">
-                  Selecciona los dones que Dios te ha dado
-                </small>
-              </div>
-            </div>
-
-            <!-- Sección Musical (solo si aplica) -->
-            <div *ngIf="showMusicalSection" class="form-section-divider">
-              <h3><i class="material-icons">music_note</i> Habilidades Musicales</h3>
-            </div>
-
-            <div *ngIf="showMusicalSection" class="form-group">
-              <label class="form-label">
-                <span class="material-icons">piano</span>
-                Instrumentos musicales que tocas
-              </label>
-              <div class="instruments-grid">
-                <label class="instrument-option" *ngFor="let instrument of musicalInstruments">
-                  <input type="checkbox"
-                         [value]="instrument"
-                         (change)="onInstrumentChange($event, instrument)"
-                         [checked]="isInstrumentSelected(instrument)"
-                         hidden>
-                  <span class="instrument-checkbox"></span>
-                  <span class="instrument-name">{{ instrument }}</span>
-                </label>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">
-                  <span class="material-icons">history_edu</span>
-                  Experiencia musical
-                </label>
-                <textarea
-                  formControlName="musicalExperience"
-                  class="form-textarea"
-                  placeholder="Cuéntanos sobre tu experiencia musical, años de práctica, grupos anteriores..."
-                  rows="2"></textarea>
-              </div>
-            </div>
-
-            <!-- Sección de Danza (solo si aplica) -->
-            <div *ngIf="showDanceSection" class="form-section-divider">
-              <h3><i class="material-icons">emoji_people</i> Experiencia en Danza</h3>
-            </div>
-
-            <div *ngIf="showDanceSection" class="form-group">
-              <label class="form-label">
-                <span class="material-icons">star</span>
-                Nivel de experiencia en danza
-              </label>
-              <div class="dance-levels-grid">
-                <label class="dance-level-option" *ngFor="let level of danceExperienceLevels"
-                       [class.selected]="ministryForm.get('danceExperience')?.value === level">
-                  <input type="radio"
-                         formControlName="danceExperience"
-                         [value]="level"
-                         hidden>
-                  <span class="level-content">
-                    <span class="level-name">{{ level }}</span>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Sección Técnica (solo si aplica) -->
-            <div *ngIf="showTechnicalSection" class="form-section-divider">
-              <h3><i class="material-icons">videocam</i> Habilidades Técnicas</h3>
-            </div>
-
-            <div *ngIf="showTechnicalSection" class="form-group">
-              <label class="form-label">
-                <span class="material-icons">build</span>
-                Habilidades técnicas que posees
-              </label>
-              <div class="skills-grid">
-                <label class="skill-option" *ngFor="let skill of technicalSkills">
-                  <input type="checkbox"
-                         [value]="skill"
-                         (change)="onSkillChange($event, skill)"
-                         [checked]="isSkillSelected(skill)"
-                         hidden>
-                  <span class="skill-checkbox"></span>
-                  <span class="skill-name">{{ skill }}</span>
-                </label>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">
-                  <span class="material-icons">add_circle</span>
-                  Otras habilidades técnicas
-                </label>
-                <textarea
-                  formControlName="otherTechnicalSkills"
-                  class="form-textarea"
-                  placeholder="Describe otras habilidades técnicas que tengas..."
-                  rows="2"></textarea>
-              </div>
-            </div>
-
-            <!-- Disponibilidad -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">schedule</i> Disponibilidad</h3>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">
-                <span class="material-icons">event_available</span>
-                ¿En qué actividades puedes participar?
-              </label>
-              <div class="availability-grid">
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('rehearsals')">
-                  <input type="checkbox"
-                         (change)="onAvailabilityChange('rehearsals', $event)"
-                         [checked]="isAvailabilitySelected('rehearsals')"
-                         hidden>
-                  <span class="availability-icon">
-                    <span class="material-icons">music_note</span>
-                  </span>
-                  <span class="availability-label">Ensayos</span>
-                </label>
-
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('services')">
-                  <input type="checkbox"
-                         (change)="onAvailabilityChange('services', $event)"
-                         [checked]="isAvailabilitySelected('services')"
-                         hidden>
-                  <span class="availability-icon">
-                    <span class="material-icons">church</span>
-                  </span>
-                  <span class="availability-label">Servicios regulares</span>
-                </label>
-
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('events')">
-                  <input type="checkbox"
-                         (change)="onAvailabilityChange('events', $event)"
-                         [checked]="isAvailabilitySelected('events')"
-                         hidden>
-                  <span class="availability-icon">
-                    <span class="material-icons">celebration</span>
-                  </span>
-                  <span class="availability-label">Eventos especiales</span>
-                </label>
-
-                <label class="availability-option" [class.selected]="isAvailabilitySelected('specialEvents')">
-                  <input type="checkbox"
-                         (change)="onAvailabilityChange('specialEvents', $event)"
-                         [checked]="isAvailabilitySelected('specialEvents')"
-                         hidden>
-                  <span class="availability-icon">
-                    <span class="material-icons">festival</span>
-                  </span>
-                  <span class="availability-label">Actividades extracurriculares</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Nivel de Compromiso -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">commitment</i> Nivel de Compromiso</h3>
-            </div>
-
-            <div class="form-group" [class.error]="ministryForm.get('commitmentLevel')?.touched && ministryForm.get('commitmentLevel')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">assignment_turned_in</span>
-                ¿Qué nivel de compromiso puedes ofrecer? *
-              </label>
-              <div class="commitment-grid">
-                <label class="commitment-option" *ngFor="let level of commitmentLevels"
-                       [class.selected]="isCommitmentSelected(level.id)">
-                  <input type="radio"
-                         formControlName="commitmentLevel"
-                         [value]="level.id"
-                         hidden>
-                  <div class="commitment-content">
-                    <span class="commitment-name">{{ level.name }}</span>
-                    <span class="commitment-description">{{ level.description }}</span>
-                  </div>
-                </label>
-              </div>
-              <div class="error-message" *ngIf="ministryForm.get('commitmentLevel')?.touched && ministryForm.get('commitmentLevel')?.invalid">
-                Por favor selecciona tu nivel de compromiso
-              </div>
-            </div>
-
-            <!-- Experiencia y Testimonio -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">history</i> Experiencia y Testimonio</h3>
-            </div>
-
-            <div class="form-group" [class.error]="ministryForm.get('experience')?.touched && ministryForm.get('experience')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">work_history</span>
-                Experiencia previa en ministerio *
-              </label>
-              <textarea
-                formControlName="experience"
-                class="form-textarea"
-                placeholder="Cuéntanos sobre tu experiencia previa en ministerio, servicio en iglesia, o actividades similares..."
-                rows="3"
-                [class.invalid]="ministryForm.get('experience')?.touched && ministryForm.get('experience')?.invalid"></textarea>
-              <div class="char-count">
-                {{ ministryForm.get('experience')?.value?.length || 0 }}/300
-              </div>
-              <div class="error-message" *ngIf="ministryForm.get('experience')?.touched && ministryForm.get('experience')?.invalid">
-                {{ getErrorMessage('experience') }}
-              </div>
-            </div>
-
-            <div class="form-group" [class.error]="ministryForm.get('testimony')?.touched && ministryForm.get('testimony')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">favorite</span>
-                Tu testimonio personal *
-              </label>
-              <textarea
-                formControlName="testimony"
-                class="form-textarea"
-                placeholder="Comparte tu testimonio de fe, cómo conociste a Jesús y por qué deseas servir..."
-                rows="3"
-                [class.invalid]="ministryForm.get('testimony')?.touched && ministryForm.get('testimony')?.invalid"></textarea>
-              <div class="char-count">
-                {{ ministryForm.get('testimony')?.value?.length || 0 }}/500
-              </div>
-              <div class="error-message" *ngIf="ministryForm.get('testimony')?.touched && ministryForm.get('testimony')?.invalid">
-                {{ getErrorMessage('testimony') }}
-              </div>
-            </div>
-
-            <!-- Recomendación Pastoral -->
-            <div class="form-group">
-              <label class="form-label">
-                <span class="material-icons">recommend</span>
-                Recomendación pastoral (opcional)
-              </label>
-              <textarea
-                formControlName="pastorRecommendation"
-                class="form-textarea"
-                placeholder="Si un pastor te recomendó, escribe su nombre y congregación..."
-                rows="2"></textarea>
-            </div>
-
-            <!-- Contacto de Emergencia -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">contact_emergency</i> Contacto de Emergencia *</h3>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group" [class.error]="ministryForm.get('emergencyContact.name')?.touched && ministryForm.get('emergencyContact.name')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">person</span>
-                  Nombre completo
-                </label>
-                <input
-                  type="text"
-                  formControlName="emergencyContact.name"
-                  class="form-input"
-                  placeholder="Nombre del contacto de emergencia">
-              </div>
-
-              <div class="form-group" [class.error]="ministryForm.get('emergencyContact.phone')?.touched && ministryForm.get('emergencyContact.phone')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">phone</span>
-                  Teléfono
-                </label>
-                <input
-                  type="tel"
-                  formControlName="emergencyContact.phone"
-                  class="form-input"
-                  placeholder="Teléfono de emergencia">
-              </div>
-            </div>
-
-            <div class="form-group" [class.error]="ministryForm.get('emergencyContact.relationship')?.touched && ministryForm.get('emergencyContact.relationship')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">people</span>
-                Parentesco o relación
-              </label>
-              <input
-                type="text"
-                formControlName="emergencyContact.relationship"
-                class="form-input"
-                placeholder="Ej: Padre, Madre, Cónyuge, Hermano">
-            </div>
 
             <!-- Acuerdos -->
             <div class="form-section-divider">
               <h3><i class="material-icons">gavel</i> Acuerdos y Políticas *</h3>
             </div>
 
-            <div class="form-group checkbox-group" [class.error]="ministryForm.get('termsAgreed')?.touched && ministryForm.get('termsAgreed')?.invalid">
-              <label class="checkbox-option">
-                <input type="checkbox" formControlName="termsAgreed" hidden>
-                <span class="checkbox-custom">
-                  <span class="material-icons">check</span>
-                </span>
-                <span class="checkbox-label">
-                  Me comprometo a participar activamente y seguir las directrices del ministerio
-                </span>
-              </label>
-              <div class="error-message" *ngIf="ministryForm.get('termsAgreed')?.touched && ministryForm.get('termsAgreed')?.invalid">
+            <div class="form-group checkbox-group"
+              [class.error]="ministryForm.get('termsAgreed')?.touched && ministryForm.get('termsAgreed')?.invalid">
+
+              <div class="error-message"
+                *ngIf="ministryForm.get('termsAgreed')?.touched && ministryForm.get('termsAgreed')?.invalid">
                 Debes aceptar los términos del ministerio
               </div>
             </div>
 
-            <div class="form-group checkbox-group" [class.error]="ministryForm.get('privacyAgreed')?.touched && ministryForm.get('privacyAgreed')?.invalid">
+            <div class="form-group checkbox-group"
+              [class.error]="ministryForm.get('privacyAgreed')?.touched && ministryForm.get('privacyAgreed')?.invalid">
               <label class="checkbox-option">
                 <input type="checkbox" formControlName="privacyAgreed" hidden>
                 <span class="checkbox-custom">
@@ -561,17 +332,14 @@
                   de la iglesia
                 </span>
               </label>
-              <div class="error-message" *ngIf="ministryForm.get('privacyAgreed')?.touched && ministryForm.get('privacyAgreed')?.invalid">
+              <div class="error-message"
+                *ngIf="ministryForm.get('privacyAgreed')?.touched && ministryForm.get('privacyAgreed')?.invalid">
                 Debes aceptar la política de privacidad
               </div>
             </div>
 
             <!-- Botón de Envío -->
-            <button
-              type="submit"
-              class="submit-btn"
-              [disabled]="isSubmitting"
-              [class.loading]="isSubmitting">
+            <button type="submit" class="submit-btn" [disabled]="isSubmitting" [class.loading]="isSubmitting">
               <span class="btn-content">
                 <span class="material-icons" *ngIf="!isSubmitting">group_add</span>
                 <span class="material-icons spinning" *ngIf="isSubmitting">refresh</span>
@@ -688,7 +456,8 @@
         <div class="testimonial-card">
           <h3>Testimonio</h3>
           <div class="testimonial-content">
-            <p>"Servir en el ministerio de alabanza ha transformado mi relación con Dios. Ahora entiendo lo que es verdaderamente adorar."</p>
+            <p>"Servir en el ministerio de alabanza ha transformado mi relación con Dios. Ahora entiendo lo que es
+              verdaderamente adorar."</p>
             <div class="testimonial-author">
               <span class="material-icons">format_quote</span>
               <div>

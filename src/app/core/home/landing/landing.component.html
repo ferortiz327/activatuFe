@@ -78,102 +78,62 @@
   </div>
 </div>
 
+<div class="section py-5" id="actividades" style="background-color:#f9fafb;">
+  <div class="container text-center mb-5">
+    <h2 class="fw-bold" style="color:#1e3a8a; font-size:2.5rem;">
+      Nuestras Actividades
+    </h2>
+    <p class="text-muted" style="font-size:1.1rem;">
+      Una comunidad viva que se reúne en diferentes espacios para crecer en la fe, servir y compartir.
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow rounded-4 overflow-hidden">
+          <ngb-carousel [interval]="6000" [pauseOnHover]="true" [wrap]="true">
+            <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
+              <div class="position-relative">
+                <!-- Imagen -->
+                <img [src]="slide.img" alt="Actividad {{ i + 1 }}" class="w-100"
+                  style="height:650px; width:650px; object-fit:cover;">
+
+                <!-- Overlay -->
+                <div class="position-absolute top-0 start-0 w-100 h-100"
+                  style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));">
+                </div>
+
+                <!-- Texto -->
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center h-100">
+                  <h3 class="fw-bold mb-3" style="font-size:2rem; color:white;">
+                    {{ slide.title }}
+                  </h3>
+                  <p class="lead" style="max-width:600px; color:#f1f1f1;">
+                    {{ slide.caption }}
+                  </p>
+                  <!-- <a href="#contacto" class="btn btn-lg rounded-pill text-white mt-3"
+                                            style="background-color:#1e3a8a; border:none; padding:10px 30px;">
+                                            Más Información
+                                        </a> -->
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="main">
 
 
-  <div class="main bg-light py-5">
-    <div class="section text-center">
-      <div class="container">
-        <!-- CARDS -->
-        <div class="row g-4">
-          <!-- Jóvenes -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-              <img src="../../../../assets/img/sembrador/jovenes.jpg" class="card-img-top"
-                style="height: 220px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Jóvenes</h5>
-                <p class="text-muted small">
-                  “¿Cómo puede el joven llevar una vida íntegra? Viviendo conforme a tu palabra.” <br>
-                  <em>Salmo 119:9</em>
-                </p>
-                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
-                  style="background-color: #1e3a8a; border: none;">
-                  Ver más
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kids -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-              <img src="../../../../assets/img/sembrador/kids.jpg" class="card-img-top"
-                style="height: 220px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Activa Tu Fe Kids</h5>
-                <p class="text-muted small">
-                  “Instruye al niño en el camino correcto, y aun en su vejez no lo abandonará.” <br>
-                  <em>Proverbios 22:6</em>
-                </p>
-                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
-                  style="background-color: #1e3a8a; border: none;">
-                  Ver más
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Misiones -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-              <img src="../../../../assets/img/sembrador/obramisionera.jpg" class="card-img-top"
-                style="height: 220px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Obra Misionera</h5>
-                <p class="text-muted small">
-                  “Proclamad entre las naciones su gloria, en todos los pueblos sus maravillas.” <br>
-                  <em>Salmos 96:3</em>
-                </p>
-                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
-                  style="background-color: #1e3a8a; border: none;">
-                  Ver más
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mujeres -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-              <img src="../../../../assets/img/sembrador/mujeres.jpg" class="card-img-top"
-                style="height: 220px; object-fit: cover;">
-              <div class="card-body">
-                <h5 class="card-title fw-bold">Ministerio de Damas</h5>
-                <p class="text-muted small">
-                  “Mujer ejemplar, ¿dónde se hallará? ¡Es más valiosa que las piedras preciosas!” <br>
-                  <em>Proverbios 31:10</em>
-                </p>
-                <a href="#pkp" class="btn btn-sm rounded-pill text-white"
-                  style="background-color: #1e3a8a; border: none;">
-                  Ver más
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-
   <div class="hero-pastores position-relative text-white">
     <!-- FOTO -->
-    <img src="../../../../assets/img/sembrador/pastores.jpg" alt="Pastores Oscar y Lorena" class="w-100 hero-img">
+    <img src="../../../../assets/img/Activa/pastores.jpeg" alt="Pastores Oscar y Lorena" class="w-100 hero-img">
 
     <!-- OVERLAY -->
     <div class="overlay"></div>
@@ -187,7 +147,7 @@
         experimente Su amor transformador y descubra el propósito eterno que Dios
         tiene para su vida. Bienvenido a <strong>El Sembrador</strong>, tu familia espiritual.”
       </p>
-      <a href="#contacto" class="btn btn-lg rounded-pill text-white shadow mt-3"
+      <a href="#quienes-somos" class="btn btn-lg rounded-pill text-white shadow mt-3"
         style="background-color:#1e3a8a; border:none;">
         Conócenos más
       </a>
@@ -196,53 +156,7 @@
 
 
 
-  <div class="section py-5" id="actividades" style="background-color:#f9fafb;">
-    <div class="container text-center mb-5">
-      <h2 class="fw-bold" style="color:#1e3a8a; font-size:2.5rem;">
-        Nuestras Actividades
-      </h2>
-      <p class="text-muted" style="font-size:1.1rem;">
-        Una comunidad viva que se reúne en diferentes espacios para crecer en la fe, servir y compartir.
-      </p>
-    </div>
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="card border-0 shadow rounded-4 overflow-hidden">
-            <ngb-carousel [interval]="6000" [pauseOnHover]="true" [wrap]="true">
-              <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
-                <div class="position-relative">
-                  <!-- Imagen -->
-                  <img [src]="slide.img" alt="Actividad {{ i + 1 }}" class="w-100"
-                    style="height:650px; width:650px; object-fit:cover;">
-
-                  <!-- Overlay -->
-                  <div class="position-absolute top-0 start-0 w-100 h-100"
-                    style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));">
-                  </div>
-
-                  <!-- Texto -->
-                  <div class="carousel-caption d-flex flex-column align-items-center justify-content-center h-100">
-                    <h3 class="fw-bold mb-3" style="font-size:2rem; color:white;">
-                      {{ slide.title }}
-                    </h3>
-                    <p class="lead" style="max-width:600px; color:#f1f1f1;">
-                      {{ slide.caption }}
-                    </p>
-                    <!-- <a href="#contacto" class="btn btn-lg rounded-pill text-white mt-3"
-                                            style="background-color:#1e3a8a; border:none; padding:10px 30px;">
-                                            Más Información
-                                        </a> -->
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-carousel>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
@@ -332,7 +246,7 @@
                 <span class="stat-label">Publicaciones</span>
               </div>
             </div>
-            <a href="#" target="_blank" class="social-btn instagram-btn">
+            <a href="https://www.instagram.com/activatufefusagasuga" target="_blank" class="social-btn instagram-btn">
               <i class="bi bi-instagram me-2"></i>
               Seguir
             </a>
@@ -359,7 +273,8 @@
                 <span class="stat-label">Grupos</span>
               </div>
             </div>
-            <a href="#" target="_blank" class="social-btn whatsapp-btn">
+            <a href="https://chat.whatsapp.com/DFvPwd8PHtEAFU5XuvVnyN?mode=hqrt1" target="_blank"
+              class="social-btn whatsapp-btn">
               <i class="bi bi-whatsapp me-2"></i>
               Unirse
             </a>
@@ -370,109 +285,47 @@
 
 
 
-    <section id="formulario" class="py-5 bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
+    <!-- En tu componente donde quieras mostrar el último video -->
+    <div class="simple-video-section">
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title">
+          <i class="bi bi-play-circle-fill me-2"></i>
+          Última Predicación
+        </h2>
+        <p class="section-subtitle">
+          Revive el mensaje más reciente de nuestro canal
+        </p>
+      </div>
 
-            <!-- Card -->
-            <div class="card shadow-lg border-0 rounded-4">
-              <div class="card-body p-5">
+      <div class="youtube-container" *ngIf="videoUrl; else cargando">
+        <iframe [src]="videoUrl" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen class="rounded-3 shadow-lg video-frame">
+        </iframe>
 
-                <!-- Encabezado -->
-                <h2 class="text-center fw-bold mb-4" style="color: #000;">
-                  ¡Dios tiene un propósito contigo!
-                </h2>
-                <p class="text-center text-muted mb-4">
-                  Déjanos tus datos y motivo de oración. Nuestro equipo pastoral se pondrá en contacto
-                  contigo.
-                </p>
-
-                <!-- Formulario -->
-                <form>
-
-                  <!-- Nombre y Teléfono -->
-                  <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                      <label class="form-label">Nombre</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-person"></i></span>
-                        <input type="text" class="form-control" placeholder="Tu nombre completo">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Teléfono</label>
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                        <input type="tel" class="form-control" placeholder="+57 300 000 0000">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Email -->
-                  <div class="mb-3">
-                    <label class="form-label">Correo electrónico</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                      <input type="email" class="form-control" placeholder="correo@email.com">
-                    </div>
-                  </div>
-
-                  <!-- ¿Deseas que te llamemos? -->
-                  <div class="mb-3">
-                    <label class="form-label">¿Deseas que te llamemos para orar por ti?</label>
-                    <div class="opciones-inline">
-                      <label class="opcion">
-                        <input type="radio" name="llamada" value="si"> Sí
-                      </label>
-                      <label class="opcion">
-                        <input type="radio" name="llamada" value="no"> No
-                      </label>
-                    </div>
-                  </div>
-
-
-
-                  <!-- Motivo de oración -->
-                  <div class="mb-3">
-                    <label class="form-label">Escribe un Motivo de Oración</label>
-                    <textarea class="form-control" rows="4" placeholder="Motivo de oración..."></textarea>
-                  </div>
-
-                  <!-- Política -->
-                  <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="politica">
-                    <label class="form-label">
-                      Acepto la política de privacidad
-                    </label>
-                    <div class="opciones-inline">
-                      <label class="opcion">
-                        <input type="radio" name="llamada" value="si"> Sí
-                      </label>
-                      <label class="opcion">
-                        <input type="radio" name="llamada" value="no"> No
-                      </label>
-                    </div>
-                  </div>
-
-                  <!-- Botón -->
-                  <div class="d-grid">
-                    <button type="submit" class="btn btn-lg rounded-pill text-white" style="background-color: #1e3a8a;">
-                      <i class="bi bi-send"></i> Enviar
-                    </button>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-
-          </div>
+        <div class="video-info text-center mt-4">
+          <a [href]="'https://youtube.com/watch?v=' + latestVideoId" target="_blank" class="btn btn-primary btn-lg">
+            <i class="bi bi-youtube me-2"></i>
+            Ver en YouTube
+          </a>
         </div>
       </div>
-    </section>
+
+      <ng-template #cargando>
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary mb-3" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p>Cargando el video más reciente...</p>
+        </div>
+      </ng-template>
+    </div>
 
 
   </div>
+
+
+  <app-music-player></app-music-player>
 
   <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/573103241930?text=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20la%20iglesia"
@@ -484,4 +337,3 @@
   </a>
 
 
-  <app-music-player></app-music-player>

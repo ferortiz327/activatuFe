@@ -1,0 +1,586 @@
+/* ESTILOS PARA EL ACORDEÓN */
+
+.acordeon-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.acordeon-sedes {
+  background: white;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.acordeon-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.acordeon-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.acordeon-subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ACORDEÓN PERSONALIZADO */
+.accordion-item {
+  background: transparent;
+}
+
+.accordion-button {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px !important;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:not(.collapsed) {
+    background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+
+    .accordion-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    border-color: #3b82f6;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+.sede-header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.sede-avatar-acordeon {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-img-acordeon {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-badge-acordeon {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sede-info-acordeon {
+  flex: 1;
+  min-width: 0;
+}
+
+.sede-nombre-ciudad {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.sede-nombre-acordeon {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b !important;
+  margin: 0;
+}
+
+.sede-ciudad-acordeon {
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+}
+
+.sede-metadata-acordeon {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
+}
+
+.meta-acordeon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #64748b;
+
+  i {
+    color: #94a3b8;
+  }
+}
+
+.sede-estado {
+  margin-left: auto;
+  padding-left: 1rem;
+
+  @media (max-width: 576px) {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+  }
+}
+
+.accordion-icon {
+  font-size: 1.25rem;
+  color: #64748b;
+  transition: transform 0.3s ease;
+}
+
+/* CONTENIDO DEL ACORDEÓN */
+.accordion-collapse {
+  border: none !important;
+}
+
+.accordion-body {
+  padding: 2rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  background: white;
+  animation: none !important;
+  transition: none !important;
+}
+
+
+.accordion-collapse {
+  &.show {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  &.collapsing {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Evitar el parpadeo durante la transición */
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+.detalle-imagen-acordeon {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.detalle-img-acordeon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-contacto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  height: 100%;
+  border: 1px solid #e2e8f0;
+
+  i {
+    font-size: 1.25rem;
+    color: #3b82f6;
+    margin-top: 0.25rem;
+  }
+}
+
+.contacto-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.contacto-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-copiar-acordeon {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #f1f5f9;
+    transform: scale(1.1);
+  }
+}
+
+.detalle-seccion {
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.seccion-titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.horario-acordeon {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.servicios-acordeon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.servicio-badge {
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #dbeafe;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.caracteristica-acordeon {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.detalle-acciones {
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ANIMACIONES PARA EL ACORDEÓN */
+.accordion-collapse {
+  &.show {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  &.collapsing {
+    animation: slideUp 0.3s ease-out;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* EFECTO HOVER PARA LOS ÍTEMS */
+.accordion-item:hover .accordion-button:not(.collapsed) {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .acordeon-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .acordeon-sedes {
+    padding: 1.5rem;
+  }
+
+  .sede-metadata-acordeon {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .info-contacto-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .acordeon-title {
+    font-size: 1.75rem;
+  }
+
+  .accordion-button {
+    padding: 1rem;
+  }
+
+  .sede-header-content {
+    gap: 1rem;
+  }
+
+  .avatar-img-acordeon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sede-nombre-acordeon {
+    font-size: 1.1rem;
+  }
+
+  .detalle-imagen-acordeon {
+    height: 150px;
+  }
+}
+
+/* ESTILOS PARA LA NUEVA SECCIÓN DE IMAGEN (ESTILO DONACIONES) */
+
+.sedes-hero {
+  position: relative;
+  min-height: 500px;
+  /* Más grande que el ejemplo anterior */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+
+
+  @media (max-width: 768px) {
+    min-height: 400px;
+    margin: 2rem 0 3rem;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 350px;
+    margin: 1.5rem 0 2.5rem;
+  }
+}
+
+.sedes-hero .hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sedes-hero .hero-background .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  /* Ajusta el enfoque de la imagen */
+
+  @media (max-width: 768px) {
+    object-position: center 40%;
+  }
+}
+
+.sedes-hero .hero-background .gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      rgba(30, 58, 138, 0.9) 0%,
+      rgba(59, 130, 246, 0.85) 50%,
+      rgba(96, 165, 250, 0.75) 100%);
+}
+
+.sedes-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 900px;
+  /* Más ancho */
+  width: 100%;
+  padding: 5rem 2rem;
+  /* Más padding */
+
+  @media (max-width: 992px) {
+    max-width: 800px;
+    padding: 4rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 3rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.75rem;
+  }
+}
+
+.sedes-hero .hero-content .hero-title {
+  font-size: 3.5rem;
+  /* Más grande */
+  font-weight: 800;
+  /* Más grueso */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 992px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.sedes-hero .hero-content .hero-subtitle {
+  font-size: 1.4rem;
+  /* Más grande */
+  opacity: 0.95;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1400px) {
+  .sedes-hero {
+    min-height: 550px;
+  }
+
+  .sedes-hero .hero-content {
+    max-width: 1000px;
+    padding: 6rem 2rem;
+  }
+
+  .sedes-hero .hero-content .hero-title {
+    font-size: 4rem;
+  }
+
+  .sedes-hero .hero-content .hero-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Ajustar el acordeón para que tenga buen espacio */
+.acordeon-section {
+  margin-top: 4rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 2.5rem;
+  }
+}

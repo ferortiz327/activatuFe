@@ -1,0 +1,256 @@
+<!-- sedes.component.html -->
+<section class="sedes-section" [@fadeIn]>
+
+  <!-- HERO SECTION (Mantener igual) -->
+  <div class="hero-section">
+    <!-- ... contenido existente ... -->
+  </div>
+
+  <!-- FILTROS DE CIUDADES (Mantener igual) -->
+  <div class="filtros-section">
+    <!-- ... contenido existente ... -->
+  </div>
+
+  <div class="sedes-hero">
+    <div class="hero-background">
+        <div class="gradient-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+             alt="Nuestras Sedes"
+             class="hero-image">
+    </div>
+    <div class="hero-content">
+        <h1 class="hero-title">Nuestras Sedes</h1>
+        <p class="hero-subtitle">
+            Una red de iglesias conectadas, extendiendo el amor de Dios a través de múltiples localidades.
+            Descubre cada una de nuestras ubicaciones, horarios, servicios y cómo puedes ser parte de nuestra comunidad.
+        </p>
+    </div>
+  </div>
+
+  <!-- ACORDEÓN DE SEDES -->
+  <div class="acordeon-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="acordeon-sedes">
+            <div class="acordeon-header">
+              <h2 class="acordeon-title">
+                <i class="bi-list-columns me-2"></i>
+                Todas Nuestras Sedes
+              </h2>
+              <p class="acordeon-subtitle">
+                Haz clic en cada sede para ver toda su información, horarios y servicios
+              </p>
+            </div>
+
+            <div class="accordion" id="sedesAccordion">
+              <div *ngFor="let sede of getSedesFiltradas(); let i = index" class="accordion-item mb-3 border-0">
+
+                <!-- CABECERA DEL ACORDEÓN -->
+                <h2 class="accordion-header" [id]="'heading' + i">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse' + i" [attr.aria-expanded]="i === 0 ? 'true' : 'false'"
+                    [attr.aria-controls]="'collapse' + i" [ngClass]="{'active': sedeExpandida === sede.id}">
+
+                    <div class="sede-header-content">
+                      <!-- Avatar -->
+                      <div class="sede-avatar-acordeon">
+                        <img [src]="sede.imagen" [alt]="sede.nombre" class="avatar-img-acordeon"
+                          onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                        <div class="avatar-badge-acordeon" [style.background]="getCiudadInfo(sede.ciudad).color">
+                          <i class="bi-geo-alt"></i>
+                        </div>
+                      </div>
+
+                      <!-- Info básica -->
+                      <div class="sede-info-acordeon">
+                        <div class="sede-nombre-ciudad">
+                          <h4 class="sede-nombre-acordeon">{{ sede.nombre }}</h4>
+                          <span class="sede-ciudad-acordeon">{{ sede.ciudad }}</span>
+                        </div>
+                        <div class="sede-metadata-acordeon">
+                          <span class="meta-acordeon">
+                            <i class="bi-people"></i>
+                            {{ sede.capacidad }} personas
+                          </span>
+                          <span class="meta-acordeon">
+                            <i class="bi-calendar"></i>
+                            Desde {{ sede.anoFundacion }}
+                          </span>
+                          <span class="meta-acordeon">
+                            <i class="bi-person-badge"></i>
+                            {{ sede.pastor }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Estado -->
+                      <div class="sede-estado">
+                        <i class="bi-chevron-down accordion-icon"></i>
+                      </div>
+                    </div>
+
+                  </button>
+                </h2>
+
+                <!-- CONTENIDO DEL ACORDEÓN -->
+                <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i"
+                  data-bs-parent="#sedesAccordion">
+
+                  <div class="accordion-body">
+                    <!-- Contenido del detalle -->
+                    <div class="sede-detalle-acordeon">
+                      <!-- Imagen principal -->
+                      <div class="detalle-imagen-acordeon">
+                        <img [src]="sede.imagen" [alt]="sede.nombre" class="detalle-img-acordeon"
+                          onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                      </div>
+
+                      <!-- Info de contacto -->
+                      <div class="detalle-info-contacto row g-3 mb-4">
+                        <div class="col-md-6">
+                          <div class="info-contacto-item">
+                            <i class="bi-geo-alt"></i>
+                            <div>
+                              <div class="contacto-label">Dirección</div>
+                              <div class="contacto-value">{{ sede.direccion }}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="info-contacto-item">
+                            <i class="bi-telephone"></i>
+                            <div>
+                              <div class="contacto-label">Teléfono</div>
+                              <div class="contacto-value">
+                                {{ sede.telefono }}
+                                <button class="btn-copiar-acordeon" (click)="copiarTelefono(sede.telefono)">
+                                  <i class="bi-copy"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="info-contacto-item">
+                            <i class="bi-envelope"></i>
+                            <div>
+                              <div class="contacto-label">Email</div>
+                              <div class="contacto-value">{{ sede.email }}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="info-contacto-item">
+                            <i class="bi-clock"></i>
+                            <div>
+                              <div class="contacto-label">Horario de atención</div>
+                              <div class="contacto-value">Lunes a Viernes: 8am - 6pm</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Horarios -->
+                      <div class="detalle-seccion mb-4">
+                        <h5 class="seccion-titulo">
+                          <i class="bi-clock-history me-2"></i>
+                          Horarios de Reunión
+                        </h5>
+                        <div class="row g-2">
+                          <div *ngFor="let horario of sede.horarios" class="col-md-6">
+                            <div class="horario-acordeon">
+                              <i class="bi-check-circle-fill text-success me-2"></i>
+                              {{ horario }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Servicios -->
+                      <div class="detalle-seccion mb-4">
+                        <h5 class="seccion-titulo">
+                          <i class="bi-list-check me-2"></i>
+                          Servicios Ofrecidos
+                        </h5>
+                        <div class="servicios-acordeon">
+                          <span *ngFor="let servicio of sede.servicios" class="badge servicio-badge">
+                            <i class="bi-check-circle me-1"></i>
+                            {{ servicio }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Características -->
+                      <div class="detalle-seccion mb-4">
+                        <h5 class="seccion-titulo">
+                          <i class="bi-star me-2"></i>
+                          Características
+                        </h5>
+                        <div class="row g-2">
+                          <div *ngFor="let caracteristica of sede.caracteristicas" class="col-md-6">
+                            <div class="caracteristica-acordeon">
+                              <i class="bi-check2-circle text-primary me-2"></i>
+                              {{ caracteristica }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Acciones -->
+                      <div class="detalle-acciones">
+                        <h5 class="seccion-titulo">
+                          <i class="bi-compass me-2"></i>
+                          ¿Cómo Llegar?
+                        </h5>
+                        <div class="row g-3">
+                          <div class="col-md-4">
+                            <button
+                              class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center"
+                              (click)="abrirGoogleMaps(sede)">
+                              <i class="bi-google me-2"></i>
+                              Google Maps
+                            </button>
+                          </div>
+                          <div class="col-md-4">
+                            <button class="btn btn-outline-info w-100 d-flex align-items-center justify-content-center"
+                              (click)="obtenerDireccionWaze(sede)">
+                              <i class="bi-signpost me-2"></i>
+                              Waze
+                            </button>
+                          </div>
+                          <div class="col-md-4">
+                            <button
+                              class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center">
+                              <i class="bi-share me-2"></i>
+                              Compartir
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mensaje si no hay sedes -->
+            <div *ngIf="getSedesFiltradas().length === 0" class="text-center py-5">
+              <i class="bi-building-slash display-1 text-muted mb-3"></i>
+              <h4 class="text-muted">No hay sedes disponibles con el filtro actual</h4>
+              <button class="btn btn-link" (click)="filtrarPorCiudad('todas')">
+                Mostrar todas las sedes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL (Mantener igual) -->
+  <div class="cta-section">
+    <!-- ... contenido existente ... -->
+  </div>
+
+</section>

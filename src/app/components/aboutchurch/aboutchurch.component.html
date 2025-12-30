@@ -5,6 +5,10 @@
   <div class="about-banner">
     <div class="banner-image-container">
 
+      <img
+        src="../../../assets/img/Activa/home2.jpg"
+        alt="Familia Espiritual" class="banner-background-image">
+
       <div class="banner-overlay"></div>
 
       <!-- Contenido del banner -->
@@ -33,10 +37,8 @@
   <!-- Navegación Mejorada -->
   <div class="about-nav-container">
     <div class="nav-wrapper">
-      <button *ngFor="let section of sections"
-              [class.active]="activeSection === section.id"
-              (click)="setActiveSection(section.id)"
-              class="about-nav-btn">
+      <button *ngFor="let section of sections" [class.active]="activeSection === section.id"
+        (click)="setActiveSection(section.id)" class="about-nav-btn">
         <div class="nav-icon" [style.background]="section.color + '20'">
           <i [class]="section.icon" [style.color]="section.color"></i>
         </div>
@@ -50,9 +52,7 @@
   <div class="about-content">
 
     <!-- Sección Activa -->
-    <div *ngFor="let section of sections"
-         [class.active]="activeSection === section.id"
-         class="about-section">
+    <div *ngFor="let section of sections" [class.active]="activeSection === section.id" class="about-section">
 
       <div class="section-card">
         <div class="section-icon" [style.background]="section.color + '20'">
@@ -91,46 +91,169 @@
       </div>
     </div>
 
-    <!-- Familia Pastoral -->
-    <div class="pastoral-section">
-      <div class="section-header">
-        <h3 class="section-title">Nuestra Familia Pastoral</h3>
-        <p class="section-subtitle">Líderes comprometidos con tu crecimiento espiritual</p>
-      </div>
 
-      <div class="pastoral-grid">
-        <div *ngFor="let pastor of pastoralFamily" class="pastoral-card">
-          <div class="pastoral-image-container">
-            <img [src]="pastor.image" [alt]="pastor.name" class="pastoral-image">
-            <div class="pastoral-overlay"></div>
-          </div>
 
-          <div class="pastoral-info">
-            <h4 class="pastoral-name">{{ pastor.name }}</h4>
-            <p class="pastoral-role">{{ pastor.role }}</p>
-            <p class="pastoral-description">{{ pastor.description }}</p>
+    <!-- SECCIÓN DE MISIONES -->
+    <div class="misiones-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nuestro Enfoque Ministerial</h2>
+          <p class="section-subtitle">Cuatro pilares que guían nuestro servicio pastoral</p>
+        </div>
 
-            <div class="pastoral-social">
-              <a *ngIf="pastor.social.facebook"
-                 [href]="pastor.social.facebook"
-                 class="social-link">
-                <i class="bi-facebook"></i>
-              </a>
-              <a *ngIf="pastor.social.instagram"
-                 [href]="pastor.social.instagram"
-                 class="social-link">
-                <i class="bi-instagram"></i>
-              </a>
-              <a *ngIf="pastor.social.youtube"
-                 [href]="pastor.social.youtube"
-                 class="social-link">
-                <i class="bi-youtube"></i>
-              </a>
+        <div class="row g-4">
+          <div *ngFor="let mision of misiones" class="col-md-6 col-lg-3">
+            <div class="mision-card" [class.active]="misionActiva === mision.id" (click)="setMisionActiva(mision.id)">
+              <div class="mision-icon-wrapper">
+                <i [class]="mision.icono" [style.color]="mision.color"></i>
+              </div>
+              <h3 class="mision-card-title">{{ mision.titulo }}</h3>
+              <p class="mision-card-subtitle">{{ mision.subtitulo }}</p>
+              <div class="mision-card-line" [style.background]="mision.color"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- DETALLE DE MISIÓN ACTIVA -->
+    <div class="mision-detalle-section" *ngIf="misionActiva">
+      <div class="container">
+        <div class="mision-content">
+          <h3 class="mision-active-title">{{ getMisionActiva().titulo }}</h3>
+          <p class="mision-active-description">{{ getMisionActiva().descripcion }}</p>
+
+          <div class="row g-4 mt-4">
+            <div *ngFor="let caracteristica of getMisionActiva().caracteristicas" class="col-md-6">
+              <div class="caracteristica-card" [@cardHover]>
+                <i [class]="getMisionActiva().icono" class="caracteristica-icon"></i>
+                <div class="caracteristica-content">
+                  <h4 class="caracteristica-title">{{ caracteristica }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN DE LA FAMILIA -->
+    <div class="familia-detalle-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Conoce a Nuestra Familia</h2>
+          <p class="section-subtitle">Cada miembro contribuye con dones únicos al ministerio</p>
+        </div>
+
+        <div class="row">
+          <!-- LISTA DE MIEMBROS -->
+          <div class="col-lg-5">
+            <div class="miembros-sidebar">
+              <div class="miembros-list" [@staggerFade]>
+                <div *ngFor="let miembro of getMiembrosVisibles()"
+                  [class.active]="miembroSeleccionado?.id === miembro.id" (click)="seleccionarMiembro(miembro)"
+                  class="miembro-sidebar-item">
+
+                  <div class="miembro-avatar">
+                    <img [src]="miembro.imagen" [alt]="miembro.nombre" class="avatar-img"
+                      onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'">
+                    <div class="avatar-badge" [style.background]="
+                    miembro.rol.includes('Pastor') ? '#1e40af' :
+                    miembro.rol.includes('Esposa') ? '#059669' :
+                    '#7c3aed'
+                  ">
+
+                    </div>
+                  </div>
+
+                  <div class="miembro-sidebar-info">
+                    <h4 class="miembro-sidebar-name">{{ miembro.nombre }}</h4>
+                    <span class="miembro-sidebar-rol">{{ miembro.rol }}</span>
+                    <p class="miembro-sidebar-desc">{{ miembro.descripcion | slice:0:80 }}...</p>
+                  </div>
+                </div>
+              </div>
+
+              <button *ngIf="!familiaCompleta" (click)="toggleFamiliaCompleta()" class="btn-toggle-familia">
+                <i class="bi-eye me-2"></i>
+                Ver Familia Completa
+              </button>
+              <button *ngIf="familiaCompleta" (click)="toggleFamiliaCompleta()" class="btn-toggle-familia">
+                <i class="bi-eye-slash me-2"></i>
+                Ver Solo Padres
+              </button>
+            </div>
+          </div>
+
+          <!-- DETALLE DEL MIEMBRO -->
+          <div class="col-lg-7">
+            <div class="miembro-detalle-card" *ngIf="miembroSeleccionado">
+              <div class="detalle-header">
+                <div class="detalle-avatar-main">
+                  <img [src]="miembroSeleccionado.imagen" [alt]="miembroSeleccionado.nombre" class="detalle-img"
+                    onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80'">
+                  <div class="detalle-img-overlay">
+                    <span>{{ miembroSeleccionado.rol }}</span>
+                  </div>
+                </div>
+
+                <div class="detalle-info">
+                  <h2 class="detalle-name">{{ miembroSeleccionado.nombre }}</h2>
+                  <div class="detalle-rol-badge" [style.background]="
+                  miembroSeleccionado.rol.includes('Pastor') ? '#1e40af20' :
+                  miembroSeleccionado.rol.includes('Esposa') ? '#05966920' :
+                  '#7c3aed20'
+                ">
+                    <span [style.color]="
+                    miembroSeleccionado.rol.includes('Pastor') ? '#1e40af' :
+                    miembroSeleccionado.rol.includes('Esposa') ? '#059669' :
+                    '#7c3aed'
+                  ">
+                      {{ miembroSeleccionado.rol }}
+                    </span>
+                  </div>
+                  <p class="detalle-description">{{ miembroSeleccionado.descripcion }}</p>
+
+                  <!-- Redes sociales -->
+                  <div class="detalle-redes" *ngIf="miembroSeleccionado.redes">
+                    <div class="redes-label">Conecta con {{ miembroSeleccionado.nombre.split(' ')[0] }}:</div>
+                    <div class="redes-icons">
+                      <a *ngIf="miembroSeleccionado.redes.facebook" [href]="miembroSeleccionado.redes.facebook"
+                        class="red-social" target="_blank">
+                        <i class="bi-facebook"></i>
+                      </a>
+                      <a *ngIf="miembroSeleccionado.redes.instagram" [href]="miembroSeleccionado.redes.instagram"
+                        class="red-social" target="_blank">
+                        <i class="bi-instagram"></i>
+                      </a>
+                      <a *ngIf="miembroSeleccionado.redes.twitter" [href]="miembroSeleccionado.redes.twitter"
+                        class="red-social" target="_blank">
+                        <i class="bi-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="detalle-content">
+                <h4 class="content-title">
+                  <i class="bi-list-check me-2"></i>
+                  Áreas de Servicio y Contribución
+                </h4>
+                <div class="servicios-grid">
+                  <div *ngFor="let detalle of miembroSeleccionado.detalles" class="servicio-item">
+                    <i class="bi-check-circle-fill servicio-icon"></i>
+                    <span class="servicio-text">{{ detalle }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <!-- Estadísticas -->
     <div class="stats-section">
@@ -169,19 +292,7 @@
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="about-cta">
-      <h3 class="cta-title">¿Quieres ser parte de nuestra familia?</h3>
-      <p class="cta-text">Te esperamos con los brazos abiertos</p>
-      <div class="cta-buttons">
-        <a href="/visitanos" class="btn btn-primary">
-          Visítanos este domingo
-        </a>
-        <a href="/contacto" class="btn btn-secondary">
-          Contáctanos
-        </a>
-      </div>
-    </div>
+
   </div>
 </section>
 
