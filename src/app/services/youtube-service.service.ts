@@ -9,7 +9,7 @@ export class YoutubeServiceService {
   constructor(private http: HttpClient) {}
 
   getLatestVideoId(): Observable<string> {
-    const rssUrl = encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCi_1XkE78WBTVSq-mM6FLLw');
+    const rssUrl = encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCmI8EsQ8lOXXjf9FZcI8GHw');
     const url = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 
     return this.http.get<any>(url).pipe(

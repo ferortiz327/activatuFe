@@ -13,7 +13,7 @@ export class ModalPromotionsComponent implements OnInit {
   actividades = [
     {
       id: 1,
-      imagen: '../../../assets/img/carrusel/ayuno.png',
+      imagen: '../../../assets/img/Activa/mujeres.jpg',
       titulo: 'Culto Dominical Especial',
       descripcion: 'Únete a nuestra celebración dominical con un mensaje especial para toda la familia.',
       fecha: new Date(),
@@ -23,7 +23,7 @@ export class ModalPromotionsComponent implements OnInit {
     },
     {
       id: 2,
-      imagen: '../../../assets/img/carrusel/jovene.png',
+      imagen: '../../../assets/img/Activa/nathan-mullet-i7ZSnmsEN-Q-unsplash.jpg',
       titulo: 'Encuentro de Jóvenes',
       descripcion: 'Una noche llena de adoración y enseñanza para la nueva generación.',
       fecha: new Date(Date.now() + 86400000),
@@ -33,7 +33,7 @@ export class ModalPromotionsComponent implements OnInit {
     },
     {
       id: 3,
-      imagen: '../../../assets/img/carrusel/hogares.png',
+      imagen: '../../../assets/img/Activa/jovenes.jpg',
       titulo: 'Vigilia de Oración',
       descripcion: 'Noche de intercesión por nuestras familias y comunidad.',
       fecha: new Date(Date.now() + 172800000),

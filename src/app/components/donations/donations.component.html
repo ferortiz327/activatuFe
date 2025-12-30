@@ -16,368 +16,231 @@
 
 <div class="donations-container">
     <div class="donations-grid">
-
-        <!-- Formulario de Información Personal -->
-        <div class="form-section">
+        <!-- Opciones de pago en la izquierda -->
+        <div class="payment-section">
             <div class="form-card">
                 <div class="form-header">
                     <div class="header-icon">
-                        <span class="material-icons">volunteer_activism</span>
+                        <span class="material-icons">credit_card</span>
                     </div>
-                    <h2>Formulario de Donación</h2>
-                    <p>Completa tus datos para procesar tu donación</p>
+                    <h2>Selecciona tu método de pago</h2>
+                    <p>Elige cómo deseas realizar tu donación</p>
                 </div>
 
-                <form class="modern-form">
-                    <!-- Valor y Tipo de Donación -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">payments</span>
-                                Valor de donación
-                            </label>
-                            <div class="input-with-icon">
-                                <span class="input-prefix">$</span>
-                                <input type="number" class="form-input" placeholder="0" min="0">
+                <!-- Dos opciones de pago -->
+                <div class="payment-options">
+                    <!-- Opción 1: Bold -->
+                    <div class="payment-option bold-option">
+                        <div class="option-header">
+                            <div class="option-icon">
+                                <span class="material-icons">bolt</span>
+                            </div>
+                            <div class="option-title">
+                                <h3>Pago en Línea con Bold</h3>
+                                <p class="option-subtitle">Procesamiento seguro con tarjetas de crédito, débito o PSE</p>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">category</span>
-                                Tipo de Donación
-                            </label>
-                            <select class="form-select" [(ngModel)]="tipoDonacion" name="tipoDonacion">
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option *ngFor="let opcion of opcionesDonacion" [value]="opcion.valor">
-                                    {{ opcion.etiqueta }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
+                        <div class="option-content">
+                            <div class="benefits-list">
+                                <div class="benefit-item">
+                                    <span class="material-icons">check_circle</span>
+                                    <span>Pago seguro y encriptado</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="material-icons">check_circle</span>
+                                    <span>Recibo electrónico inmediato</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="material-icons">check_circle</span>
+                                    <span>Certificación PCI DSS</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <span class="material-icons">check_circle</span>
+                                    <span>Procesamiento instantáneo</span>
+                                </div>
+                            </div>
 
-                    <!-- Información Personal -->
-                    <div class="section-divider">
-                        <span class="divider-text">Información Personal</span>
-                    </div>
-
-                    <div class="form-row">
-                        <!-- Parte corregida del HTML -->
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">badge</span>
-                                Tipo de documento
-                            </label>
-                            <select class="form-select" [(ngModel)]="tipoDocumento" name="tipoDocumento">
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option *ngFor="let opcion of tiposDocumento" [value]="opcion.valor">
-                                    {{ opcion.etiqueta }}
-                                </option>
-                            </select>
+                            <div class="payment-methods">
+                                <p class="methods-label">Aceptamos:</p>
+                                <div class="methods-icons">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <i class="fab fa-cc-amex"></i>
+                                    <span class="pse-badge">PSE</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">fingerprint</span>
-                                Número de documento
-                            </label>
-                            <input type="number" class="form-input" placeholder="Número de documento">
-                        </div>
+                        <button class="submit-btn bold-btn" (click)="openBoldPayment()">
+                            <span class="material-icons">lock</span>
+                            Pagar con Bold
+                        </button>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">person</span>
-                                Nombre
-                            </label>
-                            <input type="text" class="form-input" placeholder="Tu nombre">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">person_outline</span>
-                                Apellido
-                            </label>
-                            <input type="text" class="form-input" placeholder="Tu apellido">
-                        </div>
+                    <!-- Separador -->
+                    <div class="option-divider">
+                        <span class="divider-text">O</span>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">email</span>
-                                Correo electrónico
-                            </label>
-                            <input type="email" class="form-input" placeholder="correo@ejemplo.com">
+                    <!-- Opción 2: Transferencias -->
+                    <div class="payment-option manual-option">
+                        <div class="option-header">
+                            <div class="option-icon">
+                                <span class="material-icons">account_balance_wallet</span>
+                            </div>
+                            <div class="option-title">
+                                <h3>Transferencias Manuales</h3>
+                                <p class="option-subtitle">DaviPlata, Nequi o Consignación Bancolombia</p>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label">
-                                <span class="material-icons">phone</span>
-                                Teléfono
-                            </label>
-                            <input type="tel" class="form-input" placeholder="+57 300 000 0000">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span class="material-icons">favorite</span>
-                            Motivo de oración (opcional)
-                        </label>
-                        <textarea class="form-textarea" rows="3"
-                            placeholder="Comparte tu petición de oración..."></textarea>
-                        <div class="char-count">0/500</div>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" hidden>
-                            <span class="checkbox-custom">
-                                <span class="material-icons">check</span>
-                            </span>
-                            <span class="checkbox-label">
-                                Acepto la
-                                <a href="#" class="privacy-link">política de privacidad</a>
-                                y el tratamiento de mis datos
-                            </span>
-                        </label>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Métodos de Pago -->
-        <div class="payment-section">
-            <div class="payment-card">
-                <div class="payment-header">
-                    <div class="payment-icon">
-                        <span class="material-icons">credit_card</span>
-                    </div>
-                    <h2>Métodos de Pago</h2>
-                    <p>Selecciona tu método de pago preferido</p>
-                </div>
-
-                <!-- Tabs de métodos de pago -->
-                <div class="payment-tabs">
-                    <ul ngbNav #nav="ngbNav" class="tab-nav" [(activeId)]="activeTab">
-                        <li ngbNavItem="credit" class="tab-item">
-                            <a ngbNavLink class="tab-link">
-                                <span class="material-icons">credit_score</span>
-                                Tarjeta
-                            </a>
-                            <ng-template ngbNavContent>
-                                <div class="tab-content">
-                                    <!-- Tarjeta simulada -->
-                                    <div class="credit-card-preview">
-                                        <div class="card-chip">
-                                            <div class="chip"></div>
-                                        </div>
-                                        <div class="card-number">•••• •••• •••• ••••</div>
-                                        <div class="card-footer">
-                                            <div class="card-holder">NOMBRE TITULAR</div>
-                                            <div class="card-expiry">MM/AA</div>
-                                        </div>
+                        <div class="option-content">
+                            <div class="transfer-methods">
+                                <!-- DaviPlata -->
+                                <div class="transfer-card" (click)="selectMethod('daviplata')" [class.selected]="selectedMethod === 'daviplata'">
+                                    <div class="transfer-icon">
+                                        <span class="material-icons">phone_iphone</span>
                                     </div>
-
-                                    <form class="payment-form">
-                                        <div class="form-group">
-                                            <label class="form-label">Número de tarjeta</label>
-                                            <input type="text" class="form-input" placeholder="1234 5678 9012 3456"
-                                                maxlength="19">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-label">Nombre del titular</label>
-                                            <input type="text" class="form-input"
-                                                placeholder="Como aparece en la tarjeta">
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group">
-                                                <label class="form-label">Fecha de expiración</label>
-                                                <input type="text" class="form-input" placeholder="MM/AA">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label">CVC</label>
-                                                <input type="text" class="form-input" placeholder="123" maxlength="3">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-label">Cuotas</label>
-                                            <select class="form-select">
-                                                <option value="" disabled selected>Selecciona cuotas</option>
-                                                <option>1 cuota</option>
-                                                <option>2 cuotas</option>
-                                                <option>3 cuotas</option>
-                                                <option>6 cuotas</option>
-                                                <option>12 cuotas</option>
-                                            </select>
-                                        </div>
-
-                                        <button type="submit" class="submit-btn payment-btn">
-                                            <span class="material-icons">lock</span>
-                                            Donar Ahora
-                                        </button>
-                                    </form>
+                                    <div class="transfer-details">
+                                        <h4>DaviPlata</h4>
+                                        <p class="transfer-number">310 3241930</p>
+                                        <p class="transfer-name">Iglesia Activa tu Fe</p>
+                                    </div>
+                                    <button class="copy-btn" (click)="$event.stopPropagation(); copyToClipboard('3123456789')">
+                                        <span class="material-icons">content_copy</span>
+                                    </button>
                                 </div>
-                            </ng-template>
-                        </li>
 
-                        <li ngbNavItem="pse" class="tab-item">
-                            <a ngbNavLink class="tab-link">
-                                <span class="material-icons">account_balance</span>
-                                PSE
-                            </a>
-                            <ng-template ngbNavContent>
-                                <div class="tab-content">
-                                    <form class="payment-form">
-                                        <div class="form-group">
-                                            <label class="form-label">Selecciona tu banco</label>
-                                            <select class="form-select">
-                                                <option value="" disabled selected>Elige tu banco</option>
-                                                <option>Bancolombia</option>
-                                                <option>Davivienda</option>
-                                                <option>Banco de Bogotá</option>
-                                                <option>Banco Popular</option>
-                                                <option>BBVA</option>
-                                                <option>Scotiabank</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-label">Tipo de cuenta</label>
-                                            <div class="radio-group">
-                                                <label class="radio-option">
-                                                    <input type="radio" name="accountType" value="savings" hidden>
-                                                    <span class="radio-custom"></span>
-                                                    <span class="radio-label">Ahorros</span>
-                                                </label>
-                                                <label class="radio-option">
-                                                    <input type="radio" name="accountType" value="checking" hidden>
-                                                    <span class="radio-custom"></span>
-                                                    <span class="radio-label">Corriente</span>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-label">Correo electrónico</label>
-                                            <input type="email" class="form-input" placeholder="correo@ejemplo.com">
-                                        </div>
-
-                                        <button type="submit" class="submit-btn payment-btn">
-                                            <span class="material-icons">account_balance</span>
-                                            Pagar con PSE
-                                        </button>
-                                    </form>
+                                <!-- Nequi -->
+                                <div class="transfer-card" (click)="selectMethod('nequi')" [class.selected]="selectedMethod === 'nequi'">
+                                    <div class="transfer-icon">
+                                        <span class="material-icons">account_balance_wallet</span>
+                                    </div>
+                                    <div class="transfer-details">
+                                        <h4>Nequi</h4>
+                                        <p class="transfer-number">310 3241930</p>
+                                        <p class="transfer-name">Iglesia Activa tu Fe</p>
+                                    </div>
+                                    <button class="copy-btn" (click)="$event.stopPropagation(); copyToClipboard('3109876543')">
+                                        <span class="material-icons">content_copy</span>
+                                    </button>
                                 </div>
-                            </ng-template>
-                        </li>
 
-                        <li ngbNavItem="points" class="tab-item">
-                            <a ngbNavLink class="tab-link">
-                                <span class="material-icons">local_atm</span>
-                                Puntos
-                            </a>
-                            <ng-template ngbNavContent>
-                                <div class="tab-content">
-                                    <form class="payment-form">
-                                        <div class="form-group">
-                                            <label class="form-label">Punto de pago</label>
-                                            <select class="form-select">
-                                                <option value="" disabled selected>Selecciona punto de pago</option>
-                                                <option>Baloto</option>
-                                                <option>Efecty</option>
-                                                <option>SuperGiros</option>
-                                                <option>Gana</option>
-                                                <option>Redeban</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-label">Número de referencia</label>
-                                            <input type="text" class="form-input" placeholder="Número de referencia">
-                                        </div>
-
-                                        <div class="info-box">
-                                            <div class="info-icon">
-                                                <span class="material-icons">info</span>
-                                            </div>
-                                            <div class="info-content">
-                                                <h4>Instrucciones</h4>
-                                                <p>Acércate al punto de pago seleccionado y proporciona el número de
-                                                    referencia generado.</p>
-                                            </div>
-                                        </div>
-
-                                        <button type="submit" class="submit-btn payment-btn">
-                                            <span class="material-icons">receipt</span>
-                                            Generar Recibo
-                                        </button>
-                                    </form>
+                                <!-- Bancolombia -->
+                                <div class="transfer-card" (click)="selectMethod('bancolombia')" [class.selected]="selectedMethod === 'bancolombia'">
+                                    <div class="transfer-icon">
+                                        <span class="material-icons">account_balance</span>
+                                    </div>
+                                    <div class="transfer-details">
+                                        <h4>Consignación Bancolombia</h4>
+                                        <p class="transfer-number">123-456789-00</p>
+                                        <p class="transfer-name">Iglesia Activa tu Fe</p>
+                                        <p class="transfer-note">Cuenta de ahorros</p>
+                                    </div>
+                                    <button class="copy-btn" (click)="$event.stopPropagation(); copyToClipboard('12345678900')">
+                                        <span class="material-icons">content_copy</span>
+                                    </button>
                                 </div>
-                            </ng-template>
-                        </li>
-                    </ul>
+                            </div>
 
-                    <div [ngbNavOutlet]="nav" class="tab-outlet"></div>
+                            <div class="instructions">
+                                <div class="instructions-header">
+                                    <span class="material-icons">info</span>
+                                    <h4>Instrucciones:</h4>
+                                </div>
+                                <ol class="instructions-list">
+                                    <li>Realiza la transferencia con los datos del método seleccionado</li>
+                                    <li>Toma captura del comprobante</li>
+                                    <li>Envía el comprobante al WhatsApp</li>
+                                    <li>Recibirás confirmación en 24-48 horas</li>
+                                </ol>
+                                <div class="whatsapp-info">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp: +57 3103241930</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="submit-btn manual-btn" (click)="sendToWhatsApp()" [disabled]="!selectedMethod">
+                            <span class="material-icons">whatsapp</span>
+                            Enviar Comprobante por WhatsApp
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar de Información -->
+        <!-- Sidebar en la derecha -->
         <div class="info-sidebar">
+            <!-- Sección: Tu Donación Transforma -->
             <div class="info-card">
-                <h3>Tu Donación Transforma</h3>
+                <h3><span class="material-icons">volunteer_activism</span> Tu Donación Transforma</h3>
                 <div class="benefits-list">
                     <div class="benefit-item">
-                        <span class="material-icons">church</span>
-                        <div>
+                        <div class="benefit-icon">
+                            <span class="material-icons">church</span>
+                        </div>
+                        <div class="benefit-content">
                             <h4>Mantenimiento</h4>
-                            <p>Ayuda al sostenimiento de nuestra iglesia</p>
+                            <p>Sostenimiento de nuestra iglesia y ministerios</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <span class="material-icons">groups</span>
-                        <div>
+                        <div class="benefit-icon">
+                            <span class="material-icons">groups</span>
+                        </div>
+                        <div class="benefit-content">
                             <h4>Comunidad</h4>
-                            <p>Apoya programas sociales y comunitarios</p>
+                            <p>Programas sociales y ayuda comunitaria</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <span class="material-icons">school</span>
-                        <div>
+                        <div class="benefit-icon">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <div class="benefit-content">
                             <h4>Educación</h4>
-                            <p>Contribuye a la educación cristiana</p>
+                            <p>Educación cristiana y formación espiritual</p>
                         </div>
                     </div>
                     <div class="benefit-item">
-                        <span class="material-icons">volunteer_activism</span>
-                        <div>
+                        <div class="benefit-icon">
+                            <span class="material-icons">travel_explore</span>
+                        </div>
+                        <div class="benefit-content">
                             <h4>Misiones</h4>
-                            <p>Financia obras misioneras y evangelización</p>
+                            <p>Obras misioneras y evangelización</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
 
+            <!-- Sección: Pago Seguro -->
             <div class="security-card">
-                <h3>Pago Seguro</h3>
+                <h3><span class="material-icons">security</span> Pago 100% Seguro</h3>
                 <div class="security-features">
                     <div class="security-item">
                         <span class="material-icons">https</span>
-                        <span>Conexión segura SSL</span>
+                        <div class="security-content">
+                            <strong>Conexión segura SSL</strong>
+                            <p>Protección de datos personales</p>
+                        </div>
                     </div>
                     <div class="security-item">
                         <span class="material-icons">enhanced_encryption</span>
-                        <span>Datos encriptados</span>
+                        <div class="security-content">
+                            <strong>Datos encriptados</strong>
+                            <p>Información protegida en todo momento</p>
+                        </div>
                     </div>
                     <div class="security-item">
                         <span class="material-icons">verified_user</span>
-                        <span>Procesadores certificados</span>
+                        <div class="security-content">
+                            <strong>Certificación PCI DSS</strong>
+                            <p>Estándar de seguridad para pagos</p>
+                        </div>
                     </div>
                 </div>
             </div>

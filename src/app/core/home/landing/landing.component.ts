@@ -11,6 +11,10 @@ export class LandingComponent implements OnInit {
   focus: any;
   focus1: any;
   videoUrl: SafeResourceUrl | null = null;
+  latestVideoId: string | null = null;
+  isVideoLoading = true;
+
+
 
   constructor(
     private youtube: YoutubeServiceService,
@@ -18,6 +22,8 @@ export class LandingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+        // Cargar el video
+    this.loadLatestVideo();
     this.youtube.getLatestVideoId().subscribe((videoId) => {
       if (videoId) {
         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -28,38 +34,34 @@ export class LandingComponent implements OnInit {
   }
 
   slides = [
-    { img: './assets/img/carrusel/ayuno.png' },
-    { img: './assets/img/carrusel/domingo.png' },
-    { img: './assets/img/carrusel/ayuno.png' },
-    { img: './assets/img/carrusel/hogares.png' },
-    { img: './assets/img/carrusel/jovene.png' },
-    { img: './assets/img/carrusel/miercoles.png' },
-    { img: './assets/img/carrusel/oracion.png' },
-    { img: './assets/img/carrusel/sembrar.png' },
-    { img: './assets/img/carrusel/semilla.png' },
+    { img: './assets/img/Activa/calendario.jpeg' },
+    { img: './assets/img/Activa/kids.jpg' },
+    { img: './assets/img/Activa/jovenes.jpg' },
+    { img: './assets/img/Activa/obramisionera.jpg' },
+    { img: './assets/img/Activa/horario.jpg' },
   ];
 
   slidesHome = [
     {
-      img: '../../../../assets/img/sembrador/home.jpg',
-      title: 'Bienvenidos a Nuestra Comunidad',
-      text: 'Un lugar donde la fe crece y las vidas se transforman',
-      button: 'Ver Horarios',
-      link: '/horarios',
+      img: '../../../../assets/img/Activa/home5.jpeg',
+      title: 'Bienvenidos a Nuestra Iglesia',
+      text: 'misión, visión, historia, familia pastoral y más',
+      button: 'Ver Más',
+      link: '#/quienes-somos',
     },
     {
-      img: '../../../../assets/img/sembrador/home2.jpg',
-      title: 'Cultos Dominicales',
+      img: '../../../../assets/img/Activa/home6.jpeg',
+      title: 'Nuestras Sedes',
       text: 'Únete a nuestras celebraciones cada domingo a las 10:00 AM',
-      button: 'Ver Horarios',
-      link: '/horarios',
+      button: 'Nuestras Sedes',
+      link: '#/sedes',
     },
     {
-      img: '../../../../assets/img/sembrador/home3.jpg',
+      img: '../../../../assets/img/Activa/home7.jpeg',
       title: 'Transmisión en Vivo',
       text: 'Sigue nuestros servicios desde cualquier lugar',
-      button: 'Ver Transmisión',
-      link: '/live',
+      button: 'Nuestros Horarios',
+      link: '#/calendario',
     },
   ];
 
@@ -80,5 +82,25 @@ export class LandingComponent implements OnInit {
   private handleSlideTransition(event: any): void {
     // Lógica para manejar transiciones personalizadas
     console.log('Slide changing to:', event.to);
+  }
+
+
+
+    loadLatestVideo() {
+    this.youtube.getLatestVideoId().subscribe({
+      next: (videoId) => {
+        if (videoId) {
+          this.latestVideoId = videoId;
+          this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `https://www.youtube.com/embed/${videoId}`
+          );
+        }
+        this.isVideoLoading = false;
+      },
+      error: (error) => {
+        console.error('Error al cargar video:', error);
+        this.isVideoLoading = false;
+      }
+    });
   }
 }

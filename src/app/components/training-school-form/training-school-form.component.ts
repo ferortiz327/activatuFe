@@ -110,10 +110,6 @@ export class TrainingSchoolFormComponent implements OnInit {
     }
   }
 
-  // Métodos helper para el template
-  isTrainingSelected(trainingId: string): boolean {
-    return this.selectedTrainings.some(training => training.id === trainingId);
-  }
 
   isSpiritualLevelSelected(levelId: string): boolean {
     return this.registrationForm.get('spiritualLevel')?.value === levelId;
@@ -123,20 +119,6 @@ export class TrainingSchoolFormComponent implements OnInit {
     return this.registrationForm.get('commitment')?.value === commitmentId;
   }
 
-  // Manejo de programas seleccionados
-  onTrainingChange(event: any, trainingId: string) {
-    const trainingsArray = this.registrationForm.get('selectedTrainings') as FormArray;
-    const training = this.trainingPrograms.find(t => t.id === trainingId);
-
-    if (event.target.checked) {
-      trainingsArray.push(this.fb.control(trainingId));
-      this.selectedTrainings.push(training);
-    } else {
-      const index = trainingsArray.controls.findIndex(x => x.value === trainingId);
-      trainingsArray.removeAt(index);
-      this.selectedTrainings = this.selectedTrainings.filter(t => t.id !== trainingId);
-    }
-  }
 
   // Validación
   markFormGroupTouched() {
@@ -231,5 +213,55 @@ export class TrainingSchoolFormComponent implements OnInit {
   // Método para verificar si un radio está seleccionado
   isRadioSelected(controlName: string, value: string): boolean {
     return this.registrationForm.get(controlName)?.value === value;
+  }
+
+
+   // Método para manejar la selección de programas
+  toggleProgramSelection(programId: string): void {
+    const selectedTrainings = this.registrationForm.get('selectedTrainings')?.value || [];
+
+    if (this.isTrainingSelected(programId)) {
+      // Remover si ya está seleccionado
+      const index = selectedTrainings.indexOf(programId);
+      if (index > -1) {
+        selectedTrainings.splice(index, 1);
+      }
+    } else {
+      // Agregar si no está seleccionado
+      selectedTrainings.push(programId);
+    }
+
+    this.registrationForm.get('selectedTrainings')?.setValue(selectedTrainings);
+    this.registrationForm.get('selectedTrainings')?.markAsTouched();
+  }
+
+  // Método para verificar si un programa está seleccionado
+  isTrainingSelected(programId: string): boolean {
+    const selectedTrainings = this.registrationForm.get('selectedTrainings')?.value || [];
+    return selectedTrainings.includes(programId);
+  }
+
+  // Mantén este método para el checkbox manual
+  onTrainingChange(event: any, programId: string): void {
+    event.stopPropagation(); // Evita que se expanda/contraiga el acordeón
+
+    const isChecked = event.target.checked;
+    const selectedTrainings = this.registrationForm.get('selectedTrainings')?.value || [];
+
+    if (isChecked) {
+      // Agregar programa si no existe
+      if (!selectedTrainings.includes(programId)) {
+        selectedTrainings.push(programId);
+      }
+    } else {
+      // Remover programa si existe
+      const index = selectedTrainings.indexOf(programId);
+      if (index > -1) {
+        selectedTrainings.splice(index, 1);
+      }
+    }
+
+    this.registrationForm.get('selectedTrainings')?.setValue(selectedTrainings);
+    this.registrationForm.get('selectedTrainings')?.markAsTouched();
   }
 }

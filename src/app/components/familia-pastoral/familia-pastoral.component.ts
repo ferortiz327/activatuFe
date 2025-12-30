@@ -124,7 +124,7 @@ familia: MiembroFamilia[] = [
     nombre: 'Pastor Oscar Pérez',
     rol: 'Pastor Principal',
     descripcion: 'Líder espiritual con más de 25 años de ministerio pastoral. Su visión ha guiado el crecimiento espiritual de nuestra congregación.',
-    imagen: 'assets/images/pastores/pastor-oscar.jpg', // Ruta actualizada
+    imagen: '../../../assets/img/Activa/home2.jpg', // Ruta actualizada
     detalles: [
       '25 años de ministerio pastoral',
       'Maestría en Teología',
@@ -143,7 +143,7 @@ familia: MiembroFamilia[] = [
     nombre: 'Lorena Vargas',
     rol: 'Pastora y Esposa',
     descripcion: 'Pilar fundamental del ministerio, dedicada al crecimiento espiritual de las mujeres y fortalecimiento de las familias.',
-    imagen: 'assets/images/pastores/lorena-vargas.jpg', // Ruta actualizada
+    imagen: '../../../assets/img/Activa/jovenes.jpg', // Ruta actualizada
     detalles: [
       'Ministerio de mujeres activo',
       'Líder de grupos de intercesión',
