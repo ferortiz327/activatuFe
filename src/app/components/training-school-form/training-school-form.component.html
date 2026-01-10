@@ -94,34 +94,6 @@
                 </div>
               </div>
 
-              <div class="form-group"
-                [class.error]="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">cake</span>
-                  Edad *
-                </label>
-                <input type="number" formControlName="age" class="form-input" placeholder="Ej: 25" min="18" max="80"
-                  [class.invalid]="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
-                <div class="error-message"
-                  *ngIf="registrationForm.get('age')?.touched && registrationForm.get('age')?.invalid">
-                  {{ getErrorMessage('age') }}
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group"
-              [class.error]="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
-              <label class="form-label">
-                <span class="material-icons">work</span>
-                Ocupación / Profesión *
-              </label>
-              <input type="text" formControlName="occupation" class="form-input"
-                placeholder="Ej: Estudiante, Médico, Profesor, Ingeniero..."
-                [class.invalid]="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
-              <div class="error-message"
-                *ngIf="registrationForm.get('occupation')?.touched && registrationForm.get('occupation')?.invalid">
-                {{ getErrorMessage('occupation') }}
-              </div>
             </div>
 
             <!-- Membresía en la Iglesia -->
@@ -164,12 +136,6 @@
                 *ngIf="registrationForm.get('memberTime')?.touched && registrationForm.get('memberTime')?.invalid">
                 Por favor selecciona tu tiempo como miembro
               </div>
-            </div>
-
-            <!-- Programas de Formación -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">menu_book</i> Programas de Formación</h3>
-              <p class="section-subtitle">Selecciona el programa(s) que deseas tomar (puedes elegir varios)</p>
             </div>
 
             <!-- Programas de Formación - Ahora en Acordeón -->

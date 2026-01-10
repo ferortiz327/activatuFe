@@ -45,7 +45,7 @@ export class MinistriesService {
 private ministriesList = [
   {
     id: 'carelarios',
-    name: 'Ministerio de Obras Carelarios',
+    name: 'Ministerio de Obras Carcelarios',
     icon: 'favorite', // ❤️ Cambiado de 'heart_broken'
     description: 'Cuidado y apoyo a personas en situación de enfermedad, duelo o crisis emocional.',
     activities: [
