@@ -92,19 +92,6 @@
                   {{ getErrorMessage('phone') }}
                 </div>
               </div>
-
-              <div class="form-group"
-                [class.error]="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
-                <label class="form-label">
-                  <span class="material-icons">cake</span>
-                  Edad *
-                </label>
-                <input type="number" formControlName="age" class="form-input" placeholder="Ej: 25" min="15" max="80"
-                  [class.invalid]="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
-                <div class="error-message" *ngIf="ministryForm.get('age')?.touched && ministryForm.get('age')?.invalid">
-                  {{ getErrorMessage('age') }}
-                </div>
-              </div>
             </div>
 
             <!-- Membresía en la Iglesia -->
@@ -162,14 +149,6 @@
                 Por favor selecciona tu tiempo como miembro
               </div>
             </div>
-
-            <!-- Ministerios Disponibles -->
-            <div class="form-section-divider">
-              <h3><i class="material-icons">category</i> Ministerios Disponibles</h3>
-              <p class="section-subtitle">Selecciona el ministerio(s) donde te gustaría servir (puedes elegir varios)
-              </p>
-            </div>
-
             <!-- Ministerios Disponibles - Ahora en Acordeón -->
             <div class="form-section-divider">
               <h3><i class="material-icons">category</i> Ministerios Disponibles</h3>

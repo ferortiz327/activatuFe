@@ -1,9 +1,8 @@
 <!-- music-player.component.html -->
 <div class="radio-station" [class.active]="isPlayerOpen" [class.on-air]="isPlaying">
   <!-- Botón emisora estilo radio -->
-  <button class="radio-toggle-btn" (click)="togglePlayer()"
-          [attr.aria-expanded]="isPlayerOpen"
-          [attr.aria-label]="'Emisora ' + (isPlaying ? 'en vivo' : 'pausada')">
+  <button class="radio-toggle-btn" (click)="togglePlayer()" [attr.aria-expanded]="isPlayerOpen"
+    [attr.aria-label]="'Emisora ' + (isPlaying ? 'en vivo' : 'pausada')">
 
     <!-- Indicador de "En Vivo" -->
     <div class="live-indicator" *ngIf="isPlaying">
@@ -63,7 +62,7 @@
           </div>
         </div>
       </div>
-      <button class="radio-close" (click)="togglePlayer()" aria-label="Cerrar emisora">
+      <button class="radio-close" (click)="closePlayer()" aria-label="Cerrar emisora">
         <i class="bi bi-x-lg"></i>
       </button>
     </div>
@@ -86,8 +85,7 @@
     <div class="current-program">
       <div class="program-thumbnail">
         <img [src]="currentTrack?.cover || 'assets/images/radio-default.jpg'"
-             [alt]="currentTrack?.title || 'Programa actual'"
-             class="program-img">
+          [alt]="currentTrack?.title || 'Programa actual'" class="program-img">
         <div class="vinyl-overlay" *ngIf="isPlaying"></div>
       </div>
       <div class="program-info">
@@ -121,16 +119,15 @@
             <div class="tuner-bar" [style.width.%]="signalStrength"></div>
           </div>
         </div>
-        <button class="tune-btn" (click)="tuneUp()" aria-label="Subir frecuencia">
-          <i class="bi bi-chevron-right"></i>
+        <button class="control-btn preset-btn" (click)="tuneUp()" [attr.aria-label]="'Preset ' + (currentPreset + 1)">
+          <i class="bi bi-bookmark"></i>
+          <span class="preset-number">{{ currentPreset + 1 }}</span>
         </button>
       </div>
 
       <!-- Controles principales -->
       <div class="main-controls">
-        <button class="control-btn preset-btn"
-                (click)="presetBtn.click()"
-                [attr.aria-label]="'Preset ' + (currentPreset + 1)">
+        <button class="control-btn preset-btn" (click)="tuneUp()" [attr.aria-label]="'Preset ' + (currentPreset + 1)">
           <i class="bi bi-bookmark"></i>
           <span class="preset-number">{{ currentPreset + 1 }}</span>
         </button>
@@ -151,17 +148,15 @@
 
         <button class="control-btn volume-btn" (click)="toggleMute()" aria-label="Silenciar">
           <i class="bi" [class.bi-volume-up-fill]="volume > 0.5 && !isMuted"
-                      [class.bi-volume-down-fill]="volume > 0 && volume <= 0.5 && !isMuted"
-                      [class.bi-volume-mute-fill]="volume === 0 || isMuted"></i>
+            [class.bi-volume-down-fill]="volume > 0 && volume <= 0.5 && !isMuted"
+            [class.bi-volume-mute-fill]="volume === 0 || isMuted"></i>
         </button>
       </div>
 
       <!-- Control de volumen -->
       <div class="volume-slider">
         <i class="bi bi-volume-down volume-icon"></i>
-        <div class="volume-track" #volumeBar
-             (mousedown)="startVolumeDragging()"
-             (click)="setVolume($event)">
+        <div class="volume-track" #volumeBar (mousedown)="startVolumeDragging()" (click)="setVolume($event)">
           <div class="volume-progress" [style.width.%]="(isMuted ? 0 : volume) * 100"></div>
           <div class="volume-thumb" [style.left.%]="(isMuted ? 0 : volume) * 100"></div>
         </div>
@@ -179,16 +174,14 @@
         <div class="programs-filter">
           <button class="filter-btn" [class.active]="filter === 'all'" (click)="filter = 'all'">Todos</button>
           <button class="filter-btn" [class.active]="filter === 'live'" (click)="filter = 'live'">En Vivo</button>
-          <button class="filter-btn" [class.active]="filter === 'upcoming'" (click)="filter = 'upcoming'">Próximos</button>
+          <button class="filter-btn" [class.active]="filter === 'upcoming'"
+            (click)="filter = 'upcoming'">Próximos</button>
         </div>
       </div>
 
       <div class="programs-scroll">
-        <div class="program-item"
-             *ngFor="let track of getFilteredTracks(); let i = index"
-             [class.current]="i === currentTrackIndex"
-             [class.live]="isLiveProgram(track)"
-             (click)="playTrack(i)">
+        <div class="program-item" *ngFor="let track of getFilteredTracks(); let i = index"
+          [class.current]="i === currentTrackIndex" [class.live]="isLiveProgram(track)" (click)="playTrack(i)">
           <div class="program-item-time">
             <span class="time-start">{{ getProgramTime(i) }}</span>
           </div>
