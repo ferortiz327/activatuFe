@@ -18,8 +18,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   pointer-events: none; /* No interferir con clicks */
 }
 
@@ -842,8 +842,8 @@
 /* Responsive para carrusel principal */
 @media (max-width: 1200px) {
   .church-logo-overlay {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     top: calc(50% - 180px);
   }
 
@@ -874,8 +874,8 @@
 
 @media (max-width: 768px) {
   .church-logo-overlay {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     top: calc(50% - 120px);
   }
 
@@ -987,3 +987,853 @@
   }
 }
 
+
+/* ==============================================
+   RESPONSIVE COMPLETO - TODAS LAS PANTALLAS
+============================================= */
+
+/* 1. CARRUSEL PRINCIPAL - HERO */
+@media (max-width: 1400px) {
+  .church-hero {
+    height: 90vh;
+    min-height: 600px;
+  }
+
+  .church-logo-overlay {
+    width: 400px;
+    height: 400px;
+    top: calc(50% - 200px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 200px);
+  }
+
+  .slide-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .church-hero {
+    height: 85vh;
+    min-height: 550px;
+  }
+
+  .church-logo-overlay {
+    width: 350px;
+    height: 350px;
+    top: calc(50% - 180px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 180px);
+    max-width: 700px;
+  }
+
+  .slide-title {
+    font-size: 3rem;
+  }
+
+  .slide-text {
+    font-size: 1.2rem;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .church-hero {
+    height: 80vh;
+    min-height: 500px;
+  }
+
+  .church-logo-overlay {
+    width: 300px;
+    height: 300px;
+    top: calc(50% - 150px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 150px);
+    max-width: 600px;
+    width: 95%;
+  }
+
+  .slide-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .slide-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 450px;
+  }
+
+  .church-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .church-hero {
+    height: 75vh;
+    min-height: 450px;
+  }
+
+  .church-logo-overlay {
+    width: 250px;
+    height: 250px;
+    top: calc(50% - 125px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 125px);
+  }
+
+  .slide-title {
+    font-size: 2.2rem;
+  }
+
+  .slide-text {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+  }
+
+  .title-underline {
+    width: 80px;
+    margin: 0.5rem auto;
+  }
+
+  .church-btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  /* Controles del carrusel */
+  .church-control {
+    width: 50px;
+    height: 50px;
+  }
+
+  .control-arrow svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Indicadores */
+  .church-indicators {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+
+  .church-indicators > div {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .church-hero {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .church-logo-overlay {
+    width: 180px;
+    height: 180px;
+    top: calc(50% - 100px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 100px);
+    padding: 0 15px;
+  }
+
+  .slide-title {
+    font-size: 1.8rem;
+  }
+
+  .slide-text {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    max-width: 320px;
+  }
+
+  .title-container {
+    margin-bottom: 1rem;
+  }
+
+  .church-btn {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .church-indicators {
+    display: none; /* Ocultar indicadores en móviles pequeños */
+  }
+}
+
+@media (max-width: 400px) {
+  .church-hero {
+    height: 65vh;
+    min-height: 350px;
+  }
+
+  .church-logo-overlay {
+    width: 150px;
+    height: 150px;
+    top: calc(50% - 80px);
+  }
+
+  .carousel-content {
+    top: calc(50% + 80px);
+  }
+
+  .slide-title {
+    font-size: 1.6rem;
+  }
+
+  .slide-text {
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+}
+
+/* 2. SECCIÓN DE ACTIVIDADES */
+@media (max-width: 1200px) {
+  #actividades .carousel-item img {
+    height: 550px !important;
+  }
+
+  #actividades .position-relative,
+  #actividades .card {
+    height: 550px !important;
+  }
+
+  #actividades h2 {
+    font-size: 2.2rem;
+  }
+
+  #actividades .lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  #actividades .carousel-item img {
+    height: 500px !important;
+  }
+
+  #actividades .position-relative,
+  #actividades .card {
+    height: 500px !important;
+  }
+
+  #actividades h2 {
+    font-size: 2rem;
+  }
+
+  #actividades .lead {
+    font-size: 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #actividades {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  #actividades .carousel-item img {
+    height: 400px !important;
+  }
+
+  #actividades .position-relative,
+  #actividades .card {
+    height: 400px !important;
+  }
+
+  #actividades h2 {
+    font-size: 1.8rem;
+  }
+
+  #actividades p.text-muted {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .carousel-caption .lead {
+    font-size: 0.95rem !important;
+    max-width: 90% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #actividades .carousel-item img {
+    height: 350px !important;
+  }
+
+  #actividades .position-relative,
+  #actividades .card {
+    height: 350px !important;
+  }
+
+  #actividades .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #actividades h2 {
+    font-size: 1.6rem;
+  }
+
+  .carousel-caption h3 {
+    font-size: 1.3rem !important;
+  }
+
+  .carousel-caption .lead {
+    font-size: 0.85rem !important;
+    padding: 0 10px;
+  }
+}
+
+/* 3. HERO PASTORES */
+@media (max-width: 1200px) {
+  .hero-pastores {
+    height: 70vh;
+  }
+
+  .hero-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-pastores {
+    height: 60vh;
+  }
+
+  .hero-text {
+    bottom: 40px;
+    padding: 0 30px;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 600px;
+  }
+
+  .hero-text .btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-pastores {
+    height: 55vh;
+  }
+
+  .hero-text {
+    bottom: 30px;
+  }
+
+  .hero-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text .btn {
+    padding: 0.625rem 1.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-pastores {
+    height: 50vh;
+  }
+
+  .hero-text {
+    bottom: 25px;
+    padding: 0 20px;
+  }
+
+  .hero-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+    max-width: 400px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-text .btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-pastores {
+    height: 45vh;
+  }
+
+  .hero-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.1rem;
+  }
+
+  .hero-text p {
+    font-size: 0.85rem;
+    max-width: 320px;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* 4. REDES SOCIALES */
+@media (max-width: 1200px) {
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .social-section {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .social-card {
+    padding: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .social-title {
+    font-size: 1.3rem;
+  }
+
+  .social-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-section {
+    padding: 3rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .social-card {
+    padding: 1.5rem;
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .social-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .social-grid {
+    max-width: 100%;
+  }
+
+  .social-section {
+    padding: 2.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .social-card {
+    padding: 1.25rem;
+  }
+
+  .social-stats {
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    flex: 0 0 calc(50% - 0.5rem);
+    padding: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .social-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 5. SECCIÓN DE VIDEO */
+@media (max-width: 1200px) {
+  .video-frame {
+    height: 450px;
+  }
+
+  .simple-video-section {
+    padding: 3.5rem 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .video-frame {
+    height: 400px;
+  }
+
+  .simple-video-section .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-frame {
+    height: 350px;
+  }
+
+  .simple-video-section {
+    padding: 3rem 0;
+  }
+
+  .simple-video-section .section-title {
+    font-size: 1.8rem;
+  }
+
+  .simple-video-section .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .video-frame {
+    height: 300px;
+  }
+
+  .simple-video-section {
+    padding: 2.5rem 0;
+  }
+
+  .simple-video-section .section-title {
+    font-size: 1.6rem;
+  }
+
+  .video-info .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .video-frame {
+    height: 250px;
+  }
+
+  .simple-video-section {
+    padding: 2rem 0;
+  }
+}
+
+/* 6. BOTÓN FLOTANTE WHATSAPP */
+@media (max-width: 992px) {
+  .whatsapp-float {
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .whatsapp-icon {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .whatsapp-icon {
+    font-size: 22px;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .whatsapp-icon {
+    font-size: 20px;
+  }
+}
+
+/* 7. AJUSTES GENERALES PARA CONTENEDORES */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .row {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+  }
+
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+/* 8. TIPOGRAFÍA RESPONSIVA */
+@media (max-width: 768px) {
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.75rem; }
+  h3, .h3 { font-size: 1.5rem; }
+  h4, .h4 { font-size: 1.25rem; }
+  h5, .h5 { font-size: 1.1rem; }
+  h6, .h6 { font-size: 1rem; }
+
+  .display-1 { font-size: 3.5rem; }
+  .display-2 { font-size: 3rem; }
+  .display-3 { font-size: 2.5rem; }
+  .display-4 { font-size: 2rem; }
+  .display-5 { font-size: 1.75rem; }
+  .display-6 { font-size: 1.5rem; }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1, .h1 { font-size: 1.75rem; }
+  h2, .h2 { font-size: 1.5rem; }
+  h3, .h3 { font-size: 1.3rem; }
+
+  .display-3 { font-size: 2rem; }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+}
+
+/* 9. UTILIDADES ESPECIALES */
+/* Asegurar que las imágenes nunca se salgan */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevenir desbordamiento horizontal */
+body {
+  overflow-x: hidden;
+}
+
+/* Ajustes para tablets en modo horizontal */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .church-hero {
+    height: 100vh;
+  }
+
+  .church-logo-overlay {
+    width: 250px;
+    height: 250px;
+  }
+
+  .carousel-content {
+    top: calc(50% + 150px);
+  }
+}
+
+/* Ajustes para móviles en modo horizontal */
+@media (max-width: 768px) and (orientation: landscape) {
+  .church-hero {
+    height: 100vh;
+    min-height: auto;
+  }
+
+  .church-logo-overlay {
+    width: 150px;
+    height: 150px;
+    top: 50px;
+  }
+
+  .carousel-content {
+    top: calc(50% + 100px);
+  }
+
+  .slide-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .slide-text {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Para sección de actividades en landscape */
+  #actividades .carousel-item img {
+    height: 300px !important;
+  }
+
+  #actividades .position-relative,
+  #actividades .card {
+    height: 300px !important;
+  }
+}
+
+/* 10. MEJORAS DE ACCESIBILIDAD Y USABILIDAD */
+/* Tamaño mínimo de touch para móviles */
+@media (max-width: 768px) {
+  .church-btn,
+  .social-btn,
+  .whatsapp-float,
+  .church-control,
+  .carousel-control-prev,
+  .carousel-control-next {
+    min-height: 44px; /* Tamaño mínimo recomendado para touch */
+    min-width: 44px;
+  }
+
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Asegurar contraste suficiente en móviles */
+@media (max-width: 768px) {
+  .carousel-caption,
+  .hero-text {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Optimizar para navegadores móviles */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .church-btn:active,
+  .social-btn:active {
+    transform: scale(0.98);
+  }
+}

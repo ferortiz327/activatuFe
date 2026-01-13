@@ -18,16 +18,18 @@
       <div class="light-overlay"></div>
 
       <!-- Contenido del slide -->
-      <div class="carousel-content d-flex flex-column justify-content-center align-items-center">
+      <div
+        class="carousel-content d-flex flex-column justify-content-center align-items-center position-relative position-md-absolute">
+
 
         <!-- Título con efecto de revelado -->
-        <div class="title-container">
-          <h1 class="display-3 fw-bold slide-title">{{ slide.title }}</h1>
-          <div class="title-underline"></div>
+        <div class="title-container text-center text-md-start">
+          <h1 class="display-3 fw-bold slide-title mb-2 mb-md-3">{{ slide.title }}</h1>
+          <div class="title-underline d-none d-md-block"></div>
         </div>
 
         <!-- Texto con animación -->
-        <p class="lead slide-text">{{ slide.text }}</p>
+        <p class="lead slide-text text-center text-md-start mb-3 mb-md-4">{{ slide.text }}</p>
 
         <!-- Botón con efecto moderno -->
         <div class="button-container">
@@ -335,5 +337,3 @@
     </div>
     <span class="whatsapp-tooltip">Escríbenos</span>
   </a>
-
-

@@ -204,37 +204,6 @@ familia: MiembroFamilia[] = [
       facebook: '#',
       instagram: '#'
     }
-  },
-  {
-    id: 3,
-    nombre: 'Valeria Pérez',
-    rol: 'Hija Mayor',
-    descripcion: 'Joven comprometida con el ministerio juvenil y la alabanza, estudiante universitaria con corazón para servir.',
-    imagen: 'assets/images/pastores/valeria-perez.jpg', // Ruta actualizada
-    detalles: [
-      'Estudiante de Psicología',
-      'Miembro del equipo de alabanza',
-      'Líder juvenil activa',
-      'Voluntaria en misiones locales',
-      'Coordinadora de actividades juveniles'
-    ],
-    redes: {
-      instagram: '#'
-    }
-  },
-  {
-    id: 4,
-    nombre: 'Camila Pérez',
-    rol: 'Hija Menor',
-    descripcion: 'Adolescente con gran corazón para los niños y la comunidad, participa activamente en el ministerio infantil.',
-    imagen: 'assets/images/pastores/camila-perez.jpg', // Ruta actualizada
-    detalles: [
-      'Estudiante de secundaria',
-      'Ayudante en ministerio infantil',
-      'Participante en el coro de niños',
-      'Voluntaria en obras comunitarias',
-      'Asistente en clases para niños'
-    ]
   }
 ];
 

@@ -235,9 +235,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio de Obras Caritarias',
       description:
         'Dedicado a servir a los más necesitados a través de programas sociales, ayuda humanitaria y proyectos comunitarios.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/adultos.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/adultos.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
@@ -255,9 +255,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio de Evangelismo',
       description:
         'Equipo comprometido con llevar el mensaje del Evangelio a cada rincón de nuestra ciudad a través de diversas estrategias.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/evangelismos.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/evangelismos.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
@@ -327,9 +327,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio de Alabanza',
       description:
         'Equipo musical que lidera la adoración congregacional, creando atmósferas donde la presencia de Dios se manifiesta.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/alabanza.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/alabanza.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
@@ -367,9 +367,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio de Ujieres',
       description:
         'Equipo de servicio que garantiza que cada persona sea recibida con calidez y que todo funcione en orden durante los servicios.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/ujieres.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/ujieres.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
@@ -387,9 +387,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio Kids',
       description:
         'Ministerio especializado en niños donde aprenden de Dios de manera divertida, creativa y apropiada para su edad.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/kids.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/kids.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
@@ -407,9 +407,9 @@ export class QueHacemosComponent implements OnInit {
       title: 'Ministerio de Jóvenes',
       description:
         'Espacio donde los jóvenes encuentran comunidad, crecen en su fe y descubren su propósito en Dios.',
-      image: '../../../assets/img/Activa/home3.jpg',
+      image: '../../../assets/img/Activa/Ministerios/jovenes.png',
       images: [
-        '../../../assets/img/Activa/jovenes.jpg',
+        '../../../assets/img/Activa/Ministerios/jovenes.png',
         '../../../assets/img/Activa/home2.jpg',
         '../../../assets/img/Activa/kids.jpg',
         '../../../assets/img/Activa/mujeres.jpg',
